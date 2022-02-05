@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;1,500;1,700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Zilla Slab", serif;
+}
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../Images/triston-dunn-rfj_wOYQkus-unsplash.jpg");
+  background-size: cover;
+}
+header {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-style: italic;
+  background-color: antiquewhite;
+  box-shadow: 0px 6px 6px rgb(61, 61, 61);
+}
+header .fas {
+  position: absolute;
+  font-size: 25px;
+  top: 8px;
+  right: 20px;
+}
+header .fas:hover {
+  cursor: pointer;
+}
+.top-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3%;
+  color: rgba(255, 255, 255, 0.829);
+}
+.top-content blockquote {
+  text-align: center;
+  padding: 0 3vmin;
+  margin-top: 1%;
+  font-size: 1.3rem;
+}
+.main-content {
+  margin-top: 12%;
+  color: rgba(255, 255, 255, 0.829);
+}
+.main-content .title {
+  margin-left: 12%;
+  font-size: 2rem;
+  font-weight: 500;
+  font-style: italic;
+}
+.main-content .description {
+  display: flex;
+  margin-top: 2%;
+}
+.main-content .circle {
+  background-color: rgb(172, 169, 169);
+  padding: 18px;
+  height: 90px;
+  border-radius: 40px;
+  text-align: center;
+  margin-right: 2%;
+  margin-left: 5%;
+}
+.main-content .circle p {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.main-content .info p {
+  font-size: 1.4rem;
+  width: 90%;
+}
+.main-content button {
+  margin-top: 3%;
+  margin-left: 70%;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 1rem;
+  background-color: rgb(99, 12, 99);
+  border: 1px solid rgb(99, 12, 99);
+  color: rgba(255, 255, 255, 0.829);
+}
+.main-content button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 3px 3px rgb(167, 50, 167);
+}
+.bottom-content {
+  margin-top: 12%;
+  margin-left: 12%;
+  margin-right: 8%;
+  color: rgba(255, 255, 255, 0.829);
+  display: flex;
+  overflow-x: auto;
+}
+.bottom-content .card {
+  margin-right: 6%;
+}
+.bottom-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5%;
+  font-weight: 500;
+  font-style: italic;
+}
+.bottom-content .icons {
+  margin-bottom: 5%;
+}
+footer {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 5%;
+  margin-top: 20%;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.829);
+}
+.fa-heart {
+  color: red;
+}
+@media screen and (max-width: 760px) {
+  .top-content {
+    font-size: 1rem;
+    margin: 5%;
+  }
+  .main-content .title {
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-size: 1.6rem;
+  }
+  .main-content .description .circle {
+    margin-right: 5%;
+  }
+  .main-content .description .info p {
+    font-size: 1rem;
+  }
+  .main-content button {
+    margin-left: 60%;
+    margin-top: 10%;
+  }
+  .bottom-content {
+    flex-direction: column;
+  }
+  .bottom-content .card {
+    margin-bottom: 10%;
+  }
+}
