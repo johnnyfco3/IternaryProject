@@ -37,21 +37,20 @@ header .fas:hover {
 }
 .history-content {
   margin-top: 5%;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 12%;
+  margin-right: 12%;
   display: flex;
-  overflow-x: auto;
-}
-.history-content a {
-  margin-right: 3%;
+  flex-direction: column;
 }
 .history-content .card {
   position: relative;
+  margin-bottom: 5%;
 }
 .history-content .card img {
-  width: 530px;
-  height: 600px;
+  width: 90%;
+  height: 650px;
   border-radius: 1rem;
+  border: 2px solid antiquewhite;
 }
 .history-content h3 {
   position: absolute;
