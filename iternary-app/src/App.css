@@ -5,9 +5,35 @@
   font-family: "Zilla Slab", serif;
 }
 
-/*  LOGIN Style */
+/*  NAVBAR Style */
+#Navbar {
+  background-color: antiquewhite;
+  box-shadow: 0px 6px 6px rgb(61, 61, 61);
+  font-size: 1.1rem;
+}
+#Navbar .end {
+  display: flex;
+  justify-content: end;
+}
+#Navbar .navbar-brand {
+  font-size: 30px;
+  font-weight: 700;
+  font-style: italic;
+}
+#Navbar a {
+  color: black;
+  font-size: 20px;
+  padding: 0 20px;
+}
+#Navbar a:hover {
+  font-weight: 700;
+}
 
-#login {
+/*  LOGIN Style    */
+/*  REGISTER Style */
+
+#login,
+#register {
   background-image: url("./Images/adam-thomas-D2i-7JrH0wI-unsplash.jpg");
   background-size: cover;
   background-position: center;
@@ -15,18 +41,21 @@
   display: flex;
   align-items: center;
 }
-#login .card {
+#login .card,
+#register .card {
   width: 60%;
   margin: auto;
   background-color: transparent;
   border: none;
 }
-#login .card-body .card-title {
+#login .card-body .card-title,
+#register .card-body .card-title {
   font-size: 4rem;
   font-weight: 700;
   color: antiquewhite;
 }
-#login label {
+#login label,
+#register label {
   font-size: 1.6rem;
   color: antiquewhite;
 }
@@ -34,22 +63,108 @@
   margin: 0 5%;
 }
 #login .field input,
-.field span {
+.field span,
+#register input {
   background-color: antiquewhite;
 }
 #login form .submit {
   display: flex;
   justify-content: center;
 }
-#login form .submit button {
+#login form .submit button,
+#register button {
   font-size: 1.4rem;
   color: antiquewhite;
   border: 1px solid antiquewhite;
   border-radius: 4rem;
 }
-#login form .submit button:hover {
+#login form .submit button:hover,
+#register button:hover {
   cursor: pointer;
   background-color: antiquewhite;
   color: black;
   transition: 0.5s;
+}
+#login .bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#login .bottom-content h6 {
+  color: antiquewhite;
+  font-size: 1.4rem;
+}
+#login .bottom-content a {
+  font-size: 1.3rem;
+  color: white;
+}
+
+/*  OVERVIEW Style */
+
+#overview {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./Images/triston-dunn-rfj_wOYQkus-unsplash.jpg");
+  background-size: cover;
+  color: rgba(255, 255, 255, 0.829);
+}
+#overview .top-content h2 {
+  font-weight: 500;
+}
+#overview .top-content blockquote {
+  font-size: 1.2rem;
+}
+#overview .main-content {
+  padding-top: 5%;
+}
+#overview .main-content h1 {
+  font-size: 4.1rem;
+  font-weight: 700;
+}
+#overview .circle {
+  border: 2px solid;
+  text-align: center;
+  padding: 10px;
+  width: 90px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  height: 85px;
+  line-height: 1;
+}
+#overview .info {
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+#overview .discover {
+  display: flex;
+  justify-content: end;
+}
+#overview .discover button {
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 1rem;
+  background-color: rgb(99, 12, 99);
+  border: 1px solid rgb(99, 12, 99);
+  color: rgba(255, 255, 255, 0.829);
+}
+#overview .carousel {
+  width: 75%;
+  margin: auto;
+  padding-top: 10%;
+}
+#overview .carousel h3 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  font-style: italic;
+}
+#overview .carousel img {
+  width: 100%;
+  height: 700px;
+  padding-top: 20px;
+  border-radius: 2rem;
+}
+#overview .icons i {
+  padding-right: 5px;
+}
+#overview footer {
+  padding-top: 10%;
 }
