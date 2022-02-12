@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;1,500;1,700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Zilla Slab", serif;
+}
+
+/*  LOGIN Style */
+
+#login {
+  background-image: url("./Images/adam-thomas-D2i-7JrH0wI-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+#login .card {
+  width: 60%;
+  margin: auto;
+  background-color: transparent;
+  border: none;
+}
+#login .card-body .card-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: antiquewhite;
+}
+#login label {
+  font-size: 1.6rem;
+  color: antiquewhite;
+}
+#login .field {
+  margin: 0 5%;
+}
+#login .field input,
+.field span {
+  background-color: antiquewhite;
+}
+#login form .submit {
+  display: flex;
+  justify-content: center;
+}
+#login form .submit button {
+  font-size: 1.4rem;
+  color: antiquewhite;
+  border: 1px solid antiquewhite;
+  border-radius: 4rem;
+}
+#login form .submit button:hover {
+  cursor: pointer;
+  background-color: antiquewhite;
+  color: black;
+  transition: 0.5s;
+}
