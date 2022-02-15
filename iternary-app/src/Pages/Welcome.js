@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import WelcomeBar from "../Components/WelcomeBar";
 import Footer from "../Components/Footer";
-import AboutPic from "../Images/juliana-kozoski-IoQioGLrz3Y-unsplash.jpg";
+import AboutPic from "../Images/mesut-kaya-eOcyhe5-9sQ-unsplash.jpg"
 
 export function Welcome(){
     return (
@@ -16,17 +17,22 @@ export function Welcome(){
                     <p>Let Us Travel The World!</p>
                 </section>
 
-                <section className="about">
-                    <div className="row">
-                        <div className="col-6">
-                            <img src={AboutPic} alt="About" width={100}/>
+                    <section className="about py-5" id="about">
+                        <div className="container">
+                        <div className="row">
+                            <div className="col-6">
+                                <img src={AboutPic} alt="About" width={500}/>
+                            </div>
+                            <div className="col-6">
+                                <h1 className="title text-center py-3">About</h1>
+                                <p>lorem nvjfv vfnvfv fjvnf vnv fv vnfvjn vvn fvnv fvnf v jfvn vjnv fvnv jvn fvjnfv  v vv fjvfvn </p>
+                            </div>
                         </div>
-                        <div className="col-6">
-                            <p>lorem nvjfv vfnvfv fjvnf vnv fv vnfvjn vvn fvnv fvnf v jfvn vjnv fvnv jvn fvjnfv  v vv fjvfvn </p>
+                        <div className="button text-center">
+                            <Link to="/register"><button className="btn mt-5 px-4">Get Started</button></Link>
                         </div>
                     </div>
-                    <button className="btn btn-primary">Get Started</button>
-                </section>
+                    </section>
             </main>
 
             <footer>
