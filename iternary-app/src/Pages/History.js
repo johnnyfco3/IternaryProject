@@ -11,7 +11,7 @@ export function History(){
         <div id="history">
             <Navbar />
             <div className="container">
-                <div className="top-content text-center pt-2">
+                <div className="top-content text-center pt-4">
                     <h2>Good Morning Johnny</h2>
                     <blockquote>Let's make today a memorable one!
                         <cite> - Johnny T</cite>

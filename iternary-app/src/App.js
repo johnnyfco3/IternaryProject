@@ -5,6 +5,7 @@ import Register from './Pages/Register';
 import Welcome from './Pages/Welcome';
 import Overview from './Pages/Overview';
 import History from './Pages/History';
+import AddAdventure from './Pages/AddAdventure';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/register" element={<Register />}/>
           <Route path="/overview" element={<Overview />}/>
           <Route path="/history" element={<History />}/>
+          <Route path="/add-adventure" element={<AddAdventure />}/>
         </Routes>
       </Router>
     </div>
