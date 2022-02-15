@@ -49,7 +49,7 @@ export function History(){
                         <a href="#"><div className="card">
                             <img src={Venice} alt="Current Travels"/>
                         </div>
-                        <div className="card-content">
+                        <div className="card-content card-content">
                             <h1 className="title">Italy</h1>
                             <h3 className="subtitle">Venice</h3>
                             <p>25 Dec - 31 Jan 2021</p>

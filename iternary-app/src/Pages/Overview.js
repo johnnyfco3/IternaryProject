@@ -14,7 +14,7 @@ export function Overview(){
             <div className="container pt-4">
                 <div className="main-content">
                     <h1>New York</h1>
-                    <div className="row">
+                    <div className="row top">
                         <div className="col-1 me-4 mb-5">
                             <div class="circle rounded-circle">
                                 <p>Jun</p>
@@ -34,7 +34,7 @@ export function Overview(){
                 </div>
 
                 <div className="bottom-content">
-                    <div className="row">
+                    <div className="row bottom">
                         <div className="col-4">
                             <h3>World Trade Center</h3>
                             <div className="icons">

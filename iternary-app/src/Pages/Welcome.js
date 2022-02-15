@@ -21,7 +21,7 @@ export function Welcome(){
                         <div className="container">
                         <div className="row">
                             <div className="col-6">
-                                <img src={AboutPic} alt="About" width={500}/>
+                                <img src={AboutPic} alt="About"/>
                             </div>
                             <div className="col-6">
                                 <h1 className="title text-center py-3">About</h1>
