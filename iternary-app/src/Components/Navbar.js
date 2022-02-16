@@ -16,7 +16,7 @@ export function Navbar(){
                         <Link className="nav-link active" aria-current="page" to="/history">Home</Link>
                         </li>
                         <li className="nav-item">
-                        <a className="nav-link" href="#">New Adventure</a>
+                        <Link className="nav-link" to="/add-adventure">New Adventure</Link>
                         </li>
                         <li className="nav-item">
                         <Link className="nav-link" to="/">Log Out</Link>

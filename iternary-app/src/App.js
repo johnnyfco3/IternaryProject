@@ -6,6 +6,7 @@ import Welcome from './Pages/Welcome';
 import Overview from './Pages/Overview';
 import History from './Pages/History';
 import AddAdventure from './Pages/AddAdventure';
+import AddPost from './Pages/AddPost';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/overview" element={<Overview />}/>
           <Route path="/history" element={<History />}/>
           <Route path="/add-adventure" element={<AddAdventure />}/>
+          <Route path="/add-post" element={<AddPost />}/>
         </Routes>
       </Router>
     </div>

@@ -58,7 +58,7 @@ export function History(){
                 </section>
 
                 <section className="add-new text-center mt-5 px-4">
-                    <button className="btn">Start New Adventure</button>
+                    <Link to="/add-adventure"><button className="btn">Start a New Adventure</button></Link>
                 </section>
             </div>
             <footer>

@@ -294,6 +294,69 @@
 #overview .col-4 {
   padding: 2%;
 }
+#overview .button button {
+  font-size: 1.4rem;
+  margin-top: 10%;
+  background-color: rgb(63, 165, 63);
+  color: white;
+  border: 2px solid rgb(63, 165, 63);
+  border-radius: 1rem;
+}
+#overview .button button:hover {
+  background-color: transparent;
+  transition: 0.3s ease;
+}
+
+/* ADD-ADVENTURE style */
+/* ADD-POST style */
+
+#add-adventure,
+#add-post {
+  background-image: url("./Images/istockphoto-1083302826-170667a.jpeg");
+  background-size: 100%;
+  color: white;
+}
+#add-adventure .title,
+#add-post .title {
+  font-weight: 600;
+}
+#add-adventure label,
+#add-post label {
+  font-size: 1.2rem;
+}
+#add-adventure input,
+#add-post input {
+  background-color: antiquewhite;
+  border-radius: 1rem;
+}
+#add-adventure textarea {
+  background-color: antiquewhite;
+  border-radius: 1rem;
+}
+#add-adventure .button button,
+#add-post .button button {
+  font-size: 1.3rem;
+  margin-top: 5%;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 1rem;
+  color: white;
+}
+#add-adventure .button button:hover,
+#add-post .button button:hover {
+  background-color: rgb(63, 165, 63);
+  border: 2px solid rgb(63, 165, 63);
+  transition: 0.3s ease;
+}
+#add-post input {
+  margin-left: 50%;
+}
+#add-post .heading {
+  margin-left: 25%;
+}
+#add-post label {
+  margin-left: 50%;
+}
 
 /* FOOTER style */
 
@@ -430,7 +493,44 @@
     width: 200px;
     margin-left: 15%;
   }
+  #overview .button button {
+    font-size: 1rem;
+  }
+
+  #add-post .title,
+  #add-adventure .title {
+    font-size: 1.5rem;
+  }
+  #add-post label,
+  #add-adventure label {
+    font-size: 1.2rem;
+  }
+  #add-post input,
+  #add-adventure input {
+    width: 300px;
+  }
+  #add-adventure button,
+  #add-post button {
+    font-size: 1rem;
+  }
+  #add-post input,
+  #add-post .heading,
+  #add-post label,
+  #add-adventure input,
+  #add-adventure .heading,
+  #add-adventure label,
+  #add-adventure textarea {
+    margin-left: 5%;
+  }
+  #add-post .form-label {
+    margin-top: -5%;
+  }
+  #add-adventure textarea {
+    width: 250px;
+  }
+
   #footer {
     font-size: 1rem;
+    margin-top: 10%;
   }
 }

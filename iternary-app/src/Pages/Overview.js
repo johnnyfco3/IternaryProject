@@ -6,6 +6,7 @@ import TimesS from "../Images/photo-1595901688281-9cef114adb0b.jpeg";
 import Central from "../Images/photo-1558385953-d50e6afd94c2.jpeg";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import { Link } from "react-router-dom";
 
 export function Overview(){
     return (
@@ -37,69 +38,37 @@ export function Overview(){
                     <div className="row bottom">
                         <div className="col-4">
                             <h3>World Trade Center</h3>
-                            <div className="icons">
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                            </div>
                             <div className="card mt-3">
                                 <img src={WTC} alt="World Trade Center" />
                             </div>
                         </div>
                         <div className="col-4">
                             <h3>Little Island</h3>
-                            <div className="icons">
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                            </div>
                             <div className="card mt-3">
                                 <img src={LittleIsland} alt="Little Island" />
                             </div>
                         </div>
                         <div className="col-4">
                             <h3>The Vessel</h3>
-                            <div class="icons">
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                            </div>
                             <div className="card mt-3">
                                 <img src={Vessel} alt="The Vessel" />
                             </div>
                         </div>
                         <div className="col-4">
                             <h3>Time Square</h3>
-                            <div className="icons">
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                            </div>
                             <div className="card mt-3">
                                 <img src={TimesS} alt="Time Square" />
                             </div>
                         </div>
                         <div className="col-4">
                             <h3>Central Park</h3>
-                            <div className="icons">
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                                <i className="far fa-star"></i>
-                            </div>
                             <div className="card mt-3">
                                 <img src={Central} alt="Central Park" />
                             </div>
                         </div>
+                    </div>
+                    <div className="button text-center">
+                        <Link to="/add-post"><button className="btn btn-success px-4">Add Post</button></Link>
                     </div>
                 </div>
 

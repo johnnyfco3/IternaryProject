@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer"
 
 export function AddAdventure(){
     return (
@@ -7,6 +8,9 @@ export function AddAdventure(){
             <Navbar />
 
             <div className="container">
+                <div className="top-content mt-4 text-center">
+                    <h1 className="title">Where Are You Heading?</h1>
+                </div>
                 <main>
                     <form class="row g-3 my-5">
                         <h1 className="heading">Location</h1>
@@ -19,14 +23,16 @@ export function AddAdventure(){
                             <input type="text" class="form-control" id="city" />
                         </div>
                         
-                        <h1 className="heading">Date</h1>
-                        <div class="col-6">
-                            <label for="start" class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="start" />
-                        </div>
-                        <div class="col-6">
-                            <label for="end" class="form-label">End Date</label>
-                            <input type="date" class="form-control" id="end" />
+                        <div className="date">
+                            <h1 className="heading">Date</h1>
+                            <div class="col-6">
+                                <label for="start" class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="start" />
+                            </div>
+                            <div class="col-6">
+                                <label for="end" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="end" />
+                            </div>
                         </div>
 
                         <h1 className="heading">Tell us about the location</h1>
@@ -35,21 +41,20 @@ export function AddAdventure(){
                         </div>
 
                         <h1 className="heading">Background Image</h1>
-                        <div class="col-8">
-                            <label for="inputState" class="form-label">Select an image for background display</label>
+                        <div class="col-6">
+                            <label for="inputState" class="form-label">Select an image</label>
                             <input type="file" class="form-control" id="inputGroupFile02" />
                         </div>
 
-                        <h1 className="heading">Start off with your first post <em>(optional)</em></h1>
-                        <div class="col-8">
-                            <input type="file" class="form-control" id="inputGroupFile02" />
-                        </div>
-
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-primary px-4">Sign in</button>
+                        <div class="col-12 text-center button">
+                            <button type="submit" class="btn px-4">Submit</button>
                         </div>
                     </form>
                 </main>
+
+                <footer>
+                    <Footer />
+                </footer>
             </div>
         </div>
     )
