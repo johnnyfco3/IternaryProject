@@ -58,28 +58,31 @@
   font-weight: 600;
 }
 #welcome .about {
-  height: 80vh;
+  height: 100vh;
   background-image: url("./Images/White-Gradient-Squares-Seamless-Patterns-For-Website-Backgrounds.jpeg");
 }
 #welcome .about img {
   border-radius: 2rem;
   width: 100%;
+  margin-top: 10%;
 }
 #welcome .about h1 {
   font-size: 4rem;
 }
 #welcome .about p {
-  font-size: 1.2rem;
-  margin: auto;
+  font-size: 1.4rem;
+  text-align: center;
   line-height: 1.6;
+  margin-top: 5%;
 }
-#welcome .about button {
+#welcome .about .button button {
   font-size: 1.5rem;
+  margin-top: 10%;
   border-radius: 1rem;
   border: 2px solid rgb(63, 165, 63);
   color: rgb(63, 165, 63);
 }
-#welcome .about button:hover {
+#welcome .about .button button:hover {
   background-color: rgb(63, 165, 63);
   color: white;
   transition: 0.3s ease;
@@ -370,6 +373,9 @@
 }
 
 @media screen and (max-width: 800px) {
+  #welcome .top-content {
+    height: 60vh;
+  }
   #welcome .top-content h1 {
     font-size: 4rem;
   }
@@ -383,14 +389,15 @@
     margin-top: 25%;
   }
   #welcome .about {
-    height: 55vh;
+    height: 65vh;
   }
   #welcome .about p {
+    font-size: 10px;
+  }
+  #welcome .about .button button {
     font-size: 1rem;
   }
-  #welcome .about button {
-    font-size: 1rem;
-  }
+
   #history .top-content h2 {
     font-size: 1.3rem;
   }
@@ -530,7 +537,10 @@
   }
 
   #footer {
-    font-size: 1rem;
-    margin-top: 10%;
+    padding-top: 20%;
+  }
+  #footer h4,
+  #footer h5 {
+    font-size: 18px;
   }
 }

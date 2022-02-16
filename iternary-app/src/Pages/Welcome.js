@@ -17,22 +17,26 @@ export function Welcome(){
                     <p>Let Us Travel The World!</p>
                 </section>
 
-                    <section className="about py-5" id="about">
-                        <div className="container">
+                <section className="about py-5" id="about">
+                    <div className="container">
                         <div className="row">
                             <div className="col-6">
                                 <img src={AboutPic} alt="About"/>
                             </div>
                             <div className="col-6">
                                 <h1 className="title text-center py-3">About</h1>
-                                <p>lorem nvjfv vfnvfv fjvnf vnv fv vnfvjn vvn fvnv fvnf v jfvn vjnv fvnv jvn fvjnfv  v vv fjvfvn </p>
+                                <p>Welcome to a community that loves to travel, trying new things and sharing their wonderful 
+                                    experiences with others. If you are interested in organizing all your travel memories
+                                    online for friends and family to see, Vacay is the application for you. So what are you
+                                    waiting for? Hit that "Get Started" button and start sharing with us the world you choose 
+                                    to explore!</p>
                             </div>
                         </div>
                         <div className="button text-center">
-                            <Link to="/register"><button className="btn mt-5 px-4">Get Started</button></Link>
+                            <Link to="/register"><button className="btn px-4">Get Started</button></Link>
                         </div>
                     </div>
-                    </section>
+                </section>
             </main>
 
             <footer>
