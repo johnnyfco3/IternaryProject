@@ -5,6 +5,7 @@ export function Register(){
     const [users, setUsers] = useState({
         firstName: "",
         lastName: "",
+        birthday: "",
         email: "",
         password: "",
         confirm: "",
@@ -32,6 +33,10 @@ export function Register(){
                                 <div class="col-md-6 ps-5">
                                     <label for="lname" class="form-label">Last Name</label>
                                     <input type="text" class="form-control" id="lname" value={users.lastName} onChange={(event)=> setUsers(event.target.value)} required/>
+                                </div>
+                                <div class="col-md-6 ps-5">
+                                    <label for="birthday" class="form-label">Date of birth</label>
+                                    <input type="date" class="form-control" id="birthday" value={users.birthday} onChange={(event)=> setUsers(event.target.value)} required/>
                                 </div>
                                 <div class="col-6 pe-5">
                                     <label for="email" class="form-label">Email Address</label>
