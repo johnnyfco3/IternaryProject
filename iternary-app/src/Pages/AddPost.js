@@ -11,6 +11,14 @@ export function AddPost(){
         }
     )
 
+    function handleChange(event){
+        setNewPost(prevState =>({
+            ...prevState,
+            [event.target.name]: event.target.value
+
+        }))
+    }
+
     function handleSubmit(e){
         e.preventDefault();
     }
@@ -27,20 +35,20 @@ export function AddPost(){
                         <h1 className="title">Let's Add a New Post</h1>
                     </div>
                     
-                    <form class="row g-3 my-5" onSubmit={handleSubmit}>
+                    <form className="row g-3 my-5" onSubmit={handleSubmit}>
                         <h1 className="heading">Location</h1>
-                        <div class="col-md-6">
-                            <input type="text" className="form-control" id="location" value={newPost.location} onChange={(event)=> setNewPost(event.target.value)} required/>
+                        <div className="col-md-6">
+                            <input type="text" className="form-control" id="location" name="location" value={newPost.location} onChange={handleChange} required/>
                         </div>
                     
                         <h1 className="heading mt-4">Upload Post</h1>
-                        <div class="col-6">
-                            <label for="inputState" class="form-label">Select an image</label>
-                            <input type="file" class="form-control" id="inputGroupFile02" value={newPost.post} onChange={(event)=> setNewPost(event.target.value)} required/>
+                        <div className="col-6">
+                            <label htmlFor="inputState" className="form-label">Select an image</label>
+                            <input type="file" className="form-control" id="inputGroupFile02" name="post" value={newPost.post} onChange={handleChange} required/>
                         </div>
 
-                        <div class="col-12 text-center button">
-                            <button type="submit" class="btn px-4">Submit</button>
+                        <div className="col-12 text-center button">
+                            <button type="submit" className="btn px-4">Submit</button>
                         </div>
                     </form>
                 </main>

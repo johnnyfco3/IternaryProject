@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
@@ -7,6 +7,14 @@ import Venice from "../Images/karsten-wurth-uZt8wD1rgeo-unsplash.jpg";
 import Sydney from "../Images/dan-freeman-7Zb7kUyQg1E-unsplash.jpg";
 
 export function History(){
+
+    const [adventures, setAdventures] = useState([
+        { country: "New York", city: "New York City", startD: "11 Jun", endD: "3 Jul", background: "../Images/triston-dunn-rfj_wOYQkus-unsplash.jpg", current: true },
+        { country: "Australia", city: "Sydney", startD: "20 Feb", endD: "3 March", background: "../Images/dan-freeman-7Zb7kUyQg1E-unsplash.jpg", current: false },
+        { country: "Italy", city: "Venice", startD: "25 Dec", endD: "31 Jan", background: "../Images/karsten-wurth-uZt8wD1rgeo-unsplash.jpg", current: false },
+        
+    ])
+
     return (
         <div id="history">
             <header>
@@ -75,3 +83,23 @@ export function History(){
 }
 
 export default History;
+
+// // <Link to="/overview">{adventures.map((trip,key) =>{
+//     if(trip.current){
+//         key=trip.id
+//         console.log(JSON.stringify(trip.background))
+//         const test = JSON.stringify(trip.background)
+//         return (
+//         <>
+//         <div className="card">
+//             <img src={test} alt="Current Travels"/>
+//         </div>
+//         <div className="card-content">
+//             <h1 className="title">{trip.country}</h1>
+//             <h3 className="subtitle">{trip.city}</h3>
+//             <p>{trip.startD} - {trip.endD} 2021</p>
+//         </div>
+//         </>
+//         )
+//     }})}</Link>
+
