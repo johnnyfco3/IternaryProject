@@ -407,6 +407,53 @@
     font-size: 1rem;
   }
 
+  /* LOGIN */
+  /* REGISTER */
+
+  #register {
+    height: 130vh;
+  }
+  #login .card,
+  #register .card {
+    width: 90%;
+  }
+  #login .card-body .card-title,
+  #register .card-body .card-title {
+    font-size: 2rem;
+  }
+  #login label,
+  #register label {
+    font-size: 1rem;
+    padding-top: 8%;
+  }
+  #login .field {
+    margin: 0 3%;
+  }
+  #login form .submit button,
+  #register button {
+    font-size: 1rem;
+  }
+  #login .bottom-content h6,
+  #login .bottom-content a {
+    font-size: 1.2rem;
+  }
+  #register form {
+    display: flex;
+    flex-direction: column;
+  }
+  #register form label,
+  #register form input {
+    width: 290px;
+  }
+  #register form .last label,
+  #register form .last input {
+    margin-left: -15%;
+  }
+  #register form .email label,
+  #register form .email input {
+    margin-left: -40%;
+  }
+
   /* HISTORY */
 
   #history .top-content h2 {
