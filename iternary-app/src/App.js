@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/" element={<Welcome />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
-          <Route path="/overview" element={<Overview />}/>
+          <Route path="/overview/:id" element={<Overview />}/>
           <Route path="/history" element={<History />}/>
           <Route path="/add-adventure" element={<AddAdventure />}/>
           <Route path="/add-post" element={<AddPost />}/>

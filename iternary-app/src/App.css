@@ -188,10 +188,13 @@
 #history .current {
   position: relative;
 }
+#history .position {
+  position: relative;
+}
 #history .card {
   padding: 0;
   border: none;
-  position: relative;
+  margin-top: 3%;
 }
 #history .card img {
   width: 100%;
@@ -204,19 +207,19 @@
 }
 #history .card-content .title {
   position: absolute;
-  top: 150px;
+  top: 16px;
   font-size: 3.2rem;
   font-weight: 600;
 }
 #history .card-content .subtitle {
   position: absolute;
-  top: 220px;
+  top: 90px;
   font-size: 2rem;
   font-weight: 200;
 }
 #history .card-content p {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   font-size: 1.8rem;
   font-weight: 200;
 }
@@ -241,9 +244,6 @@
 /*  OVERVIEW Style */
 
 #overview {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("./Images/triston-dunn-rfj_wOYQkus-unsplash.jpg");
-  background-size: cover;
   color: rgba(255, 255, 255, 0.829);
 }
 #overview .main-content {
@@ -262,6 +262,9 @@
   font-weight: 600;
   height: 85px;
   line-height: 1;
+}
+#overview .circle p {
+  font-size: 26px;
 }
 #overview .info {
   font-size: 1.5rem;
