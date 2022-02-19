@@ -114,23 +114,3 @@ export function History(){
 }
 
 export default History;
-
-// // <Link to="/overview">{adventures.map((trip,key) =>{
-//     if(trip.current){
-//         key=trip.id
-//         console.log(JSON.stringify(trip.background))
-//         const test = JSON.stringify(trip.background)
-//         return (
-//         <>
-//         <div className="card">
-//             <img src={test} alt="Current Travels"/>
-//         </div>
-//         <div className="card-content">
-//             <h1 className="title">{trip.country}</h1>
-//             <h3 className="subtitle">{trip.city}</h3>
-//             <p>{trip.startD} - {trip.endD} 2021</p>
-//         </div>
-//         </>
-//         )
-//     }})}</Link>
-
