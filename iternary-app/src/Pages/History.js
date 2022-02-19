@@ -51,6 +51,21 @@ export function History(){
             current: true 
         }
     ])
+    
+    const today = new Date()
+    const hour = today.getHours()
+
+    function determineTime(){
+        if(hour < 12 && hour > 2){
+            return "Good Morning"
+        }
+        else if(hour > 12 && hour < 19){
+            return "Good Afternoon"
+        }
+        else{
+            return "Good Night"
+        }
+    }
 
     return (
         <div id="history">
@@ -61,7 +76,7 @@ export function History(){
             <div className="container">
                 <main>
                     <div className="top-content text-center pt-4">
-                        <h2>Good Morning Johnny</h2>
+                        <h2>{determineTime()} Johnny</h2>
                         <blockquote>Let's make today a memorable one!
                             <cite> - Johnny T</cite>
                         </blockquote>

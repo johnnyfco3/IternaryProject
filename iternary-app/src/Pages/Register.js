@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Register(){
 
@@ -34,7 +35,8 @@ export function Register(){
             [event.target.name]: event.target.value
         }))
     }
-
+    
+    let navigate = useNavigate()
     function handleSubmit(e){
         e.preventDefault();
         if(confirm === newUser.password){
@@ -47,6 +49,7 @@ export function Register(){
                 password: "",
                 quote: ""
             })
+            navigate("/history")
         }
         else{
             alert("Passwords do not match!")

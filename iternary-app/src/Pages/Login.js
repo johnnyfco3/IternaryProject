@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Login(){
 
@@ -20,6 +20,7 @@ export function Login(){
         }))
     }
 
+    let navigate = useNavigate()
     function handleSubmit(e){
         e.preventDefault();
         let hasAccount = false;
@@ -30,11 +31,11 @@ export function Login(){
             }
         })
         if(hasAccount){
-            console.log("Logged in")
             setLogin({
                 email: "",
                 password: ""
             })
+            navigate("/history")
         }
         else{
             alert("Account not found")
