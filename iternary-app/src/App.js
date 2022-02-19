@@ -20,7 +20,7 @@ function App() {
           <Route path="/overview/:id" element={<Overview />}/>
           <Route path="/history" element={<History />}/>
           <Route path="/add-adventure" element={<AddAdventure />}/>
-          <Route path="/add-post" element={<AddPost />}/>
+          <Route path="/add-post/:id" element={<AddPost />}/>
         </Routes>
       </Router>
     </div>

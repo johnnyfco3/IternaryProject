@@ -184,6 +184,7 @@
 #history .heading {
   font-size: 3rem;
   font-weight: 600;
+  border-bottom: 3px solid white;
 }
 #history .current {
   position: relative;
@@ -258,13 +259,13 @@
   text-align: center;
   padding: 10px;
   width: 90px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   height: 85px;
   line-height: 1;
 }
 #overview .circle p {
-  font-size: 26px;
+  padding-top: 0.4rem;
 }
 #overview .info {
   font-size: 1.5rem;
