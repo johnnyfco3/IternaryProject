@@ -186,9 +186,6 @@
   font-weight: 600;
   border-bottom: 3px solid white;
 }
-#history .current {
-  position: relative;
-}
 #history .position {
   position: relative;
 }
@@ -223,9 +220,6 @@
   bottom: 10px;
   font-size: 1.8rem;
   font-weight: 200;
-}
-#history .past {
-  position: relative;
 }
 #history .add-new button {
   margin-top: 3%;
@@ -475,8 +469,7 @@
   #history .heading {
     font-size: 2rem;
   }
-  #history .current,
-  #history .past {
+  #history .row {
     display: flex;
     flex-direction: column;
   }
@@ -493,11 +486,11 @@
     padding-left: 10%;
   }
   #history .card-content .title {
-    top: 130px;
+    top: 20px;
     font-size: 2rem;
   }
   #history .card-content .subtitle {
-    top: 180px;
+    top: 60px;
     font-size: 1.2rem;
   }
   #history .card-content p {
