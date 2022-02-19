@@ -7,6 +7,7 @@ import Overview from './Pages/Overview';
 import History from './Pages/History';
 import AddAdventure from './Pages/AddAdventure';
 import AddPost from './Pages/AddPost';
+import NotFound from './Pages/NotFound';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/history" element={<History />}/>
           <Route path="/add-adventure" element={<AddAdventure />}/>
           <Route path="/add-post/:id" element={<AddPost />}/>
+          <Route path="*" element={<NotFound />}/>
         </Routes>
       </Router>
     </div>
