@@ -18,10 +18,10 @@ function App() {
           <Route exact path="/" element={<Welcome />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
-          <Route path="/overview/:id" element={<Overview />}/>
-          <Route path="/history" element={<History />}/>
+          <Route path="/overview/:adventureID" element={<Overview />}/>
+          <Route path="/history/:userID" element={<History />}/>
           <Route path="/add-adventure" element={<AddAdventure />}/>
-          <Route path="/add-post/:id" element={<AddPost />}/>
+          <Route path="/add-post/:adventureID" element={<AddPost />}/>
           <Route path="*" element={<NotFound />}/>
         </Routes>
       </Router>
