@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { Link, useParams } from "react-router-dom";
+import Posts from "../Components/Posts";
 
 export function Overview(){
 
@@ -65,7 +66,7 @@ export function Overview(){
         if(trip.id == adventureID){
             setLocation(trip)
         }
-    })}, [])
+    })}, [adventures])
 
     const [posts, setPosts] = useState([
         { name: "World Trade Center", img: "https://images.unsplash.com/photo-1582436416930-f533b50a7cd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80", adventureID: 1 },
@@ -77,6 +78,12 @@ export function Overview(){
         { name: "Doge's Palace", img: "https://images.unsplash.com/photo-1567012198973-b8843811d618?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80", adventureID: 3 },
         { name: "St. Marks Square", img: "https://images.unsplash.com/photo-1628106913234-9cdfddbf6b81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80", adventureID: 3 },
     ])
+
+    const postComp = posts.map(post => {
+        if(post.adventureID == adventureID){
+            return <Posts post={post}/>
+        }
+    })
 
     const styles = {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${location.background})`,
@@ -111,19 +118,7 @@ export function Overview(){
 
                     <section className="bottom-content">
                         <div className="row bottom">
-                            {posts.map(post => {
-                                if(post.adventureID == adventureID){
-                                    return (
-                                    <div className="col-4">
-                                        <h3>{post.name}</h3>
-                                        <div className="card mt-3">
-                                            <img src={post.img} alt="Location" />
-                                        </div>
-                                    </div>
-                                    )
-                                }
-                            })
-                        }
+                            {postComp}
                         </div>
                         <div className="button text-center">
                             <Link to={`/add-post/${adventureID}`}><button className="btn btn-success px-4">Add Post</button></Link>

@@ -1,10 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AdventureList from "../Components/AdventureList";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import session from "../session";
 
 export function History(){
+
+    const [users, setUsers] = useState([
+        { 
+            id: 1,
+            firstName: "Johnny", 
+            lastName: "Tejada", 
+            birthday: "07-03-2000", 
+            email: "example@gmail.com", 
+            password: "12345", 
+            quote: "Let's make today a memorable one!"
+        },
+        { 
+            id: 2,
+            firstName: "John", 
+            lastName: "Smith", 
+            birthday: "05-10-1999", 
+            email: "example1@gmail.com", 
+            password: "123456", 
+            quote: "Hey there, lets travel together!!"
+        },
+    ])
+
+    const [user, setUser] = useState({})
+
+    useEffect(()=>{
+        users.map(user =>{
+            if(user.id == session.userID){
+                setUser(user)
+            }
+        })
+    }, [users])
 
     const [adventures, setAdventures] = useState([
         { 
@@ -57,6 +89,22 @@ export function History(){
         }
     ])
     
+    let currentCount = 0
+    const currentList = adventures.map(trip => {
+            if(trip.current && trip.userID == session.userID){
+                currentCount++
+                return <AdventureList trip={trip}/>
+            }
+        })
+    
+    let pastCount = 0
+    const pastList = adventures.map(trip => {
+        if(!trip.current && trip.userID == session.userID){
+            pastCount++
+            return <AdventureList trip={trip}/>
+        }
+    })
+    
     const today = new Date()
     const hour = today.getHours()
 
@@ -81,54 +129,24 @@ export function History(){
             <div className="container">
                 <main>
                     <div className="top-content text-center pt-4">
-                        <h2>{determineTime()} Johnny</h2>
-                        <blockquote>Let's make today a memorable one!
-                            <cite> - Johnny T</cite>
+                        <h2>{determineTime()} {user.firstName}</h2>
+                        <blockquote>{user.quote}
+                            <cite> - {user.firstName} {user.lastName}</cite>
                         </blockquote>
                     </div>
                     
                     <section className="current row pt-5">
-                        <h1 className="heading pb-4">Current Adventures</h1>
+                        <h1 className="heading pb-4">Current Adventures ( {currentCount} )</h1>
                         <div className="row">
-                            {adventures.map(trip => {
-                                if(trip.current && trip.userID == session.userID){
-                                    return (
-                                        <div className="position col-6">
-                                        <Link to={`/overview/${trip.id}`}><div className="card">
-                                            <img src={trip.background} alt="Current Travels"/>
-                                        </div>
-                                        <div className="card-content">
-                                            <h1 className="title">{trip.country}</h1>
-                                            <h3 className="subtitle">{trip.city}</h3>
-                                            <p>{trip.startD} - {trip.endD} 2021</p>
-                                        </div></Link>
-                                        </div>
-                                    )
-                                }
-                            })}
+                            {currentList}
                             </div>
                     </section>
 
                     <section className="past pt-5">
-                        <h1 className="heading pb-4">Past Adventures</h1>
+                        <h1 className="heading pb-4">Past Adventures ( {pastCount} )</h1>
                         <div className="row">
-                            {adventures.map(trip => {
-                                if(!trip.current && trip.userID == session.userID){
-                                    return (
-                                        <div className="position col-6">
-                                        <Link to={`/overview/${trip.id}`}><div className="card">
-                                            <img src={trip.background} alt="Current Travels"/>
-                                        </div>
-                                        <div className="card-content">
-                                            <h1 className="title">{trip.country}</h1>
-                                            <h3 className="subtitle">{trip.city}</h3>
-                                            <p>{trip.startD} - {trip.endD} 2021</p>
-                                        </div></Link>
-                                        </div>
-                                    )
-                                }
-                            })}
-                            </div>
+                            {pastList}
+                        </div>
                     </section>
 
                     <section className="add-new text-center mt-5 px-4">
