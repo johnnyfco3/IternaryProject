@@ -171,9 +171,7 @@
 /*  HISTORY Style */
 
 #history {
-  background-image: url("./Images/istockphoto-1083302826-170667a.jpeg");
-  background-size: 100%;
-  color: white;
+  background-color: burlywood;
 }
 #history .top-content h2 {
   font-weight: 500;
@@ -226,8 +224,8 @@
   font-size: 1.4rem;
   border-radius: 1rem;
   background-color: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid black;
+  color: black;
 }
 #history .add-new button:hover {
   background-color: rgb(63, 165, 63);
