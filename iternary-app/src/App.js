@@ -7,6 +7,7 @@ import Overview from './Pages/Overview';
 import History from './Pages/History';
 import AddAdventure from './Pages/AddAdventure';
 import AddPost from './Pages/AddPost';
+import Friends from './Pages/Friends';
 import NotFound from './Pages/NotFound';
 import { useState } from 'react';
 
@@ -32,6 +33,19 @@ function App() {
         password: "123456", 
         quote: "Hey there, lets travel together!!"
     },
+  ])
+
+  const [friends, setFriends] = useState([
+    {
+      id: 1,
+      userID: 1,
+      friends: ["example1@gmail.com"]
+    },
+    {
+      id: 2,
+      userID: 2,
+      friends: ["example@gmail.com"]
+    }
   ])
 
   const [adventures, setAdventures] = useState([
@@ -104,9 +118,10 @@ function App() {
           <Route path="/login" element={<Login users={users}/>}/>
           <Route path="/register" element={<Register users={users}/>}/>
           <Route path="/overview/:adventureID" element={<Overview adventures={adventures} posts={posts}/>}/>
-          <Route path="/history/:userID" element={<History users={users} adventures={adventures}/>}/>
+          <Route path="/history" element={<History users={users} adventures={adventures}/>}/>
           <Route path="/add-adventure" element={<AddAdventure adventures={adventures} setAdventures={setAdventures}/>}/>
           <Route path="/add-post/:adventureID" element={<AddPost posts={posts} setPosts={setPosts}/>}/>
+          <Route path="/friends" element={<Friends friends={friends} users={users}/>}/>
           <Route path="*" element={<NotFound />}/>
         </Routes>
       </Router>

@@ -362,6 +362,31 @@
   margin-left: 50%;
 }
 
+/* FRIENDS style */
+#friends {
+  background-color: burlywood;
+}
+#friends .input-group {
+  margin: 0 10%;
+  width: 80%;
+}
+#friends .card {
+  margin: 0 3%;
+  padding: 2%;
+}
+#friends .card-content .left .icon {
+  font-size: 2rem;
+}
+#friends .card-content .right .icon {
+  font-size: 1.3rem;
+}
+#friends .card-content .right .icon:hover {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: rgb(37, 37, 247);
+  transition: 0.3s;
+}
+
 /* FOOTER style */
 
 #footer i {

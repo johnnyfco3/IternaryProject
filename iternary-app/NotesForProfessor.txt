@@ -1,0 +1,13 @@
+Hello Professor,
+
+The short description of my project can be found in the README.md file. In this file, I also included the command
+to run the application.
+
+The pages to my project can be found under the src folder, Pages and Components folder. The styling of this 
+application is all in one file named App.css
+
+I have chosen to use bootstrap to help with the style. The imports of bootstrap and font awesome can be found in
+the public folder, index.html file.
+
+Thank you,
+Johnny

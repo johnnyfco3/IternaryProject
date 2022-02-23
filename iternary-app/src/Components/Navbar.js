@@ -14,13 +14,16 @@ export function Navbar(){
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                        <Link className="nav-link active" aria-current="page" to={`/history/${session.userID}`}>Home</Link>
+                            <Link className="nav-link active" aria-current="page" to="/history">Home</Link>
                         </li>
                         <li className="nav-item">
-                        <Link className="nav-link" to="/add-adventure">New Adventure</Link>
+                            <Link className="nav-link" to="/add-adventure">New Adventure</Link>
                         </li>
                         <li className="nav-item">
-                        <Link className="nav-link" to="/">Log Out</Link>
+                            <Link className="nav-link" to="/friends">Friends</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">Log Out</Link>
                         </li>
                     </ul>
                     </div>
