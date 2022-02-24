@@ -33,6 +33,15 @@ function App() {
         password: "123456", 
         quote: "Hey there, lets travel together!!"
     },
+    { 
+      id: 3,
+      firstName: "Michael", 
+      lastName: "Jordan", 
+      birthday: "08-20-1969", 
+      email: "example2@gmail.com", 
+      password: "1234", 
+      quote: "Make the world a better place!"
+  },
   ])
 
   const [friends, setFriends] = useState([
@@ -121,7 +130,7 @@ function App() {
           <Route path="/history" element={<History users={users} adventures={adventures}/>}/>
           <Route path="/add-adventure" element={<AddAdventure adventures={adventures} setAdventures={setAdventures}/>}/>
           <Route path="/add-post/:adventureID" element={<AddPost posts={posts} setPosts={setPosts}/>}/>
-          <Route path="/friends" element={<Friends friends={friends} users={users}/>}/>
+          <Route path="/friends" element={<Friends friends={friends} users={users} setFriends={setFriends}/>}/>
           <Route path="*" element={<NotFound />}/>
         </Routes>
       </Router>

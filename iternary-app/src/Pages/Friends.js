@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import FriendsList from "../Components/FriendsList";
+import AddFriend from "../Components/AddFriend";
 import session from "../session";
 
-export function Friends({friends, users}){
+export function Friends({friends, users, setFriends}){
 
     const [emails, setEmails] = useState([])
     
     useEffect(()=>{
         friends.map(friend => {
-            if(friend.userID == session.userID){
+            if(friend.userID === session.userID){
                 setEmails(friend.friends)
             }
         })
@@ -32,13 +33,7 @@ export function Friends({friends, users}){
 
             <main>
                 <div className="container">
-                    <form>
-                        <div className="input-group my-5">
-                            <span className="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="email" className="form-control" id="email" name="email" aria-describedby="inputGroupPrepend"/>
-                        </div>
-                    </form>
-
+                    <AddFriend users={users} friends={friends} setFriends={setFriends}/>
                     <section className="list mb-5 pb-5">
                         {list}
                     </section>
