@@ -131,6 +131,11 @@
 #login .field {
   margin: 0 5%;
 }
+#login form input:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 #login .field input,
 .field span,
 #register input {
@@ -171,7 +176,8 @@
 /*  HISTORY Style */
 
 #history {
-  background-color: burlywood;
+  background-image: url("https://blusignalsystems.com/wp-content/uploads/2016/12/Savin-NY-Website-Background-Web1.jpg");
+  background-size: cover;
 }
 #history .top-content h2 {
   font-weight: 500;
@@ -182,7 +188,7 @@
 #history .heading {
   font-size: 3rem;
   font-weight: 600;
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid black;
 }
 #history .position {
   position: relative;
@@ -196,6 +202,7 @@
   width: 100%;
   height: 500px;
   border-radius: 1rem;
+  border: 1px solid gray;
 }
 #history .card-content {
   color: white;
@@ -364,15 +371,42 @@
 
 /* FRIENDS style */
 #friends {
-  background-color: burlywood;
+  background-image: url("https://blusignalsystems.com/wp-content/uploads/2016/12/Savin-NY-Website-Background-Web1.jpg");
+  background-size: cover;
 }
 #friends .input-group {
-  margin: 0 10%;
-  width: 80%;
+  margin: 0 15%;
+  width: 70%;
+  position: relative;
+  font-size: 25px;
+  border: none;
+  transition: 0.2s;
+}
+#friends .form-control {
+  border-radius: 1rem;
+  height: 45px;
+  font-size: 1.2rem;
+  border: 1px solid black;
+}
+#friends form input:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#friends .input-group button {
+  border-radius: 1rem;
+  height: 45px;
+  position: absolute;
+  right: 0px;
+  border: none;
+  font-size: 20px;
+  transition: 0.2s all;
 }
 #friends .card {
   margin: 0 3%;
   padding: 2%;
+  border-radius: 1rem;
+  background-color: antiquewhite;
 }
 #friends .card-content .left .icon {
   font-size: 2rem;

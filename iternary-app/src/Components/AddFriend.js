@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import session from "../session";
 
-export function AddFriend({users, friends, setFriends}){
+export function AddFriend({users, setEmails}){
 
     const [formData, setFormData] = useState("")
 
@@ -15,21 +14,18 @@ export function AddFriend({users, friends, setFriends}){
             }
         })
         if(exist){
-            setFriends(friends.map(friend=>{
-                if(friend.userID === session.userID){
-                    friend.friends.push(formData)
-                }
-             }))
+            setEmails(prevState =>{
+                return [...prevState, formData]
+            })
+            setFormData("")
         }
-        console.log(friends)
     }
 
     return (
         <form onSubmit={handleSubmit}>
             <div className="input-group my-5">
-                <span className="input-group-text" id="inputGroupPrepend"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="email" className="form-control" id="email" name="email" aria-describedby="inputGroupPrepend" value={formData.email} onChange={(e)=> setFormData(e.target.value)}/>
-                <button type="submit" className="btn btn-primary">Add Friend</button>
+                <input type="email" className="form-control" id="email" name="email" aria-describedby="inputGroupPrepend" value={formData} onChange={(e)=> setFormData(e.target.value)} placeholder="Search by Email"/>
+                <button type="submit" className="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </form>
     )

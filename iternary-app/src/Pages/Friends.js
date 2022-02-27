@@ -33,7 +33,7 @@ export function Friends({friends, users, setFriends}){
 
             <main>
                 <div className="container">
-                    <AddFriend users={users} friends={friends} setFriends={setFriends}/>
+                    <AddFriend users={users} setEmails={setEmails}/>
                     <section className="list mb-5 pb-5">
                         {list}
                     </section>
