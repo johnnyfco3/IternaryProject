@@ -11,9 +11,7 @@ export function WelcomeBar(){
                     <i className="fas fa-bars icon"></i>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                        </li>
+                    <ul className="navbar-nav me-auto">
                         <li className="nav-item">
                         <a className="nav-link" href="#about">About</a>
                         </li>

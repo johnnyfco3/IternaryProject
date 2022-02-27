@@ -82,11 +82,11 @@ export function AddAdventure({adventures, setAdventures}){
                         
                         <div className="date">
                             <h1 className="heading">Date</h1>
-                            <div className="col-6">
+                            <div className="col-md-6">
                                 <label htmlFor="start" className="form-label">Start Date</label>
                                 <input type="date" className="form-control" id="start" name="startD" value={newAdventure.startD} onChange={handleChange} required/>
                             </div>
-                            <div className="col-6">
+                            <div className="col-md-6">
                                 <label htmlFor="end" className="form-label">End Date</label>
                                 <input type="date" className="form-control" id="end" name="endD" value={newAdventure.endD} onChange={handleChange} required/>
                             </div>
@@ -104,7 +104,7 @@ export function AddAdventure({adventures, setAdventures}){
                         </div>
 
                         <h1 className="heading">Google Link of Location</h1>
-                        <div className="col-md-8">
+                        <div className="col-6">
                             <input type="url" className="form-control" name="link" value={newAdventure.link} onChange={handleChange} required/>
                         </div>
 
