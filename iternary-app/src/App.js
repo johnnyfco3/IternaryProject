@@ -10,6 +10,9 @@ import AddPost from './Pages/AddPost';
 import Friends from './Pages/Friends';
 import NotFound from './Pages/NotFound';
 import { useState } from 'react';
+import Upcoming from './Pages/Upcoming';
+import Current from './Pages/Current'
+import Past from './Pages/Past'
 
 
 function App() {
@@ -86,8 +89,8 @@ function App() {
         id: 3, 
         country: "Italy", 
         city: "Venice", 
-        startD: "2021-12-25", 
-        endD: "2021-12-31", 
+        startD: "2022-02-25", 
+        endD: "2022-03-05", 
         background: "https://images.unsplash.com/photo-1480548004877-593316be2bd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80", 
         description: "Venice, the capital of northern Italy’s Veneto region, is built on more than 100 small islands in a lagoon in the Adriatic Sea. It has no roads, just canals – including the Grand Canal thoroughfare – lined with Renaissance and Gothic palaces. The central square, Piazza San Marco, contains St. Mark’s Basilica, which is tiled with Byzantine mosaics, and the Campanile bell tower offering views of the city’s red roofs.",
         link: "https://goo.gl/maps/jdAxNDCYgBXoLdY69",
@@ -117,7 +120,24 @@ function App() {
     { name: "Rialto Bridge", img: "https://images.unsplash.com/photo-1562967967-edb2915098dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmlhbHRvJTIwYnJpZGdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60", adventureID: 3 },
     { name: "Doge's Palace", img: "https://images.unsplash.com/photo-1567012198973-b8843811d618?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80", adventureID: 3 },
     { name: "St. Marks Square", img: "https://images.unsplash.com/photo-1628106913234-9cdfddbf6b81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80", adventureID: 3 },
-])
+  ])
+
+  const today = new Date()
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+     
+  const date = formatDate(today)
 
   return (
     <div className="App">
@@ -128,6 +148,9 @@ function App() {
           <Route path="/register" element={<Register users={users}/>}/>
           <Route path="/overview/:adventureID" element={<Overview adventures={adventures} posts={posts}/>}/>
           <Route path="/history" element={<History users={users} adventures={adventures}/>}/>
+          <Route path="/history/upcoming" element={<Upcoming date={date} adventures={adventures} users={users}/>}/>
+          <Route path="/history/current" element={<Current date={date} adventures={adventures} users={users}/>}/>
+          <Route path="/history/past" element={<Past date={date} adventures={adventures} users={users}/>}/>
           <Route path="/add-adventure" element={<AddAdventure adventures={adventures} setAdventures={setAdventures}/>}/>
           <Route path="/add-post/:adventureID" element={<AddPost posts={posts} setPosts={setPosts}/>}/>
           <Route path="/friends" element={<Friends friends={friends} users={users} setFriends={setFriends}/>}/>

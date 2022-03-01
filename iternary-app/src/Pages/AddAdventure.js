@@ -55,7 +55,7 @@ export function AddAdventure({adventures, setAdventures}){
             link: ""
         })
 
-        navigate(`/history/${session.userID}`)
+        navigate(`/history`)
     }
 
     return (
