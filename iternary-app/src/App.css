@@ -240,6 +240,7 @@
   border: none;
   margin-top: 3%;
   margin-bottom: 10%;
+  height: 500px;
 }
 #history .position .card img {
   width: 100%;
@@ -264,7 +265,7 @@
 }
 #history .card-content p {
   position: absolute;
-  bottom: 10px;
+  bottom: 50px;
   font-size: 1.8rem;
   font-weight: 200;
 }
@@ -284,6 +285,9 @@
 }
 #history footer {
   color: black;
+}
+#history .sections {
+  padding-top: 5%;
 }
 
 /*  OVERVIEW Style */
@@ -326,6 +330,93 @@
   background-color: rgb(99, 12, 99);
   border: 1px solid rgb(99, 12, 99);
   color: rgba(255, 255, 255, 0.829);
+}
+#overview .flight-info {
+  margin-top: 10%;
+}
+#overview .flight-info .col-4 {
+  position: relative;
+}
+#overview .flight-info .card {
+  border-radius: 1rem;
+}
+#overview .flight-info .card img {
+  width: 100%;
+  display: block;
+  border-radius: 1rem;
+}
+#overview .flight-info .card h2 {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  right: 10%;
+  font-size: 3rem;
+  font-weight: 600;
+  transform: translateY(25%);
+  transition: 0.5s;
+}
+#overview .flight-info .card button {
+  position: absolute;
+  top: 65%;
+  left: 42%;
+  width: 15%;
+  font-size: 1.6rem;
+  background-color: antiquewhite;
+  transform: translateY(65%);
+  transition: 0.5s;
+}
+#overview .flight-info .card button:hover {
+  cursor: pointer;
+}
+#overview .flight-info .active h2 {
+  transform: translateY(-200%);
+  font-size: 2rem;
+  transition: 0.5s;
+}
+#overview .flight-info .active button {
+  transform: translateY(180%);
+  font-size: 1.3rem;
+  transition: 0.5s;
+}
+#overview .flight-content {
+  position: absolute;
+  visibility: hidden;
+  transition: 0.1s;
+}
+#overview .active .flight-content {
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  color: black;
+  transition: 0.5s;
+  visibility: visible;
+}
+#overview .flight-content a,
+#overview .flight-content p {
+  font-size: 1.4rem;
+  color: black;
+}
+#overview .bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 4rem;
+  background-color: lightgray;
+}
+#overview .bar .progressing {
+  width: 50%;
+  height: 100%;
+  background-color: black;
+  border-radius: 4rem;
+}
+#overview .bar .circle-bar {
+  position: absolute;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 6px solid black;
+  border-radius: 50%;
+  transform: translateY(-18px);
 }
 #overview .bottom-content {
   margin-top: 15%;

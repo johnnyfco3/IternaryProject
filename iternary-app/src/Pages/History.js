@@ -16,7 +16,7 @@ export function History({users}){
                 <main>
                     <Introduction users={users}/>
 
-                    <div className="row mt-5">
+                    <div className="row mt-5 sections">
                         <div className="col-4">
                             <Link to={`/history/upcoming`}><div className="card">
                                 <img src="https://images.unsplash.com/photo-1541807360746-039080941306?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt=""/>
