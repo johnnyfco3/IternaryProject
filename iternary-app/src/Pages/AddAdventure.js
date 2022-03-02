@@ -69,7 +69,7 @@ export function AddAdventure({adventures, setAdventures}){
                     <div className="top-content mt-4 text-center">
                         <h1 className="title">Where Are You Heading?</h1>
                     </div>
-                    <form className="row g-3 my-5" onSubmit={handleSubmit}>
+                    <form className="row g-3 my-1" onSubmit={handleSubmit}>
                         <h1 className="heading">Location</h1>
                         <div class="col-md-6">
                             <label htmlFor="country" className="form-label">Country/State</label>

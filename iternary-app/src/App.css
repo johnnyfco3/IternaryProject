@@ -182,6 +182,9 @@
 #history .top-content blockquote {
   font-size: 1.5rem;
 }
+#history .sections {
+  padding-top: 5%;
+}
 #history .row .col-4 {
   position: relative;
   overflow: hidden;
@@ -231,6 +234,9 @@
   font-size: 3rem;
   font-weight: 600;
   border-bottom: 3px solid black;
+}
+#history .btn {
+  font-size: 1.5rem;
 }
 #history .position {
   position: relative;
@@ -286,9 +292,6 @@
 #history footer {
   color: black;
 }
-#history .sections {
-  padding-top: 5%;
-}
 
 /*  OVERVIEW Style */
 
@@ -339,6 +342,7 @@
 }
 #overview .flight-info .card {
   border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 #overview .flight-info .card img {
   width: 100%;
@@ -365,6 +369,11 @@
   transform: translateY(65%);
   transition: 0.5s;
 }
+#overview .flight-info .card button:focus {
+  border-color: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 #overview .flight-info .card button:hover {
   cursor: pointer;
 }
@@ -374,14 +383,18 @@
   transition: 0.5s;
 }
 #overview .flight-info .active button {
-  transform: translateY(180%);
+  transform: translateY(150%);
   font-size: 1.3rem;
   transition: 0.5s;
 }
 #overview .flight-content {
   position: absolute;
+  top: 0;
+  left: 40%;
+  width: 100%;
   visibility: hidden;
-  transition: 0.1s;
+  transition: 0.4s;
+  transform: translateX(25%);
 }
 #overview .active .flight-content {
   position: absolute;
@@ -390,6 +403,7 @@
   color: black;
   transition: 0.5s;
   visibility: visible;
+  transform: translate(-40%);
 }
 #overview .flight-content a,
 #overview .flight-content p {
@@ -403,14 +417,14 @@
   background-color: lightgray;
 }
 #overview .bar .progressing {
-  width: 50%;
+  width: 100%;
   height: 100%;
   background-color: black;
   border-radius: 4rem;
 }
 #overview .bar .circle-bar {
   position: absolute;
-  left: 0;
+  right: 0;
   width: 25px;
   height: 25px;
   background-color: white;
@@ -462,7 +476,7 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("./Images/240_F_308774383_kRT0jY0JCRmpvLiC59H7cQW3uOTDBCFl.jpeg");
   background-size: cover;
-  color: white;
+  color: black;
 }
 #add-adventure .title,
 #add-post .title {
@@ -476,6 +490,13 @@
 #add-post input {
   background-color: antiquewhite;
   border-radius: 1rem;
+  border: 1px solid black;
+}
+#add-adventure input:focus,
+#add-post input:focus {
+  border-color: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 #add-adventure textarea {
   background-color: antiquewhite;
@@ -486,9 +507,9 @@
   font-size: 1.3rem;
   margin-top: 5%;
   background-color: transparent;
-  border: 2px solid white;
+  border: 2px solid black;
   border-radius: 1rem;
-  color: white;
+  color: black;
 }
 #add-adventure .button button:hover,
 #add-post .button button:hover {
@@ -527,7 +548,7 @@
   border: 1px solid black;
 }
 #friends form input:focus {
-  border-color: inherit;
+  border-color: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -545,18 +566,15 @@
   padding: 2%;
   border-radius: 1rem;
   background-color: antiquewhite;
+  height: 200px;
 }
-#friends .card-content .left .icon {
+#friends .card-content {
+  padding: 20% 0;
+}
+#friends .card-content .icon,
+#friends .card-content h3 {
   font-size: 2rem;
-}
-#friends .card-content .right .icon {
-  font-size: 1.3rem;
-}
-#friends .card-content .right .icon:hover {
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: rgb(37, 37, 247);
-  transition: 0.3s;
+  color: black;
 }
 #friends footer {
   color: white;

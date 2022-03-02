@@ -24,11 +24,11 @@ export function Upcoming({date, adventures, users}){
             <div className="container">
                 <Introduction users={users}/>
                 <section className="current pt-5">
-                <Link to={"/history"}><button className="btn"><i class="fa-solid fa-arrow-left"></i></button></Link>
+                <Link to={"/history"}><button className="btn"><i class="fa-solid fa-arrow-left"></i> Go Back</button></Link>
                 <h1 className="heading pb-4 text-center">Upcoming Adventures ( {upcomingCount} )</h1>
                     <div className="row">
                         {upcomingList}
-                        </div>
+                    </div>
                 </section>
             </div>
             <footer>

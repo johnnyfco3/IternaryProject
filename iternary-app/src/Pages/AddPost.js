@@ -56,7 +56,7 @@ export function AddPost({posts, setPosts}){
                         <h1 className="title">Let's Add a New Post</h1>
                     </div>
                     
-                    <form className="row g-3 my-5" onSubmit={handleSubmit}>
+                    <form className="row g-3 my-1" onSubmit={handleSubmit}>
                         <h1 className="heading">Location</h1>
                         <div className="col-md-6">
                             <input type="text" className="form-control" id="location" name="location" value={newPost.location} onChange={handleChange} required/>
