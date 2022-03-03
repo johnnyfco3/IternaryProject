@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.dba97de9.css",
-    "main.js": "/static/js/main.3264bb75.js",
+    "main.css": "/static/css/main.5b598eb7.css",
+    "main.js": "/static/js/main.ddb6adcb.js",
     "static/js/787.eba95c62.chunk.js": "/static/js/787.eba95c62.chunk.js",
     "static/media/mesut-kaya-eOcyhe5-9sQ-unsplash.jpg": "/static/media/mesut-kaya-eOcyhe5-9sQ-unsplash.e066d129c991b8e9ed46.jpg",
     "static/media/adam-thomas-D2i-7JrH0wI-unsplash.jpg": "/static/media/adam-thomas-D2i-7JrH0wI-unsplash.b966a70a8dbed022ed5f.jpg",
     "static/media/taylor-simpson-O95wqeON_9A-unsplash.jpg": "/static/media/taylor-simpson-O95wqeON_9A-unsplash.e4a7e5b2f00ff8c7260f.jpg",
-    "static/media/photo-1501820434261-5bb046afcf6b.jpeg": "/static/media/photo-1501820434261-5bb046afcf6b.9b3364abb926075f6e12.jpeg",
     "static/media/White-Gradient-Squares-Seamless-Patterns-For-Website-Backgrounds.jpeg": "/static/media/White-Gradient-Squares-Seamless-Patterns-For-Website-Backgrounds.8fb2e49ae5a68a04a5a5.jpeg",
+    "static/media/240_F_308774383_kRT0jY0JCRmpvLiC59H7cQW3uOTDBCFl.jpeg": "/static/media/240_F_308774383_kRT0jY0JCRmpvLiC59H7cQW3uOTDBCFl.956a3c786a310780046b.jpeg",
     "index.html": "/index.html",
-    "main.dba97de9.css.map": "/static/css/main.dba97de9.css.map",
-    "main.3264bb75.js.map": "/static/js/main.3264bb75.js.map",
+    "main.5b598eb7.css.map": "/static/css/main.5b598eb7.css.map",
+    "main.ddb6adcb.js.map": "/static/js/main.ddb6adcb.js.map",
     "787.eba95c62.chunk.js.map": "/static/js/787.eba95c62.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dba97de9.css",
-    "static/js/main.3264bb75.js"
+    "static/css/main.5b598eb7.css",
+    "static/js/main.ddb6adcb.js"
   ]
 }
