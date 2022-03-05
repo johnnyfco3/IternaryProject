@@ -118,11 +118,6 @@ function App() {
     { name: "St. Marks Square", img: "https://images.unsplash.com/photo-1628106913234-9cdfddbf6b81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80", adventureID: 3 },
   ])
 
-  const [viewFriend , setViewFriend] = useState({
-    view: false,
-    id: null
-  })
-
   const today = new Date()
     function formatDate(date) {
         var d = new Date(date),
@@ -147,14 +142,14 @@ function App() {
           <Route exact path="/" element={<Welcome />}/>
           <Route path="/login" element={<Login users={users}/>}/>
           <Route path="/register" element={<Register users={users}/>}/>
-          <Route path="/overview/:adventureID" element={<Overview adventures={adventures} posts={posts} viewFriend={viewFriend}/>}/>
-          <Route path="/history" element={<History users={users} adventures={adventures} viewFriend={viewFriend}/>}/>
-          <Route path="/history/upcoming" element={<Upcoming date={date} adventures={adventures} users={users} viewFriend={viewFriend}/>}/>
-          <Route path="/history/current" element={<Current date={date} adventures={adventures} users={users} viewFriend={viewFriend}/>}/>
-          <Route path="/history/past" element={<Past date={date} adventures={adventures} users={users} viewFriend={viewFriend}/>}/>
+          <Route path="/overview/:adventureID" element={<Overview adventures={adventures} posts={posts}/>}/>
+          <Route path="/history/:id" element={<History users={users} adventures={adventures}/>}/>
+          <Route path="/history/upcoming/:id" element={<Upcoming date={date} adventures={adventures} users={users}/>}/>
+          <Route path="/history/current/:id" element={<Current date={date} adventures={adventures} users={users}/>}/>
+          <Route path="/history/past/:id" element={<Past date={date} adventures={adventures} users={users}/>}/>
           <Route path="/add-adventure" element={<AddAdventure adventures={adventures} setAdventures={setAdventures}/>}/>
           <Route path="/add-post/:adventureID" element={<AddPost posts={posts} setPosts={setPosts}/>}/>
-          <Route path="/friends" element={<Friends friends={friends} users={users} setViewFriend={setViewFriend} viewFriend={viewFriend}/>}/>
+          <Route path="/friends" element={<Friends friends={friends} users={users}/>}/>
           <Route path="*" element={<NotFound />}/>
         </Routes>
       </Router>

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import session from "../session";
 
-export function Introduction({users}){
+export function Introduction({users, id}){
 
     const [user, setUser] = useState({})
 
     useEffect(()=>{
         users.map(user =>{
-            if(user.id == session.userID){
+            if(user.id == id){
                 setUser(user)
             }
         })
-    }, [users])
+    }, [users, id])
 
     const today = new Date()
     const hour = today.getHours()
@@ -30,10 +30,21 @@ export function Introduction({users}){
 
     return( 
         <div className="top-content text-center pt-4">
-            <h2>{determineTime()} {user.firstName}</h2>
-            <blockquote>{user.quote}
-                <cite> - {user.firstName} {user.lastName}</cite>
-            </blockquote>
+            {id == session.userID ? (
+                <>
+                <h2>{determineTime()} {user.firstName}</h2>
+                <blockquote>{user.quote}
+                    <cite> - {user.firstName} {user.lastName}</cite>
+                </blockquote>
+                </> ) : (
+                <>
+                <h2>Welcome to {user.firstName} {user.lastName} Page!</h2>
+                <blockquote>{user.quote}
+                    <cite> - {user.firstName} {user.lastName}</cite>
+                </blockquote>
+                </>
+                )
+            }
         </div>
     )
 }

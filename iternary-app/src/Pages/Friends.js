@@ -6,7 +6,7 @@ import AddFriend from "../Components/AddFriend";
 import session from "../session";
 import { useNavigate } from "react-router-dom";
 
-export function Friends({friends, users, setViewFriend}){
+export function Friends({friends, users}){
 
     const [emails, setEmails] = useState([])
     
@@ -19,23 +19,16 @@ export function Friends({friends, users, setViewFriend}){
     }, [friends])
 
     let navigate = useNavigate();
-
-    function setFriend(e, user){
+    
+    function handleClick(e, id){
         e.preventDefault();
-        setViewFriend((prevState) => {
-            return {
-                ...prevState,
-                view: true,
-                id: user.id
-            }
-        })
-        navigate('/history')
+        navigate(`/history/${id}`)
     }
 
     const list = emails.map((email, i) => (
         users.map((user, i) =>{
             if(user.email === email){
-                return <FriendsList user={user} key={i} setFriend={setFriend}/>
+                return <FriendsList user={user} key={i} handleClick={handleClick}/>
             }
         })
     ))
