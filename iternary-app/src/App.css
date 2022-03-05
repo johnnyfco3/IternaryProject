@@ -5,6 +5,19 @@
   margin: 0;
   font-family: "Zilla Slab", serif;
 }
+html {
+  scroll-behavior: smooth;
+}
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
+}
 
 /*  NAVBAR Style */
 /*  WELCOMEBAR Style */
@@ -36,7 +49,7 @@
 
 #welcome .top-content {
   background-image: url("./Images/taylor-simpson-O95wqeON_9A-unsplash.jpg");
-  height: 70vh;
+  height: 80vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -91,6 +104,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  padding-bottom: 5%;
 }
 
 /*  LOGIN Style    */
@@ -377,12 +391,12 @@
 #overview .flight-info .card button:hover {
   cursor: pointer;
 }
-#overview .flight-info .active h2 {
+#overview .flight-info .transform h2 {
   transform: translateY(-200%);
   font-size: 2rem;
   transition: 0.5s;
 }
-#overview .flight-info .active button {
+#overview .flight-info .transform button {
   transform: translateY(150%);
   font-size: 1.3rem;
   transition: 0.5s;
@@ -396,7 +410,7 @@
   transition: 0.4s;
   transform: translateX(25%);
 }
-#overview .active .flight-content {
+#overview .transform .flight-content {
   position: absolute;
   top: 25%;
   width: 100%;
@@ -567,6 +581,19 @@
   border-radius: 1rem;
   background-color: antiquewhite;
   height: 200px;
+  animation-name: slideup;
+  animation-duration: 1s;
+}
+@keyframes slideup {
+  from {
+    bottom: -200px;
+  }
+  to {
+    bottom: 0px;
+  }
+}
+#friends .card:hover {
+  cursor: pointer;
 }
 #friends .card-content {
   padding: 20% 0;

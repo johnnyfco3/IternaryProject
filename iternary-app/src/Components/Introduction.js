@@ -27,7 +27,6 @@ export function Introduction({users}){
             return "Good Night"
         }
     }
-    console.log(user)
 
     return( 
         <div className="top-content text-center pt-4">

@@ -9,9 +9,9 @@ export function FlightInfo(){
     }
 
     return(
-        <section className="flight-info d-flex justify-content-center pt-5">
+        <section className="flight-info d-flex justify-content-center pt-5 reveal">
             <div className="col-10">
-                <div className={`card ${flightView ? 'active' : ''}`}>
+                <div className={`card ${flightView ? 'transform' : ''}`}>
                     <img src="https://images.unsplash.com/photo-1575116464504-9e7652fddcb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt=""/>
                     <h2 className="text-center">Flight Information</h2>
                     <div className="flight-content">

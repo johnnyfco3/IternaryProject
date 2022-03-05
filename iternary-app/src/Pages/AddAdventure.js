@@ -39,7 +39,6 @@ export function AddAdventure({adventures, setAdventures}){
                     background: newAdventure.background,
                     description: newAdventure.description,
                     link: newAdventure.link,
-                    current: true,
                     userID: session.userID
                 }
             )

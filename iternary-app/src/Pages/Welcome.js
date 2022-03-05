@@ -5,6 +5,25 @@ import Footer from "../Components/Footer";
 import AboutPic from "../Images/mesut-kaya-eOcyhe5-9sQ-unsplash.jpg"
 
 export function Welcome(){
+
+    function reveal() {
+        let reveals = document.querySelectorAll(".reveal");
+      
+        for (let i = 0; i < reveals.length; i++) {
+          let windowHeight = window.innerHeight;
+          let elementTop = reveals[i].getBoundingClientRect().top;
+          let elementVisible = 150;
+      
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          } else {
+            reveals[i].classList.remove("active");
+          }
+        }
+      }
+      
+      window.addEventListener("scroll", reveal);
+
     return (
         <div id="welcome">
             <header>
@@ -18,7 +37,7 @@ export function Welcome(){
                 </section>
 
                 <section className="about py-5" id="about">
-                    <div className="container">
+                    <div className="container reveal">
                         <div className="row">
                             <div className="col-6">
                                 <img src={AboutPic} alt="About"/>
