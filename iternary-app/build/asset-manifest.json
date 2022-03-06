@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.5b598eb7.css",
-    "main.js": "/static/js/main.ddb6adcb.js",
+    "main.css": "/static/css/main.9a19b165.css",
+    "main.js": "/static/js/main.e40ba785.js",
     "static/js/787.eba95c62.chunk.js": "/static/js/787.eba95c62.chunk.js",
     "static/media/mesut-kaya-eOcyhe5-9sQ-unsplash.jpg": "/static/media/mesut-kaya-eOcyhe5-9sQ-unsplash.e066d129c991b8e9ed46.jpg",
     "static/media/adam-thomas-D2i-7JrH0wI-unsplash.jpg": "/static/media/adam-thomas-D2i-7JrH0wI-unsplash.b966a70a8dbed022ed5f.jpg",
     "static/media/taylor-simpson-O95wqeON_9A-unsplash.jpg": "/static/media/taylor-simpson-O95wqeON_9A-unsplash.e4a7e5b2f00ff8c7260f.jpg",
+    "static/media/MainPage.png": "/static/media/MainPage.618276e32812a5302ed2.png",
+    "static/media/Adventures.png": "/static/media/Adventures.47df31c18b9ca4cbe0bf.png",
+    "static/media/Friends.png": "/static/media/Friends.24d19e2b1ff57aa39c85.png",
     "static/media/White-Gradient-Squares-Seamless-Patterns-For-Website-Backgrounds.jpeg": "/static/media/White-Gradient-Squares-Seamless-Patterns-For-Website-Backgrounds.8fb2e49ae5a68a04a5a5.jpeg",
     "static/media/240_F_308774383_kRT0jY0JCRmpvLiC59H7cQW3uOTDBCFl.jpeg": "/static/media/240_F_308774383_kRT0jY0JCRmpvLiC59H7cQW3uOTDBCFl.956a3c786a310780046b.jpeg",
     "index.html": "/index.html",
-    "main.5b598eb7.css.map": "/static/css/main.5b598eb7.css.map",
-    "main.ddb6adcb.js.map": "/static/js/main.ddb6adcb.js.map",
+    "main.9a19b165.css.map": "/static/css/main.9a19b165.css.map",
+    "main.e40ba785.js.map": "/static/js/main.e40ba785.js.map",
     "787.eba95c62.chunk.js.map": "/static/js/787.eba95c62.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b598eb7.css",
-    "static/js/main.ddb6adcb.js"
+    "static/css/main.9a19b165.css",
+    "static/js/main.e40ba785.js"
   ]
 }
