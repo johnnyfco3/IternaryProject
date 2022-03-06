@@ -1,21 +1,26 @@
 import React from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AdventureList from "../Components/AdventureList";
 import Footer from "../Components/Footer";
 import Introduction from "../Components/Introduction";
 import Navbar from "../Components/Navbar";
 
-export function Current({date, adventures, users}){
+export function Current({date, adventures, setAdventures, users}){
 
     const {id} = useParams();
 
     let navigate = useNavigate();
 
+    function remove(e, id){
+        e.stopPropagation();
+        setAdventures(prevState => prevState.filter(adventure => adventure.id !== id))
+    }
+
     let currentCount = 0
-    const currentList = adventures.map(trip => {
+    const currentList = adventures.map((trip, i) => {
             if(trip.startD <= date && trip.endD >= date && trip.userID == id){
                 currentCount++;
-                return <AdventureList trip={trip}/>
+                return <AdventureList trip={trip} id={id} key={i} remove={remove}/>
             }
         })
 

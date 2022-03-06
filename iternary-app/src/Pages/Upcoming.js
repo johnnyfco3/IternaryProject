@@ -5,17 +5,22 @@ import Footer from "../Components/Footer";
 import Introduction from "../Components/Introduction";
 import Navbar from "../Components/Navbar";
 
-export function Upcoming({date, adventures, users}){
+export function Upcoming({date, adventures, setAdventures, users}){
 
     const {id} = useParams()
+
+    function remove(e, id){
+        e.stopPropagation();
+        setAdventures(prevState => prevState.filter(adventure => adventure.id !== id))
+    }
 
     let navigate = useNavigate()
 
     let upcomingCount = 0
-    const upcomingList = adventures.map(trip => {
+    const upcomingList = adventures.map((trip, i) => {
         if(trip.startD > date && trip.userID == id){
             upcomingCount++
-            return <AdventureList trip={trip} id={id}/>
+            return <AdventureList trip={trip} id={id} key={i} remove={remove}/>
         }
     })
 

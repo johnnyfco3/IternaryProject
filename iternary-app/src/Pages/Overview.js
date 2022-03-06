@@ -7,7 +7,7 @@ import FlightInfo from "../Components/FlightInfo";
 import session from "../session";
 import Comments from "../Components/Comments";
 
-export function Overview({adventures, posts, comments, setComments, users}){
+export function Overview({adventures, posts, setPosts, comments, setComments, users}){
 
     const {adventureID, id} = useParams()
 
@@ -22,9 +22,14 @@ export function Overview({adventures, posts, comments, setComments, users}){
         }
     })}, [adventures, adventureID])
 
-    const postComp = posts.map(post => {
+    function remove(e, id){
+        e.stopPropagation();
+        setPosts(prevState => prevState.filter(post => post.id !== id))
+    }
+
+    const postComp = posts.map((post, i) => {
         if(post.adventureID == adventureID){
-            return <Posts post={post}/>
+            return <Posts post={post} id={id} key={i} remove={remove}/>
         }
     })
 
@@ -54,7 +59,6 @@ export function Overview({adventures, posts, comments, setComments, users}){
       const commentSection = comments.map(comment => {
         if(comment.adventureID == adventureID){
             return (
-                
                 <div className="comments reveal">
                     <Comments comment={comment} users={users}/>
                 </div>
@@ -106,6 +110,8 @@ export function Overview({adventures, posts, comments, setComments, users}){
                             <div className="row bottom">
                                 {postComp}
                             </div>
+                            <h3 className="title text-center pt-5">Comments</h3>
+                            {commentSection}
                         </section>
                     )}
                 </main>

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Introduction from "../Components/Introduction";
 import Navbar from "../Components/Navbar";
+import session from "../session";
 
 export function History({users}){
 
@@ -45,9 +46,13 @@ export function History({users}){
                         </div>
                     </div>
 
-                    <section className="add-new text-center pt-5 px-4">
+                    {id == session.userID ? (
+                        <section className="add-new text-center pt-5 px-4">
                         <Link to="/add-adventure"><button className="btn">Start a New Adventure</button></Link>
-                    </section>
+                        </section> ) : (
+                            <></>
+                        )
+                    }
                 </main>
             
                 <footer>
