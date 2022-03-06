@@ -99,6 +99,20 @@ html {
   color: white;
   transition: 0.3s ease;
 }
+#welcome .preview {
+  height: 100vh;
+  background-image: url("https://media.istockphoto.com/photos/texture-banner-neutral-fabric-background-panoramic-picture-id1313116746?k=20&m=1313116746&s=612x612&w=0&h=RxR-5hwur7vy28E6dFKHo8xgP3xuXKyjlcN-cH6U0d0=");
+  background-size: cover;
+}
+#welcome .preview h1 {
+  font-weight: 600;
+}
+#welcome .preview img {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 8px black;
+  border-color: transparent;
+}
 #welcome footer {
   background-image: url("./Images/taylor-simpson-O95wqeON_9A-unsplash.jpg");
   background-size: cover;
@@ -564,7 +578,7 @@ html {
   border-radius: 1rem;
   height: 45px;
   font-size: 1.2rem;
-  border: 1px solid black;
+  border: none;
 }
 #friends form input:focus {
   border-color: none;
