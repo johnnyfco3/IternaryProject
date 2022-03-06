@@ -15,7 +15,7 @@ export function Upcoming({date, adventures, users}){
     const upcomingList = adventures.map(trip => {
         if(trip.startD > date && trip.userID == id){
             upcomingCount++
-            return <AdventureList trip={trip}/>
+            return <AdventureList trip={trip} id={id}/>
         }
     })
 

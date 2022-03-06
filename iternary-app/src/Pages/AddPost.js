@@ -5,7 +5,7 @@ import Footer from "../Components/Footer"
 
 export function AddPost({posts, setPosts}){
 
-    const {id} = useParams();
+    const {adventureID, id} = useParams();
 
     const [newPost, setNewPost] = useState(
         {
@@ -31,7 +31,7 @@ export function AddPost({posts, setPosts}){
                 {
                     name: newPost.location,
                     img: newPost.post,
-                    adventureID: id
+                    adventureID: adventureID
                 }
             )
         )
@@ -42,7 +42,7 @@ export function AddPost({posts, setPosts}){
                 post: ""
             }
         )
-        navigate(`/overview/${id}`)
+        navigate(`/overview/${adventureID}/${id}`)
     }
 
     return (

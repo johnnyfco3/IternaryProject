@@ -101,7 +101,7 @@ html {
 }
 #welcome .preview {
   height: 100vh;
-  background-image: url("https://media.istockphoto.com/photos/texture-banner-neutral-fabric-background-panoramic-picture-id1313116746?k=20&m=1313116746&s=612x612&w=0&h=RxR-5hwur7vy28E6dFKHo8xgP3xuXKyjlcN-cH6U0d0=");
+  background-image: url("./Images/istockphoto-1313116746-612x612.jpeg");
   background-size: cover;
 }
 #welcome .preview h1 {

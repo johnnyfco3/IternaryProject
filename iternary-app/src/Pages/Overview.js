@@ -4,10 +4,11 @@ import Footer from "../Components/Footer";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Posts from "../Components/Posts";
 import FlightInfo from "../Components/FlightInfo";
+import session from "../session";
 
 export function Overview({adventures, posts}){
 
-    const {adventureID} = useParams()
+    const {adventureID, id} = useParams()
 
     const [location, setLocation] = useState({})
 
@@ -77,14 +78,22 @@ export function Overview({adventures, posts}){
 
                     <FlightInfo />
 
-                    <section className="bottom-content reveal">
-                        <div className="row bottom">
-                            {postComp}
-                        </div>
-                        <div className="button text-center">
-                            <Link to={`/add-post/${adventureID}`}><button className="btn btn-success px-4">Add Post</button></Link>
-                        </div>
-                    </section>
+                    {id == session.userID ? (
+                        <section className="bottom-content reveal">
+                            <div className="row bottom">
+                                {postComp}
+                            </div>
+                            <div className="button text-center">
+                                <Link to={`/add-post/${adventureID}/${id}`}><button className="btn btn-success px-4">Add Post</button></Link>
+                            </div>
+                        </section>
+                    ) : (
+                        <section className="bottom-content reveal">
+                            <div className="row bottom">
+                                {postComp}
+                            </div>
+                        </section>
+                    )}
                 </main>
 
                 <footer>

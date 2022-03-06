@@ -142,7 +142,7 @@ function App() {
           <Route exact path="/" element={<Welcome />}/>
           <Route path="/login" element={<Login users={users}/>}/>
           <Route path="/register" element={<Register users={users}/>}/>
-          <Route path="/overview/:adventureID" element={<Overview adventures={adventures} posts={posts}/>}/>
+          <Route path="/overview/:adventureID/:id" element={<Overview adventures={adventures} posts={posts}/>}/>
           <Route path="/history/:id" element={<History users={users} adventures={adventures}/>}/>
           <Route path="/history/upcoming/:id" element={<Upcoming date={date} adventures={adventures} users={users}/>}/>
           <Route path="/history/current/:id" element={<Current date={date} adventures={adventures} users={users}/>}/>
