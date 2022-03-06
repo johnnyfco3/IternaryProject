@@ -5,7 +5,7 @@ import Footer from "../Components/Footer"
 
 export function AddPost({posts, setPosts}){
 
-    const {id} = useParams()
+    const {id} = useParams();
 
     const [newPost, setNewPost] = useState(
         {
@@ -22,7 +22,8 @@ export function AddPost({posts, setPosts}){
         }))
     }
 
-    let navigate = useNavigate()
+    let navigate = useNavigate();
+
     function handleSubmit(e){
         e.preventDefault();
         setPosts(

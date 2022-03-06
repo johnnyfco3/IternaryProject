@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Posts from "../Components/Posts";
 import FlightInfo from "../Components/FlightInfo";
 
@@ -10,6 +10,8 @@ export function Overview({adventures, posts}){
     const {adventureID} = useParams()
 
     const [location, setLocation] = useState({})
+
+    let navigate = useNavigate()
 
     useEffect(() => {
         adventures.map(trip => {
@@ -56,6 +58,7 @@ export function Overview({adventures, posts}){
             <div className="container pt-4">
                 <main>
                     <section className="main-content">
+                    <button className="btn pb-4 back" onClick={() => navigate(-1)}><i class="fa-solid fa-arrow-left"></i> Go Back</button>
                         <h1>{location.city}</h1>
                         <div className="row top">
                             <div className="col-1 me-4 mb-5">

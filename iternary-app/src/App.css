@@ -315,6 +315,10 @@ html {
 #overview .main-content {
   padding-top: 5%;
 }
+#overview .back {
+  font-size: 1.5rem;
+  color: white;
+}
 #overview .main-content h1 {
   font-size: 4.1rem;
   font-weight: 700;
@@ -530,6 +534,7 @@ html {
   background-color: rgb(63, 165, 63);
   border: 2px solid rgb(63, 165, 63);
   transition: 0.3s ease;
+  color: white;
 }
 #add-post input {
   margin-left: 50%;
