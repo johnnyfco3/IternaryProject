@@ -524,6 +524,10 @@ html {
   background-color: transparent;
   transition: 0.3s ease;
 }
+#overview .comments p {
+  font-size: 1.3rem;
+  padding: 1% 10%;
+}
 
 /* ADD-ADVENTURE style */
 /* ADD-POST style */
@@ -547,7 +551,7 @@ html {
 #add-post input {
   background-color: antiquewhite;
   border-radius: 1rem;
-  border: 1px solid black;
+  border-color: transparent;
 }
 #add-adventure input:focus,
 #add-post input:focus {

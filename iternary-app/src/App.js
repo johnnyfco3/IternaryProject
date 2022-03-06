@@ -118,6 +118,13 @@ function App() {
     { name: "St. Marks Square", img: "https://images.unsplash.com/photo-1628106913234-9cdfddbf6b81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80", caption: "Great Location for photos!", adventureID: 3 },
   ])
 
+  const [comments, setComments] = useState([
+    { text: "jkrnknr rkfn rfkn rfknrf erkfn rfner fknferfnkf eknf", user: 2, adventureID: 1},
+    { text: "kjrnfk jnf rfkjnf", user: 2, adventureID: 1},
+    { text: "lqeljwrl rlwrern lrlrn lrlr fslafj flasjfk saflsfasfkkas flsfakslfjkasfas fl", user: 2, adventureID: 2},
+    { text: "fkjsfnd fsdlfnsdfnsdf sdfn sflnffn fn f,nfn fk fln ffdfldfn sdsd dsn ksd ", user: 3, adventureID: 3},
+  ])
+
   const today = new Date()
     function formatDate(date) {
         var d = new Date(date),
@@ -142,13 +149,13 @@ function App() {
           <Route exact path="/" element={<Welcome />}/>
           <Route path="/login" element={<Login users={users}/>}/>
           <Route path="/register" element={<Register users={users}/>}/>
-          <Route path="/overview/:adventureID/:id" element={<Overview adventures={adventures} posts={posts}/>}/>
+          <Route path="/overview/:adventureID/:id" element={<Overview adventures={adventures} posts={posts} comments={comments} setComments={setComments} users={users}/>}/>
           <Route path="/history/:id" element={<History users={users} adventures={adventures}/>}/>
           <Route path="/history/upcoming/:id" element={<Upcoming date={date} adventures={adventures} users={users}/>}/>
           <Route path="/history/current/:id" element={<Current date={date} adventures={adventures} users={users}/>}/>
           <Route path="/history/past/:id" element={<Past date={date} adventures={adventures} users={users}/>}/>
           <Route path="/add-adventure" element={<AddAdventure adventures={adventures} setAdventures={setAdventures}/>}/>
-          <Route path="/add-post/:adventureID" element={<AddPost posts={posts} setPosts={setPosts}/>}/>
+          <Route path="/add-post/:adventureID/:id" element={<AddPost posts={posts} setPosts={setPosts}/>}/>
           <Route path="/friends" element={<Friends friends={friends} users={users}/>}/>
           <Route path="*" element={<NotFound />}/>
         </Routes>

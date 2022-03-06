@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AdventureList from "../Components/AdventureList";
 import Footer from "../Components/Footer";
 import Introduction from "../Components/Introduction";

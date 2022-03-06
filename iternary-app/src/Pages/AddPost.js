@@ -35,7 +35,6 @@ export function AddPost({posts, setPosts}){
                 }
             )
         )
-
         setNewPost(
             {
                 location: "",

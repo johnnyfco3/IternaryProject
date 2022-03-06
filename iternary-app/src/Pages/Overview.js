@@ -5,8 +5,9 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Posts from "../Components/Posts";
 import FlightInfo from "../Components/FlightInfo";
 import session from "../session";
+import Comments from "../Components/Comments";
 
-export function Overview({adventures, posts}){
+export function Overview({adventures, posts, comments, setComments, users}){
 
     const {adventureID, id} = useParams()
 
@@ -50,6 +51,17 @@ export function Overview({adventures, posts}){
       
       window.addEventListener("scroll", reveal);
 
+      const commentSection = comments.map(comment => {
+        if(comment.adventureID == adventureID){
+            return (
+                
+                <div className="comments reveal">
+                    <Comments comment={comment} users={users}/>
+                </div>
+            )
+        }
+      })
+
     return (
         <div id="overview" style={styles}>
             <header>
@@ -83,9 +95,11 @@ export function Overview({adventures, posts}){
                             <div className="row bottom">
                                 {postComp}
                             </div>
-                            <div className="button text-center">
+                            <div className="button text-center pb-5">
                                 <Link to={`/add-post/${adventureID}/${id}`}><button className="btn btn-success px-4">Add Post</button></Link>
                             </div>
+                            <h3 className="title text-center pt-5">Comments</h3>
+                            {commentSection}
                         </section>
                     ) : (
                         <section className="bottom-content reveal">

@@ -38,7 +38,7 @@ export function Introduction({users, id}){
                 </blockquote>
                 </> ) : (
                 <>
-                <h2>Welcome to {user.firstName} {user.lastName} Page!</h2>
+                <h2>Welcome to {user.firstName} {user.lastName}'s Page!</h2>
                 <blockquote>{user.quote}
                     <cite> - {user.firstName} {user.lastName}</cite>
                 </blockquote>

@@ -26,6 +26,7 @@ export function AddAdventure({adventures, setAdventures}){
     }
 
     let navigate = useNavigate()
+
     function handleSubmit(e){
         e.preventDefault();
         setAdventures(
@@ -54,7 +55,7 @@ export function AddAdventure({adventures, setAdventures}){
             link: ""
         })
 
-        navigate(`/history`)
+        navigate(`/history/${session.userID}`)
     }
 
     return (
