@@ -3,14 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer"
 
-export function AddPost({posts, setPosts}){
+export function AddPost({setPosts}){
 
     const {adventureID, id} = useParams();
 
     const [newPost, setNewPost] = useState(
         {
             location: "",
-            post: ""
+            post: "",
+            caption: ""
         }
     )
 
@@ -26,19 +27,19 @@ export function AddPost({posts, setPosts}){
 
     function handleSubmit(e){
         e.preventDefault();
-        setPosts(
-            posts.push(
-                {
-                    name: newPost.location,
-                    img: newPost.post,
-                    adventureID: adventureID
-                }
-            )
-        )
+        setPosts(prevState => {
+            return [...prevState, {
+                name: newPost.location,
+                img: newPost.post,
+                caption: newPost.caption,
+                adventureID: adventureID
+            }]
+        })
         setNewPost(
             {
                 location: "",
-                post: ""
+                post: "",
+                caption: ""
             }
         )
         navigate(`/overview/${adventureID}/${id}`)
@@ -66,6 +67,11 @@ export function AddPost({posts, setPosts}){
                         <div className="col-6">
                             <label htmlFor="inputState" className="form-label">Enter image URL</label>
                             <input type="url" className="form-control" id="inputGroupFile02" name="post" value={newPost.post} onChange={handleChange} required/>
+                        </div>
+
+                        <h1 className="heading">Caption</h1>
+                        <div className="col-md-6">
+                            <input type="text" className="form-control" id="caption" name="caption" value={newPost.caption} onChange={handleChange} required/>
                         </div>
 
                         <div className="col-12 text-center button">

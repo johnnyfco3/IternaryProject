@@ -29,21 +29,19 @@ export function AddAdventure({adventures, setAdventures}){
 
     function handleSubmit(e){
         e.preventDefault();
-        setAdventures(
-            adventures.push(
-                {
-                    id: adventures.length + 1,
-                    country: newAdventure.country,
-                    city: newAdventure.city,
-                    startD: newAdventure.startD,
-                    endD: newAdventure.endD,
-                    background: newAdventure.background,
-                    description: newAdventure.description,
-                    link: newAdventure.link,
-                    userID: session.userID
-                }
-            )
-        )
+        setAdventures(prevState =>{
+            return [...prevState, {
+                id: adventures.length + 1,
+                country: newAdventure.country,
+                city: newAdventure.city,
+                startD: newAdventure.startD,
+                endD: newAdventure.endD,
+                background: newAdventure.background,
+                description: newAdventure.description,
+                link: newAdventure.link,
+                userID: session.userID
+            }]
+        })
 
         setNewAdventure({
             country: "",

@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { useState } from 'react';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Welcome from './Pages/Welcome';
@@ -9,7 +10,6 @@ import AddAdventure from './Pages/AddAdventure';
 import AddPost from './Pages/AddPost';
 import Friends from './Pages/Friends';
 import NotFound from './Pages/NotFound';
-import { useState } from 'react';
 import Upcoming from './Pages/Upcoming';
 import Current from './Pages/Current'
 import Past from './Pages/Past'
