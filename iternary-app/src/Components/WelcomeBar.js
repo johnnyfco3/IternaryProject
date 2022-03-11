@@ -21,6 +21,9 @@ export function WelcomeBar(){
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">Sign In</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/register">Register</Link>
+                        </li>
                     </ul>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import Introduction from "../Components/Introduction";
 import Navbar from "../Components/Navbar";
 import session from "../session";
 
-export function History({users}){
+export function History(){
 
     const {id} = useParams();
 
@@ -17,7 +17,7 @@ export function History({users}){
 
             <div className="container">
                 <main>
-                    <Introduction users={users} id={id}/>
+                    <Introduction id={id}/>
 
                     <div className="row mt-5 sections">
                         <div className="col-4">

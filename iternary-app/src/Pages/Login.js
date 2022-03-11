@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import users from '../models/users'
 import session from "../session";
 
-export function Login({users}){
+export function Login(){
 
     const [login, setLogin] = useState({
         email: "",

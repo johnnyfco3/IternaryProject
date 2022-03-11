@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import adventures from '../models/adventures';
+import posts from '../models/posts';
+import comments from '../models/comments';
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { Link, useNavigate, useParams } from "react-router-dom";
 import Posts from "../Components/Posts";
 import FlightInfo from "../Components/FlightInfo";
 import session from "../session";
 import Comments from "../Components/Comments";
 
-export function Overview({adventures, posts, setPosts, comments, setComments, users}){
+export function Overview(){
 
     const {adventureID, id} = useParams()
 
@@ -20,16 +23,16 @@ export function Overview({adventures, posts, setPosts, comments, setComments, us
         if(trip.id == adventureID){
             setLocation(trip)
         }
-    })}, [adventures, adventureID])
+    })}, [adventureID])
 
     function remove(e, id){
         e.stopPropagation();
-        setPosts(prevState => prevState.filter(post => post.id !== id))
+        posts.filter(post => post.id !== id)
     }
 
     const postComp = posts.map((post, i) => {
         if(post.adventureID == adventureID){
-            return <Posts post={post} id={id} key={i} remove={remove}/>
+            return <Posts post={post} id={id} key={i} index={i} remove={remove}/>
         }
     })
 
@@ -60,7 +63,7 @@ export function Overview({adventures, posts, setPosts, comments, setComments, us
         if(comment.adventureID == adventureID){
             return (
                 <div className="comments reveal">
-                    <Comments comment={comment} users={users}/>
+                    <Comments comment={comment}/>
                 </div>
             )
         }

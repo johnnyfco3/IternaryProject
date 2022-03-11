@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import users from "../models/users";
 
-export function Comments({comment, users}){
+export function Comments({comment}){
 
     const [user, setUser] = useState({})
 
@@ -10,7 +11,7 @@ export function Comments({comment, users}){
                 setUser(user)
             }
         })
-    }, [comment, users])
+    }, [comment])
 
     return (
         <p>

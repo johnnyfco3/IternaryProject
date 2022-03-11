@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer"
 import { useNavigate } from "react-router-dom";
 import session from "../session";
+import adventures from "../models/adventures";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
-export function AddAdventure({adventures, setAdventures}){
+export function AddAdventure(){
 
     const [newAdventure, setNewAdventure] = useState(
         {
@@ -29,8 +30,7 @@ export function AddAdventure({adventures, setAdventures}){
 
     function handleSubmit(e){
         e.preventDefault();
-        setAdventures(prevState =>{
-            return [...prevState, {
+        adventures.push({
                 id: adventures.length + 1,
                 country: newAdventure.country,
                 city: newAdventure.city,
@@ -40,7 +40,6 @@ export function AddAdventure({adventures, setAdventures}){
                 description: newAdventure.description,
                 link: newAdventure.link,
                 userID: session.userID
-            }]
         })
 
         setNewAdventure({

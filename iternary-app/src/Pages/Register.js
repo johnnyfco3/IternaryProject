@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import users from "../models/users";
 
-export function Register({users}){
+export function Register(){
 
     const [confirm, setConfirm] = useState("")
 

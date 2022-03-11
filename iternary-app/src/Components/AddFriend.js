@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import friends from "../models/friends";
+import users from "../models/users";
+import session from "../session";
 
-export function AddFriend({users, setEmails}){
+export function AddFriend({setEmails}){
 
     const [formData, setFormData] = useState("")
+
+    const [user, setUser] = useState({})
 
     function handleSubmit(e){
         e.preventDefault();
@@ -14,8 +19,15 @@ export function AddFriend({users, setEmails}){
             }
         })
         if(exist){
-            setEmails(prevState =>{
-                return [...prevState, formData]
+            users.map(user => {
+                if(user.id === session.userID){
+                    setUser(user)
+                }
+            })
+            friends.map(friend=>{
+                if(friend.userID === user.id){
+                    friend.friends.push(formData)
+                }
             })
             setFormData("")
         }

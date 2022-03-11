@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import session from "../session";
+import friends from "../models/friends";
+import users from "../models/users";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import FriendsList from "../Components/FriendsList";
 import AddFriend from "../Components/AddFriend";
-import session from "../session";
-import { useNavigate } from "react-router-dom";
 
-export function Friends({friends, users}){
+export function Friends(){
 
     const [emails, setEmails] = useState([])
     
@@ -16,7 +18,7 @@ export function Friends({friends, users}){
                 setEmails(friend.friends)
             }
         })
-    }, [friends])
+    }, [])
 
     let navigate = useNavigate();
     
@@ -41,7 +43,7 @@ export function Friends({friends, users}){
 
             <main>
                 <div className="container">
-                    <AddFriend users={users} setEmails={setEmails}/>
+                    <AddFriend setEmails={setEmails}/>
                     <section className="list mb-5 pb-5 row">
                         {list}
                     </section>

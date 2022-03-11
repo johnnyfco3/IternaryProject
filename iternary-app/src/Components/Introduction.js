@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import session from "../session";
+import users from "../models/users";
 
-export function Introduction({users, id}){
+export function Introduction({id}){
 
     const [user, setUser] = useState({})
 
@@ -11,7 +12,7 @@ export function Introduction({users, id}){
                 setUser(user)
             }
         })
-    }, [users, id])
+    }, [id])
 
     const today = new Date()
     const hour = today.getHours()

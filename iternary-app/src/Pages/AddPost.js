@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import posts from "../models/posts";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer"
 
-export function AddPost({setPosts}){
+export function AddPost(){
 
     const {adventureID, id} = useParams();
 
@@ -27,14 +28,13 @@ export function AddPost({setPosts}){
 
     function handleSubmit(e){
         e.preventDefault();
-        setPosts(prevState => {
-            return [...prevState, {
+        posts.push({
                 name: newPost.location,
                 img: newPost.post,
                 caption: newPost.caption,
                 adventureID: adventureID
-            }]
-        })
+            })
+        
         setNewPost(
             {
                 location: "",
