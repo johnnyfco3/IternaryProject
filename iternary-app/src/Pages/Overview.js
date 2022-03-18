@@ -15,6 +15,7 @@ export function Overview(){
     const {adventureID, id} = useParams()
 
     const [location, setLocation] = useState({})
+    const [postsList, setPostList] = useState([])
 
     let navigate = useNavigate()
 
@@ -23,11 +24,13 @@ export function Overview(){
         if(trip.id == adventureID){
             setLocation(trip)
         }
+        setPostList(posts)
     })}, [adventureID])
 
-    function remove(e, id){
+    function remove(e, i, id){
         e.stopPropagation();
-        posts.filter(post => post.id !== id)
+        posts.splice(i,1)
+        setPostList(prevState => prevState.filter(post => post.id !== id))
     }
 
     const postComp = posts.map((post, i) => {

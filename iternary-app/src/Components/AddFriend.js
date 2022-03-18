@@ -7,28 +7,16 @@ export function AddFriend({setEmails}){
 
     const [formData, setFormData] = useState("")
 
-    const [user, setUser] = useState({})
-
     function handleSubmit(e){
         e.preventDefault();
-        let exist = false;
-        users.map(user=>{
-            if(user.email === formData){
-                exist = true
-                return exist
-            }
-        })
-        if(exist){
-            users.map(user => {
-                if(user.id === session.userID){
-                    setUser(user)
-                }
+        const existUser = users.find(user => user.email === formData)
+        if(existUser){
+            setEmails(prevState => {
+                return [...prevState, formData]
             })
-            friends.map(friend=>{
-                if(friend.userID === user.id){
-                    friend.friends.push(formData)
-                }
-            })
+            const friend = friends.find(friend => friend.userID === session.userID)
+            friend.friends.push(formData)
+                
             setFormData("")
         }
     }

@@ -13,11 +13,10 @@ export function Friends(){
     const [emails, setEmails] = useState([])
     
     useEffect(()=>{
-        friends.map(friend => {
-            if(friend.userID === session.userID){
-                setEmails(friend.friends)
-            }
-        })
+        const friend = friends.find(friend => friend.userID === session.userID)
+        if(friend){
+            setEmails(friend.friends)
+        }
     }, [])
 
     let navigate = useNavigate();
@@ -27,10 +26,10 @@ export function Friends(){
         navigate(`/history/${id}`)
     }
 
-    const list = emails.map((email, i) => (
+    const list = emails.map((email) => (
         users.map((user, i) =>{
             if(user.email === email){
-                return <FriendsList user={user} key={i} handleClick={handleClick}/>
+                return <FriendsList user={user} handleClick={handleClick}/>
             }
         })
     ))

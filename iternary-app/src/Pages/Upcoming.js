@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import adventures from "../models/adventures";
 import AdventureList from "../Components/AdventureList";
@@ -9,19 +9,25 @@ import Navbar from "../Components/Navbar";
 export function Upcoming({date}){
 
     const {id} = useParams()
+    const [adventuresList, setAdventuresList] = useState([])
+    
+    useEffect(() =>{
+        setAdventuresList(adventures)
+    },[])
 
-    function remove(e, id){
+    function remove(e, i, id){
         e.stopPropagation();
-        adventures.filter(adventure => adventure.id !== id)
+        adventures.splice(i,1)
+        setAdventuresList(prevState => prevState.filter(loc => loc.id !== id))
     }
 
     let navigate = useNavigate()
 
     let upcomingCount = 0
-    const upcomingList = adventures.map((trip, i) => {
+    const upcomingList = adventuresList.map((trip, i) => {
         if(trip.startD > date && trip.userID == id){
             upcomingCount++
-            return <AdventureList trip={trip} id={id} key={i} remove={remove}/>
+            return <AdventureList trip={trip} id={id} index={i} remove={remove}/>
         }
     })
 

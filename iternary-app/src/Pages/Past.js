@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import adventures from "../models/adventures";
 import AdventureList from "../Components/AdventureList";
@@ -9,19 +9,25 @@ import Navbar from "../Components/Navbar";
 export function Past({date}){
 
     const {id} = useParams();
+    const [adventuresList, setAdventuresList] = useState([])
+    
+    useEffect(() =>{
+        setAdventuresList(adventures)
+    },[])
+
+    function remove(e, i, id){
+        e.stopPropagation();
+        adventures.splice(i,1)
+        setAdventuresList(prevState => prevState.filter(loc => loc.id !== id))
+    }
 
     let navigate = useNavigate();
-
-    function remove(e, id){
-        e.stopPropagation();
-        adventures.filter(adventure => adventure.id !== id)
-    }
 
     let pastCount = 0
     const pastList = adventures.map((trip, i) => {
         if(trip.endD < date && trip.userID == id){
             pastCount++;
-            return <AdventureList trip={trip} id={id} key={i} remove={remove}/>
+            return <AdventureList trip={trip} id={id} index={i} remove={remove}/>
         }
     })
 
