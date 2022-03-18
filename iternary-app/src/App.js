@@ -1,5 +1,8 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Welcome from './Pages/Welcome';
@@ -10,8 +13,9 @@ import AddPost from './Pages/AddPost';
 import Friends from './Pages/Friends';
 import NotFound from './Pages/NotFound';
 import Upcoming from './Pages/Upcoming';
-import Current from './Pages/Current'
-import Past from './Pages/Past'
+import Current from './Pages/Current';
+import Past from './Pages/Past';
+import Home from './Pages/Home';
 
 
 function App() {
@@ -40,6 +44,7 @@ function App() {
           <Route exact path="/" element={<Welcome />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
+          <Route path="/home" element={<Home />}/>
           <Route path="/overview/:adventureID/:id" element={<Overview />}/>
           <Route path="/history/:id" element={<History />}/>
           <Route path="/history/upcoming/:id" element={<Upcoming date={date} />}/>

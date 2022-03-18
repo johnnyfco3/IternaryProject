@@ -23,10 +23,8 @@ export function Upcoming({date}){
 
     let navigate = useNavigate()
 
-    let upcomingCount = 0
     const upcomingList = adventuresList.map((trip, i) => {
         if(trip.startD > date && trip.userID == id){
-            upcomingCount++
             return <AdventureList trip={trip} id={id} index={i} remove={remove}/>
         }
     })
@@ -37,16 +35,15 @@ export function Upcoming({date}){
                 <Navbar />
             </header>
             <div className="container">
-                <Introduction id={id}/>
                 <section className="current pt-5">
-                <button className="btn" onClick={() => navigate(-1)}><i class="fa-solid fa-arrow-left"></i> Go Back</button>
-                <h1 className="heading pb-4 text-center">Upcoming Adventures ( {upcomingCount} )</h1>
-                    <div className="row">
+                    <button className="btn" onClick={() => navigate(-1)}><i class="fa-solid fa-arrow-left"></i> Go Back</button>
+                    <h1 className="heading pb-4 text-center">Upcoming Travels</h1>
+                    <div className="row pt-4">
                         {upcomingList}
                     </div>
                 </section>
             </div>
-            <footer>
+            <footer className="py-5">
                 <Footer />
             </footer>
         </div>

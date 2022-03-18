@@ -14,17 +14,19 @@ export function History(){
             <header>
                 <Navbar />
             </header>
+            <section className="hero">
+                    <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Hero"/>
+                    <Introduction id={id}/>
+            </section>
 
             <div className="container">
                 <main>
-                    <Introduction id={id}/>
-
                     <div className="row mt-5 sections">
                         <div className="col-4">
                             <Link to={`/history/upcoming/${id}`}><div className="card">
                                 <img src="https://images.unsplash.com/photo-1541807360746-039080941306?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt=""/>
                                 <div className="layer">
-                                    <h3>Upcoming</h3>
+                                    <h3>Upcoming Travels</h3>
                                 </div>
                             </div></Link>
                         </div>
@@ -32,7 +34,7 @@ export function History(){
                             <Link to={`/history/current/${id}`}><div className="card">
                                 <img src="https://images.unsplash.com/photo-1502301197179-65228ab57f78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80" alt=""/>
                                 <div className="layer">
-                                    <h3>Current</h3>
+                                    <h3>Current Travels</h3>
                                 </div>
                             </div></Link>
                         </div>
@@ -40,7 +42,7 @@ export function History(){
                             <Link to={`/history/past/${id}`}><div className="card">
                                 <img src="https://images.unsplash.com/photo-1632679760635-55966a6e3d42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt=""/>
                                 <div className="layer">
-                                    <h3>Past</h3>
+                                    <h3>Past Travels</h3>
                                 </div>
                             </div></Link>
                         </div>

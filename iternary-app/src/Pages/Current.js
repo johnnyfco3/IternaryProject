@@ -23,10 +23,8 @@ export function Current({date}){
 
     let navigate = useNavigate();
 
-    let currentCount = 0
     const currentList = adventures.map((trip, i) => {
             if(trip.startD <= date && trip.endD >= date && trip.userID == id){
-                currentCount++;
                 return <AdventureList trip={trip} id={id} index={i} remove={remove}/>
             }
         })
@@ -37,16 +35,15 @@ export function Current({date}){
                 <Navbar />
             </header>
             <div className="container">
-                <Introduction id={id}/>
                 <section className="current pt-5">
                     <button className="btn" onClick={() => navigate(-1)}><i class="fa-solid fa-arrow-left"></i> Go Back</button>
-                    <h1 className="heading pb-4 text-center">Current Adventures ( {currentCount} )</h1>
+                    <h1 className="heading pb-4 text-center">Current Travels</h1>
                     <div className="row">
                         {currentList}
                         </div>
                 </section>
             </div>
-            <footer>
+            <footer className="py-5">
                 <Footer />
             </footer>
         </div>

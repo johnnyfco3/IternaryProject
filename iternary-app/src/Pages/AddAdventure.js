@@ -9,8 +9,7 @@ export function AddAdventure(){
 
     const [newAdventure, setNewAdventure] = useState(
         {
-            country: "",
-            city: "",
+            location: "",
             startD: "",
             endD: "",
             description: "",
@@ -32,8 +31,7 @@ export function AddAdventure(){
         e.preventDefault();
         adventures.push({
                 id: adventures.length + 1,
-                country: newAdventure.country,
-                city: newAdventure.city,
+                location: newAdventure.location,
                 startD: newAdventure.startD,
                 endD: newAdventure.endD,
                 background: newAdventure.background,
@@ -43,8 +41,7 @@ export function AddAdventure(){
         })
 
         setNewAdventure({
-            country: "",
-            city: "",
+            location: "",
             startD: "",
             endD: "",
             description: "",
@@ -69,12 +66,8 @@ export function AddAdventure(){
                     <form className="row g-3 my-1" onSubmit={handleSubmit}>
                         <h1 className="heading">Location</h1>
                         <div class="col-md-6">
-                            <label htmlFor="country" className="form-label">Country/State</label>
-                            <input type="text" className="form-control" id="country" name="country" value={newAdventure.country} onChange={handleChange} required/>
-                        </div>
-                        <div className="col-md-6">
-                            <label htmlFor="city" className="form-label">City</label>
-                            <input type="text" className="form-control" id="city" name="city" value={newAdventure.city} onChange={handleChange} required/>
+                            <label htmlFor="location" className="form-label">Continent / Country / State</label>
+                            <input type="text" className="form-control" id="location" name="location" value={newAdventure.location} onChange={handleChange} required/>
                         </div>
                         
                         <div className="date">

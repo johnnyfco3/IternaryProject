@@ -1,8 +1,7 @@
 const adventures = [
     { 
         id: 1, 
-        country: "New York", 
-        city: "New York City", 
+        location: "New York",  
         startD: "2022-06-11", 
         endD: "2022-07-03", 
         background: "https://images.unsplash.com/photo-1543716091-a840c05249ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80", 
@@ -12,8 +11,7 @@ const adventures = [
     },
     { 
         id: 2, 
-        country: "Australia", 
-        city: "Sydney", 
+        location: "Australia", 
         startD: "2021-02-20", 
         endD: "2021-03-03", 
         background: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80", 
@@ -23,8 +21,7 @@ const adventures = [
     },
     { 
         id: 3, 
-        country: "Italy", 
-        city: "Venice", 
+        location: "Italy", 
         startD: "2022-02-25", 
         endD: "2022-03-05", 
         background: "https://images.unsplash.com/photo-1480548004877-593316be2bd5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80", 
@@ -34,8 +31,7 @@ const adventures = [
     },
     { 
         id: 4, 
-        country: "Europe", 
-        city: "France", 
+        location: "Europe", 
         startD: "2022-02-26", 
         endD: "2022-02-26", 
         background: "https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80",

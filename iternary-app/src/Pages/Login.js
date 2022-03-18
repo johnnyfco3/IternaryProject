@@ -33,7 +33,7 @@ export function Login(){
                 email: "",
                 password: ""
             })
-            navigate(`/history/${session.userID}`)
+            navigate(`/home`)
         }
         else{
             alert("Account not found")

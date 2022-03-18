@@ -30,23 +30,25 @@ export function Introduction({id}){
     }
 
     return( 
-        <div className="top-content text-center pt-4">
-            {id == session.userID ? (
-                <>
-                <h2>{determineTime()} {user.firstName}</h2>
-                <blockquote>{user.quote}
-                    <cite> - {user.firstName} {user.lastName}</cite>
-                </blockquote>
-                </> ) : (
-                <>
-                <h2>Welcome to {user.firstName} {user.lastName}'s Page!</h2>
-                <blockquote>{user.quote}
-                    <cite> - {user.firstName} {user.lastName}</cite>
-                </blockquote>
-                </>
-                )
-            }
-        </div>
+        <>
+            <div className="top-content text-center pt-4">
+                {id == session.userID ? (
+                    <>
+                    <h2>{determineTime()} {user.firstName}</h2>
+                    <blockquote>{user.quote}
+                        <cite> - {user.firstName} {user.lastName}</cite>
+                    </blockquote>
+                    </> ) : (
+                    <>
+                    <h2>Welcome to {user.firstName} {user.lastName}'s Page</h2>
+                    <blockquote>{user.quote}
+                        <cite> - {user.firstName} {user.lastName}</cite>
+                    </blockquote>
+                    </>
+                    )
+                }
+            </div>
+            </>
     )
 }
 

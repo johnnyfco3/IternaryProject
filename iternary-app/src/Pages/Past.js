@@ -23,10 +23,8 @@ export function Past({date}){
 
     let navigate = useNavigate();
 
-    let pastCount = 0
     const pastList = adventures.map((trip, i) => {
         if(trip.endD < date && trip.userID == id){
-            pastCount++;
             return <AdventureList trip={trip} id={id} index={i} remove={remove}/>
         }
     })
@@ -37,16 +35,15 @@ export function Past({date}){
                 <Navbar />
             </header>
             <div className="container">
-                <Introduction id={id}/>
                 <section className="current pt-5">
                     <button className="btn" onClick={() => navigate(-1)}><i class="fa-solid fa-arrow-left"></i> Go Back</button>
-                    <h1 className="heading pb-4 text-center">Past Adventures ( {pastCount} )</h1>
+                    <h1 className="heading pb-4 text-center">Past Travels</h1>
                     <div className="row">
                         {pastList}
                         </div>
                 </section>
             </div>
-            <footer>
+            <footer className="py-5">
                 <Footer />
             </footer>
         </div>

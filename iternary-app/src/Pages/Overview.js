@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Slider from "react-slick";
 import adventures from '../models/adventures';
 import posts from '../models/posts';
 import comments from '../models/comments';
@@ -72,6 +73,14 @@ export function Overview(){
         }
       })
 
+    const settings = {
+        className: "slider",
+        infinite: true,
+        centerPadding: "60px",
+        slidesToShow: 5,
+        swipeToSlide: true
+    }
+
     return (
         <div id="overview" style={styles}>
             <header>
@@ -82,7 +91,7 @@ export function Overview(){
                 <main>
                     <section className="main-content">
                     <button className="btn pb-4 back" onClick={() => navigate(-1)}><i class="fa-solid fa-arrow-left"></i> Go Back</button>
-                        <h1>{location.city}</h1>
+                        <h1>{location.location}</h1>
                         <div className="row top">
                             <div className="col-1 me-4 mb-5">
                                 <div className="circle rounded-circle text-center">
@@ -99,7 +108,15 @@ export function Overview(){
                     </section>
 
                     <FlightInfo />
-
+                    
+                    <div className="py-5">
+                    <Slider {...settings}>
+                        {[1,2,3,4,5,6,7].map((item,index) => {
+                            return <div key={index}>{item}</div>
+                        })}
+                    </Slider>
+                    </div>
+                    
                     {id == session.userID ? (
                         <section className="bottom-content reveal">
                             <div className="row bottom">
