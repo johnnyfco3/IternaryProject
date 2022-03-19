@@ -544,17 +544,28 @@ html {
   border-radius: 50%;
   transform: translateY(-18px);
 }
+#overview .stops {
+  padding-top: 15%;
+}
+#overview .stops h1,
+#overview .bottom-content h1 {
+  font-weight: 600;
+  font-size: 3.3rem;
+  padding-bottom: 3%;
+}
 #overview .bottom-content {
   margin-top: 15%;
 }
-#overview .posts .card {
+#overview .posts .card,
+#overview .locations .card {
   padding: 0;
   border: none;
   transform-style: preserve-3d;
   transition: all 0.5s ease;
   position: relative;
 }
-#overview .posts .card .delete {
+#overview .posts .card .delete,
+#overview .locations .card .delete {
   position: absolute;
   color: white;
   font-size: 1.5rem;
@@ -562,10 +573,12 @@ html {
   right: 3%;
   cursor: pointer;
 }
-#overview .posts .card:hover {
+#overview .posts .card:hover,
+#overview .locations .card:hover {
   transform: rotateY(180deg);
 }
-#overview .posts .card .back {
+#overview .posts .card .back,
+#overview .locations .card .back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -574,11 +587,19 @@ html {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
 }
-#overview .posts .back .caption p {
+#overview .posts .back .caption p,
+#overview .locations .back .caption p {
   position: relative;
   padding: 0 5%;
   line-height: 1.6;
   font-size: 2rem;
+}
+#overview .locations .card {
+  width: 360px;
+  height: 450px;
+}
+#overview .locations .card img {
+  height: 100%;
 }
 #overview .card {
   padding: 0;
@@ -600,6 +621,9 @@ html {
 #overview .col-4 {
   padding: 2%;
 }
+#overview .locations .agenda .item {
+  display: flex;
+}
 #overview .button button {
   font-size: 1.4rem;
   margin-top: 10%;
@@ -611,6 +635,9 @@ html {
 #overview .button button:hover {
   background-color: transparent;
   transition: 0.3s ease;
+}
+#overview .comment {
+  padding-top: 10%;
 }
 #overview .comments p {
   font-size: 1.3rem;

@@ -1,17 +1,16 @@
 import React from "react";
 import session from "../session";
 
-export function Posts({post, id, remove, index}){
+export function Posts({post, id, removePost, index}){
     return(
         <div className="col-4 posts">
-            <h3>{post.name}</h3>
-            <div className="card mt-3">
+            <div className="card">
                 <div className="front">
                     <img src={post.img} alt="Location" />
                 </div>
                 <div className="back">
                     {id == session.userID ? ( 
-                        <i class="fa-solid fa-xmark delete" onClick={(e)=> remove(e, index, post.id)}></i>
+                        <i class="fa-solid fa-xmark delete" onClick={(e)=> removePost(e, index, post.id)}></i>
                         ) : (
                             <></>
                     )}
