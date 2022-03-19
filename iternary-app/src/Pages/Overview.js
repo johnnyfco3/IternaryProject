@@ -12,6 +12,7 @@ import Posts from "../Components/Posts";
 import FlightInfo from "../Components/FlightInfo";
 import Comments from "../Components/Comments";
 import Locations from "../Components/Locations";
+import AddComment from "../Components/AddComment";
 
 export function Overview(){
 
@@ -20,6 +21,7 @@ export function Overview(){
     const [location, setLocation] = useState({})
     const [postsList, setPostList] = useState([])
     const [stopsList, setStopsList] = useState([])
+    const [addComment, setAddComment] = useState(false)
 
     let navigate = useNavigate()
 
@@ -96,7 +98,11 @@ export function Overview(){
     function removeStop(e, i, id){
         e.stopPropagation();
         stops.splice(i,1)
-        setStopsList(prevState => prevState.filter(post => post.id !== id))
+        setStopsList(prevState => prevState.filter(stop => stop.id !== id))
+    }
+
+    function toggleAdd(){
+        setAddComment(prevState => !prevState)
     }
 
     return (
@@ -148,9 +154,19 @@ export function Overview(){
                             <div className="comment reveal">
                                 <h3 className="title text-center pt-5">Comments</h3>
                                 {commentSection}
-                                <div className="button text-center pb-5">
-                                    <button className="btn btn-success px-4">Add a Comment</button>
-                                </div>
+                                {addComment ? ( 
+                                    <div className="add-comment">
+                                        <AddComment adventureID={adventureID} id={id} setAddComment={setAddComment}/>
+                                        <div className="text-center">
+                                            <button className="btn btn-light px-4 mt-3" onClick={toggleAdd}>Cancel</button>
+                                        </div>
+                                    </div>
+                                    ) : (
+                                    <div className="button text-center pb-5">
+                                        <button className="btn btn-success px-4" onClick={toggleAdd}>Add a Comment</button>
+                                    </div>
+                                    )
+                                }
                             </div>
                         </section>
                         </>
@@ -169,7 +185,7 @@ export function Overview(){
                                 <h3 className="title text-center pt-5">Comments</h3>
                                 {commentSection}
                                 <div className="button text-center pb-5">
-                                    <button className="btn btn-success px-4">Leave a Comment</button>
+                                    <button className="btn btn-success px-4" onClick={toggleAdd}>Leave a Comment</button>
                                 </div>
                             </div>
                         </section>

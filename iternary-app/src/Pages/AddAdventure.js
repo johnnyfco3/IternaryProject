@@ -29,27 +29,29 @@ export function AddAdventure(){
 
     function handleSubmit(e){
         e.preventDefault();
-        adventures.push({
-                id: adventures.length + 1,
-                location: newAdventure.location,
-                startD: newAdventure.startD,
-                endD: newAdventure.endD,
-                background: newAdventure.background,
-                description: newAdventure.description,
-                link: newAdventure.link,
-                userID: session.userID
-        })
+        if(newAdventure){
+            adventures.push({
+                    id: adventures.length + 1,
+                    location: newAdventure.location,
+                    startD: newAdventure.startD,
+                    endD: newAdventure.endD,
+                    background: newAdventure.background,
+                    description: newAdventure.description,
+                    link: newAdventure.link,
+                    userID: session.userID
+            })
 
-        setNewAdventure({
-            location: "",
-            startD: "",
-            endD: "",
-            description: "",
-            background: "",
-            link: ""
-        })
+            setNewAdventure({
+                location: "",
+                startD: "",
+                endD: "",
+                description: "",
+                background: "",
+                link: ""
+            })
 
-        navigate(`/history/${session.userID}`)
+            navigate(`/history/${session.userID}`)
+        }
     }
 
     return (
