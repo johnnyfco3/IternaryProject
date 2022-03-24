@@ -22,6 +22,7 @@ export function Overview(){
     const [postsList, setPostList] = useState([])
     const [stopsList, setStopsList] = useState([])
     const [addComment, setAddComment] = useState(false)
+    const [allActive, setAllActive] = useState(false)
 
     let navigate = useNavigate()
 
@@ -51,7 +52,7 @@ export function Overview(){
             <Slider {...settings} className="pt-3">
                 {stops.map((stop, i) => {
                     if(stop.adventureID == adventureID){
-                        return <Locations stop={stop} id={id} key={i} index={i} removeStop={removeStop}/>
+                        return <Locations stop={stop} id={id} key={i} index={i} removeStop={removeStop} allActive={allActive} setAllActive={setAllActive}/>
                     }
                 })}
             </Slider>
@@ -105,6 +106,10 @@ export function Overview(){
         setAddComment(prevState => !prevState)
     }
 
+    function toggleAllActive(){
+        setAllActive(prevState => !prevState)
+    }
+
     return (
         <div id="overview" style={styles}>
             <header>
@@ -114,7 +119,7 @@ export function Overview(){
             <div className="container pt-4">
                 <main>
                     <section className="main-content">
-                    <button className="btn pb-4 back" onClick={() => navigate(-1)}><i class="fa-solid fa-arrow-left"></i> Go Back</button>
+                    <button className="btn pb-4 back" onClick={() => navigate(-1)}><i className="fa-solid fa-arrow-left"></i> Go Back</button>
                         <h1>{location.location}</h1>
                         <div className="row top">
                             <div className="col-1 me-4 mb-5">
@@ -131,12 +136,15 @@ export function Overview(){
                         </div>
                     </section>
 
-                    <FlightInfo />
+                    <FlightInfo adventureID={adventureID}/>
                     
                     {id == session.userID ? (
                         <>
                         <section className="stops reveal">
-                            <h1>Planning To Visit</h1>
+                            <div className="d-flex justify-content-between">
+                                <h1>Planning To Visit</h1>
+                                <h4 className="mt-4" onClick={toggleAllActive}>Flip cards to see Itinerary</h4>
+                            </div>
                             {stopComp}
                             <div className="button text-center">
                                 <Link to={`/add-stop/${adventureID}/${id}`}><button className="btn btn-success px-4">Add A Stop</button></Link>
@@ -184,9 +192,19 @@ export function Overview(){
                             <div className="comment reveal">
                                 <h3 className="title text-center pt-5">Comments</h3>
                                 {commentSection}
-                                <div className="button text-center pb-5">
-                                    <button className="btn btn-success px-4" onClick={toggleAdd}>Leave a Comment</button>
-                                </div>
+                                {addComment ? ( 
+                                    <div className="add-comment">
+                                        <AddComment adventureID={adventureID} id={id} setAddComment={setAddComment}/>
+                                        <div className="text-center">
+                                            <button className="btn btn-light px-4 mt-3" onClick={toggleAdd}>Cancel</button>
+                                        </div>
+                                    </div>
+                                    ) : (
+                                    <div className="button text-center pb-5">
+                                        <button className="btn btn-success px-4" onClick={toggleAdd}>Leave a Comment</button>
+                                    </div>
+                                    )
+                                }
                             </div>
                         </section>
                         </>
