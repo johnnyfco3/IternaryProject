@@ -1,16 +1,22 @@
 import React from "react";
+import itinerary from "../models/agenda";
+import Itinerary from "./Itinerary";
 
-export function Agenda(){
-    const agenda = [1,2,3,4,5].map(item => {
-        return (
-            <div className="item">
-                <i class="fa-regular fa-circle-check px-2 pt-2"></i><p>Try this restaurant</p>
-            </div>
-        )
+export function Agenda({stop}){
+
+    const agenda = itinerary.map(item => {
+        if(item.stopID === stop.id){
+            return (
+                <Itinerary item={item}/>
+            )
+        }
     })
     return (
         <>
             {agenda}
+            <div className="add-itinerary text-center">
+                <button className="btn btn-light px-4 mt-5">Add to Itinerary</button>
+            </div>
         </>
     )
 }

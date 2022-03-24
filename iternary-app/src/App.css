@@ -553,6 +553,11 @@ html {
   font-size: 3.3rem;
   padding-bottom: 3%;
 }
+#overview .stops h4:hover {
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
 #overview .bottom-content {
   margin-top: 15%;
 }
@@ -568,14 +573,24 @@ html {
 #overview .locations .card .delete {
   position: absolute;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   top: 3%;
   right: 3%;
   cursor: pointer;
 }
+#overview .locations .back .flip {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
 #overview .posts .card:hover,
-#overview .locations .card:hover {
+#overview .locations .active {
   transform: rotateY(180deg);
+}
+#overview .locations .card img {
+  cursor: pointer;
 }
 #overview .posts .card .back,
 #overview .locations .card .back {
@@ -586,6 +601,7 @@ html {
   transform: rotateY(180deg);
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
+  overflow: scroll;
 }
 #overview .posts .back .caption p,
 #overview .locations .back .caption p {
@@ -603,6 +619,21 @@ html {
 }
 #overview .locations .agenda .item {
   display: flex;
+  color: lightgray;
+}
+#overview .locations .agenda .item:hover,
+#overview .locations .agenda .item .completed {
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+}
+#overview .locations .agenda .add-itinerary button {
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 1rem;
+  background-color: rgb(99, 12, 99);
+  border: 1px solid rgb(99, 12, 99);
+  color: rgba(255, 255, 255, 0.829);
 }
 #overview .card {
   padding: 0;
@@ -617,9 +648,6 @@ html {
   font-size: 2.2rem;
   font-weight: 500;
   font-style: italic;
-}
-#overview .icons i {
-  padding-right: 5px;
 }
 #overview .col-4 {
   padding: 2%;
