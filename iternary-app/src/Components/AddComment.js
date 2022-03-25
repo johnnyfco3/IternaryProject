@@ -20,8 +20,8 @@ export function AddComment({adventureID, id, setAddComment}){
             comments.push({
                 id: comments.length + 1,
                 text: commentForm.text,
-                user: Number (id),
-                adventureID: adventureID
+                user: parseInt(id),
+                adventureID: parseInt(adventureID)
             })
 
             setCommentForm({
