@@ -22,7 +22,7 @@ export function Locations({stop, id, removeStop, index, allActive, setAllActive}
                     <img src={stop.img} alt="Location" onClick={toggleActive}/>
                 </div>
                 <div className="back">
-                    {id == session.userID ? ( 
+                    {parseInt(id) === session.userID ? ( 
                         <i class="fa-solid fa-trash-can delete" onClick={(e)=> removeStop(e, index, stop.id)}></i>
                         ) : (
                             <></>
@@ -30,7 +30,7 @@ export function Locations({stop, id, removeStop, index, allActive, setAllActive}
                     <i className="fa-solid fa-arrow-left flip" onClick={toggleActive}></i>
                     <h3 className="title text-center">Agenda</h3>
                     <div className="agenda mt-5">
-                        <Agenda stop={stop}/>
+                        <Agenda stop={stop} id={id}/>
                     </div>
                 </div>
             </div>

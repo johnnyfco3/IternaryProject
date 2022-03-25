@@ -50,13 +50,13 @@ export function Overview(){
     })
 
     const stopComp =
-            <Slider {...settings} className="pt-3">
-                {stopsList.map((stop, i) => {
-                    if(stop.adventureID === parseInt(adventureID)){
-                        return <Locations stop={stop} id={id} key={i} index={i} removeStop={removeStop} allActive={allActive} setAllActive={setAllActive}/>
-                    }
-                })}
-            </Slider>
+        <Slider {...settings} className="pt-3">
+            {stopsList.map((stop, i) => {
+                if(stop.adventureID === parseInt(adventureID)){
+                    return <Locations stop={stop} id={id} key={i} index={i} removeStop={removeStop} allActive={allActive} setAllActive={setAllActive}/>
+                }
+            })}
+        </Slider>
 
     const commentSection = commentsList.map((comment, i) => {
         if(comment.adventureID === parseInt(adventureID)){

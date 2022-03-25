@@ -9,7 +9,7 @@ export function Posts({post, id, removePost, index}){
                     <img src={post.img} alt="Location" />
                 </div>
                 <div className="back">
-                    {id == session.userID ? ( 
+                    {parseInt(id) === session.userID ? ( 
                         <i class="fa-solid fa-xmark delete" onClick={(e)=> removePost(e, index, post.id)}></i>
                         ) : (
                             <></>

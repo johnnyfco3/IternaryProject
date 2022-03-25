@@ -627,6 +627,9 @@ html {
   font-weight: 600;
   color: white;
 }
+#overview .locations .agenda form #plan {
+  width: 90%;
+}
 #overview .locations .agenda .add-itinerary button {
   font-size: 1.4rem;
   font-weight: 500;
@@ -634,6 +637,9 @@ html {
   background-color: rgb(99, 12, 99);
   border: 1px solid rgb(99, 12, 99);
   color: rgba(255, 255, 255, 0.829);
+}
+#overview .locations .agenda .plan {
+  position: relative;
 }
 #overview .card {
   padding: 0;
