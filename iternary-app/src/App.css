@@ -671,6 +671,17 @@ html {
   font-size: 1.3rem;
   padding: 1% 10%;
 }
+#overview .comments {
+  position: relative;
+}
+#overview .comments .delete {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
 #overview .add-comment form {
   padding: 0 10%;
 }
@@ -679,25 +690,30 @@ html {
 /* ADD-POST style */
 
 #add-adventure,
-#add-post {
+#add-post,
+#add-stop {
   background-color: whitesmoke;
   color: black;
 }
 #add-adventure .title,
-#add-post .title {
+#add-post .title,
+#add-stop .title {
   font-weight: 600;
 }
 #add-adventure label,
-#add-post label {
+#add-post label,
+#add-stop label {
   font-size: 1.2rem;
 }
 #add-adventure input,
-#add-post input {
+#add-post input,
+#add-stop input {
   border-radius: 1rem;
   border-color: black;
 }
 #add-adventure input:focus,
-#add-post input:focus {
+#add-post input:focus,
+#add-stop input:focus {
   border-color: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -707,7 +723,8 @@ html {
   border-radius: 1rem;
 }
 #add-adventure .button button,
-#add-post .button button {
+#add-post .button button,
+#add-stop .button button {
   font-size: 1.3rem;
   margin-top: 5%;
   background-color: transparent;
@@ -716,20 +733,12 @@ html {
   color: black;
 }
 #add-adventure .button button:hover,
-#add-post .button button:hover {
+#add-post .button button:hover,
+#add-stop .button button:hover {
   background-color: rgb(63, 165, 63);
   border: 2px solid rgb(63, 165, 63);
   transition: 0.3s ease;
   color: white;
-}
-#add-post input {
-  margin-left: 50%;
-}
-#add-post .heading {
-  margin-left: 25%;
-}
-#add-post label {
-  margin-left: 50%;
 }
 
 /* FRIENDS style */

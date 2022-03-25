@@ -16,7 +16,7 @@ export function Locations({stop, id, removeStop, index, allActive, setAllActive}
 
     return(
         <div className="locations">
-            <h3 className="text-center">{stop.name}</h3>
+            <h3 className="text-center">{stop.location}</h3>
             <div className={active || allActive ? "card mt-3 mx-2 active" : "card mt-3 mx-2"}>
                 <div className="front">
                     <img src={stop.img} alt="Location" onClick={toggleActive}/>

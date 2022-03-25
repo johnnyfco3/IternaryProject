@@ -16,6 +16,7 @@ import Upcoming from './Pages/Upcoming';
 import Current from './Pages/Current';
 import Past from './Pages/Past';
 import Home from './Pages/Home';
+import AddStop from './Pages/AddStop';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/history/past/:id" element={<Past date={date} />}/>
           <Route path="/add-adventure" element={<AddAdventure />}/>
           <Route path="/add-post/:adventureID/:id" element={<AddPost />}/>
+          <Route path="/add-stop/:adventureID" element={<AddStop />}/>
           <Route path="/friends" element={<Friends />}/>
           <Route path="*" element={<NotFound />}/>
         </Routes>

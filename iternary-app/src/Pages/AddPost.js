@@ -6,11 +6,10 @@ import Footer from "../Components/Footer"
 
 export function AddPost(){
 
-    const {adventureID, id} = useParams();
+    const {adventureID} = useParams();
 
     const [newPost, setNewPost] = useState(
         {
-            location: "",
             post: "",
             caption: ""
         }
@@ -29,7 +28,7 @@ export function AddPost(){
     function handleSubmit(e){
         e.preventDefault();
         posts.push({
-                name: newPost.location,
+                id: posts.length + 1,
                 img: newPost.post,
                 caption: newPost.caption,
                 adventureID: adventureID
@@ -37,12 +36,11 @@ export function AddPost(){
         
         setNewPost(
             {
-                location: "",
                 post: "",
                 caption: ""
             }
         )
-        navigate(`/overview/${adventureID}/${id}`)
+        navigate(-1)
     }
 
     return (
@@ -58,11 +56,6 @@ export function AddPost(){
                     </div>
                     
                     <form className="row g-3 my-1" onSubmit={handleSubmit}>
-                        <h1 className="heading">Location</h1>
-                        <div className="col-md-6">
-                            <input type="text" className="form-control" id="location" name="location" value={newPost.location} onChange={handleChange} required/>
-                        </div>
-                    
                         <h1 className="heading mt-4">Upload Post</h1>
                         <div className="col-6">
                             <label htmlFor="inputState" className="form-label">Enter image URL</label>

@@ -21,18 +21,19 @@ export function Overview(){
     const [location, setLocation] = useState({})
     const [postsList, setPostList] = useState([])
     const [stopsList, setStopsList] = useState([])
+    const [commentsList, setCommentsList] = useState([])
     const [addComment, setAddComment] = useState(false)
     const [allActive, setAllActive] = useState(false)
 
     let navigate = useNavigate()
 
     useEffect(() => {
-        adventures.map(trip => {
-        if(trip.id == adventureID){
-            setLocation(trip)
-        }
+        const trip = adventures.find(trip => trip.id === parseInt(adventureID))
+        setLocation(trip)
         setPostList(posts)
-    })}, [adventureID])
+        setStopsList(stops)
+        setCommentsList(comments)
+    }, [adventureID])
 
     const settings = {
         className: "slider",
@@ -42,26 +43,26 @@ export function Overview(){
         swipeToSlide: true
     }
 
-    const postComp = posts.map((post, i) => {
-        if(post.adventureID == adventureID){
-            return <Posts post={post} id={id} key={i} index={i} removePost={removePost}/>
+    const postComp = postsList.map((post, i) => {
+        if(post.adventureID === parseInt(adventureID)){
+            return <Posts post={post} key={i} index={i} id={id} removePost={removePost}/>
         }
     })
 
     const stopComp =
             <Slider {...settings} className="pt-3">
-                {stops.map((stop, i) => {
-                    if(stop.adventureID == adventureID){
+                {stopsList.map((stop, i) => {
+                    if(stop.adventureID === parseInt(adventureID)){
                         return <Locations stop={stop} id={id} key={i} index={i} removeStop={removeStop} allActive={allActive} setAllActive={setAllActive}/>
                     }
                 })}
             </Slider>
 
-    const commentSection = comments.map(comment => {
-        if(comment.adventureID == adventureID){
+    const commentSection = commentsList.map((comment, i) => {
+        if(comment.adventureID === parseInt(adventureID)){
             return (
                 <div className="comments">
-                    <Comments comment={comment}/>
+                    <Comments comment={comment} id={id} index={i} removeComment={removeComment}/>
                 </div>
             )
         }
@@ -102,6 +103,12 @@ export function Overview(){
         setStopsList(prevState => prevState.filter(stop => stop.id !== id))
     }
 
+    function removeComment(e, i, id){
+        e.stopPropagation();
+        comments.splice(i,1)
+        setCommentsList(prevState => prevState.filter(comment => comment.id !== id))
+    }
+
     function toggleAdd(){
         setAddComment(prevState => !prevState)
     }
@@ -138,7 +145,7 @@ export function Overview(){
 
                     <FlightInfo adventureID={adventureID}/>
                     
-                    {id == session.userID ? (
+                    {parseInt(id) === session.userID ? (
                         <>
                         <section className="stops reveal">
                             <div className="d-flex justify-content-between">
@@ -147,7 +154,7 @@ export function Overview(){
                             </div>
                             {stopComp}
                             <div className="button text-center">
-                                <Link to={`/add-stop/${adventureID}/${id}`}><button className="btn btn-success px-4">Add A Stop</button></Link>
+                                <Link to={`/add-stop/${adventureID}`}><button className="btn btn-success px-4">Add A Stop</button></Link>
                             </div>
                         </section>
 
