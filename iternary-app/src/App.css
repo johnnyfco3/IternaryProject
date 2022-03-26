@@ -98,7 +98,7 @@ html {
   transition: 0.3s ease;
 }
 #welcome .preview {
-  height: 100vh;
+  height: 150vh;
   background-color: rgb(159, 179, 185);
   color: white;
 }
