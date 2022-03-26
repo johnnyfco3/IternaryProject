@@ -23,8 +23,6 @@ html {
 
 #Navbar,
 #welcome-bar {
-  /* background-color: antiquewhite;
-  box-shadow: 0px 6px 6px rgb(61, 61, 61); */
   background-color: rgb(159, 179, 185);
   font-size: 1.1rem;
 }
@@ -36,7 +34,6 @@ html {
 }
 #Navbar a,
 #welcome-bar a {
-  /* color: black; */
   color: white;
   font-size: 20px;
   padding: 0 25px;
@@ -44,7 +41,6 @@ html {
 #Navbar a:hover,
 #welcome-bar a:hover {
   font-weight: 700;
-  /* border-bottom: 1.5px solid black; */
 }
 
 /*  WElCOME Style    */
@@ -103,8 +99,6 @@ html {
 }
 #welcome .preview {
   height: 100vh;
-  /* background-image: url("./Images/istockphoto-1313116746-612x612.jpeg");
-  background-size: cover; */
   background-color: rgb(159, 179, 185);
   color: white;
 }
@@ -133,10 +127,12 @@ html {
   background-image: url("./Images/adam-thomas-D2i-7JrH0wI-unsplash.jpg");
   background-size: cover;
   background-position: center;
-  height: 100vh;
   display: flex;
   align-items: center;
   color: white;
+}
+#login {
+  height: 100vh;
 }
 #login .card,
 #register .card {

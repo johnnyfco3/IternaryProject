@@ -31,7 +31,7 @@ export function AddPost(){
                 id: posts.length + 1,
                 img: newPost.post,
                 caption: newPost.caption,
-                adventureID: adventureID
+                adventureID: parseInt(adventureID)
             })
         
         setNewPost(

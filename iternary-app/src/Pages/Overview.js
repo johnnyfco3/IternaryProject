@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import adventures from '../models/adventures';
 import posts from '../models/posts';
@@ -13,6 +13,7 @@ import FlightInfo from "../Components/FlightInfo";
 import Comments from "../Components/Comments";
 import Locations from "../Components/Locations";
 import AddComment from "../Components/AddComment";
+import AdventureIntro from "../Components/AdventureIntro";
 
 export function Overview(){
 
@@ -24,8 +25,6 @@ export function Overview(){
     const [commentsList, setCommentsList] = useState([])
     const [addComment, setAddComment] = useState(false)
     const [allActive, setAllActive] = useState(false)
-
-    let navigate = useNavigate()
 
     useEffect(() => {
         const trip = adventures.find(trip => trip.id === parseInt(adventureID))
@@ -126,21 +125,7 @@ export function Overview(){
             <div className="container pt-4">
                 <main>
                     <section className="main-content">
-                    <button className="btn pb-4 back" onClick={() => navigate(-1)}><i className="fa-solid fa-arrow-left"></i> Go Back</button>
-                        <h1>{location.location}</h1>
-                        <div className="row top">
-                            <div className="col-1 me-4 mb-5">
-                                <div className="circle rounded-circle text-center">
-                                    <p>{location.startD}</p>
-                                </div>
-                            </div>
-                            <div className="col-10 info">
-                                <p>{location.description}</p>
-                            </div>
-                        </div>
-                        <div className="discover me-5">
-                            <a href={location.link} target="_blank" rel="noreferrer"><button className="btn px-4 mt-3">Discover</button></a>
-                        </div>
+                        <AdventureIntro location={location}/>
                     </section>
 
                     <FlightInfo adventureID={adventureID}/>

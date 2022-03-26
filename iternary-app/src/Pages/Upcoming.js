@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import adventures from "../models/adventures";
 import AdventureList from "../Components/AdventureList";
 import Footer from "../Components/Footer";
-import Introduction from "../Components/Introduction";
 import Navbar from "../Components/Navbar";
 
 export function Upcoming({date}){
@@ -24,7 +23,7 @@ export function Upcoming({date}){
     let navigate = useNavigate()
 
     const upcomingList = adventuresList.map((trip, i) => {
-        if(trip.startD > date && trip.userID == id){
+        if(trip.startD > date && trip.userID === parseInt(id)){
             return <AdventureList trip={trip} id={id} index={i} remove={remove}/>
         }
     })

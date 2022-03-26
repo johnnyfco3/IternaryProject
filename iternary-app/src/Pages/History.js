@@ -48,7 +48,7 @@ export function History(){
                         </div>
                     </div>
 
-                    {id == session.userID ? (
+                    {parseInt(id) === session.userID ? (
                         <section className="add-new text-center pt-5 px-4">
                         <Link to="/add-adventure"><button className="btn">Start a New Adventure</button></Link>
                         </section> ) : (

@@ -12,7 +12,7 @@ export function FlightInfo({adventureID}){
     }
 
     const flights = flightInfo.map((flight, i) => {
-        if(flight.adventureID == adventureID){
+        if(flight.adventureID === parseInt(adventureID)){
             return <Flights flight={flight} key={i}/>
         }
     })

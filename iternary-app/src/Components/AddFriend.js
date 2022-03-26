@@ -9,11 +9,13 @@ export function AddFriend({setEmails}){
 
     function handleSubmit(e){
         e.preventDefault();
+
         const existUser = users.find(user => user.email === formData)
         if(existUser){
             setEmails(prevState => {
                 return [...prevState, formData]
             })
+            
             const friend = friends.find(friend => friend.userID === session.userID)
             friend.friends.push(formData)
                 

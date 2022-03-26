@@ -7,11 +7,10 @@ export function Introduction({id}){
     const [user, setUser] = useState({})
 
     useEffect(()=>{
-        users.map(user =>{
-            if(user.id == id){
-                setUser(user)
-            }
-        })
+        const u = users.find(u=> u.id === parseInt(id))
+        if(u){
+            setUser(u)
+        }
     }, [id])
 
     const today = new Date()
@@ -32,7 +31,7 @@ export function Introduction({id}){
     return( 
         <>
             <div className="top-content text-center pt-4">
-                {id == session.userID ? (
+                {parseInt(id) === session.userID ? (
                     <>
                     <h2>{determineTime()} {user.firstName}</h2>
                     <blockquote>{user.quote}
@@ -48,7 +47,7 @@ export function Introduction({id}){
                     )
                 }
             </div>
-            </>
+        </>
     )
 }
 

@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import adventures from "../models/adventures";
 import AdventureList from "../Components/AdventureList";
 import Footer from "../Components/Footer";
-import Introduction from "../Components/Introduction";
 import Navbar from "../Components/Navbar";
 
 export function Past({date}){
@@ -23,8 +22,8 @@ export function Past({date}){
 
     let navigate = useNavigate();
 
-    const pastList = adventures.map((trip, i) => {
-        if(trip.endD < date && trip.userID == id){
+    const pastList = adventuresList.map((trip, i) => {
+        if(trip.endD < date && trip.userID === parseInt(id)){
             return <AdventureList trip={trip} id={id} index={i} remove={remove}/>
         }
     })

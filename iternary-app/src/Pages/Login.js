@@ -20,14 +20,15 @@ export function Login(){
     let navigate = useNavigate()
     function handleSubmit(e){
         e.preventDefault();
+
         let hasAccount = false;
-        users.map(user => {
-            if(user.email === login.email && user.password === login.password){
-                hasAccount = true
-                session.Login(user.id)
-                return hasAccount
-            }
-        })
+        const user = users.find(user => user.email === login.email && user.password === login.password)
+        
+        if(user){
+            hasAccount = true;
+            session.Login(user.id)
+        }
+        
         if(hasAccount){
             setLogin({
                 email: "",

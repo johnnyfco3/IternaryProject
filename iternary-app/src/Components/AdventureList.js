@@ -7,7 +7,7 @@ export function AdventureList({trip, id, remove, index}){
     return (
         <div className="position col-6">
                 <Link to={`/overview/${trip.id}/${id}`}><div className="card">
-                    {id == session.userID ? (
+                    {parseInt(id) === session.userID ? (
                         <i class="fa-solid fa-xmark delete" onClick={(e)=> remove(e, index, trip.id)}></i>
                         ) : (
                             <></>
