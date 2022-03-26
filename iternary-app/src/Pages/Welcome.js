@@ -1,8 +1,8 @@
 import React from "react";
-import WelcomeBar from "../Components/WelcomeBar";
 import Footer from "../Components/Footer";
 import About from "../Components/About";
 import Preview from "../Components/Preview";
+import Navbar from "../Components/Navbar";
 
 export function Welcome(){
 
@@ -27,7 +27,7 @@ export function Welcome(){
     return (
         <div id="welcome">
             <header>
-                <WelcomeBar />
+                <Navbar />
             </header>
 
             <main>

@@ -21,25 +21,21 @@ html {
 /*  NAVBAR Style */
 /*  WELCOMEBAR Style */
 
-#Navbar,
-#welcome-bar {
+#Navbar {
   background-color: rgb(159, 179, 185);
   font-size: 1.1rem;
 }
-#Navbar .navbar-brand,
-#welcome-bar .navbar-brand {
+#Navbar .navbar-brand {
   font-size: 30px;
   font-weight: 700;
   font-style: italic;
 }
-#Navbar a,
-#welcome-bar a {
+#Navbar a {
   color: white;
   font-size: 20px;
   padding: 0 25px;
 }
-#Navbar a:hover,
-#welcome-bar a:hover {
+#Navbar a:hover {
   font-weight: 700;
 }
 
