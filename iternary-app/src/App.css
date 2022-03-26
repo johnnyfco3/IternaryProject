@@ -204,17 +204,20 @@ html {
   background-color: whitesmoke;
 }
 #home .hero,
-#history .hero {
+#history .hero,
+#friends .hero {
   height: 70vh;
   position: relative;
 }
 #home .hero img,
-#history .hero img {
+#history .hero img,
+#friends .hero img {
   width: 100%;
   height: 100%;
 }
 #home .hero .top-content,
-#history .hero .top-content {
+#history .hero .top-content,
+#friends .hero .top-content {
   position: absolute;
   bottom: 49%;
   left: 50%;
@@ -223,12 +226,14 @@ html {
   font-size: 3rem;
 }
 #home .top-content h2,
-#history .top-content h2 {
+#history .top-content h2,
+#friends .top-content h2 {
   font-weight: 600;
   font-size: 3rem;
 }
 #home .top-content blockquote,
-#history .top-content blockquote {
+#history .top-content blockquote,
+#friends .top-content blockquote {
   font-size: 2rem;
 }
 #home .sections {
@@ -501,21 +506,18 @@ html {
 }
 #overview .flight-content {
   position: absolute;
-  top: 0;
-  left: 40%;
+  top: 30%;
   width: 100%;
   visibility: hidden;
   transition: 0.4s;
-  transform: translateX(25%);
 }
 #overview .transform .flight-content {
   position: absolute;
-  top: 25%;
+  top: 30%;
   width: 100%;
   color: black;
   transition: 0.5s;
   visibility: visible;
-  transform: translate(-40%);
 }
 #overview .flight-content a,
 #overview .flight-content p {
@@ -615,7 +617,7 @@ html {
   height: 450px;
 }
 #overview .locations .card img {
-  height: 100%;
+  width: 100%;
 }
 #overview .locations .agenda .item {
   display: flex;
@@ -647,7 +649,7 @@ html {
 }
 #overview .card img {
   width: 100%;
-  height: 400px;
+  height: 450px;
   border-radius: 1rem;
 }
 #overview h3 {
@@ -676,6 +678,9 @@ html {
 #overview .comments p {
   font-size: 1.3rem;
   padding: 1% 10%;
+}
+#overview .comments img {
+  width: 6%;
 }
 #overview .comments {
   position: relative;
@@ -763,12 +768,13 @@ html {
   border-radius: 1rem;
   height: 45px;
   font-size: 1.2rem;
-  border: 1px solid black;
+  border: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 #friends form input:focus {
   border-color: none;
   -webkit-box-shadow: none;
-  box-shadow: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
 }
 #friends .input-group button {
   border-radius: 1rem;
@@ -786,6 +792,9 @@ html {
   height: 200px;
   animation-name: slideup;
   animation-duration: 1s;
+}
+#friends .card-img-top img {
+  width: 35%;
 }
 @keyframes slideup {
   from {

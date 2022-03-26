@@ -19,7 +19,7 @@ export function Comments({comment, id, index, removeComment}) {
                 <></>
         )}
         <p>
-            {user.firstName} {user.lastName} - <br />
+            <img src={user.pic} alt="Profile Pic" className="img-fluid rounded-circle pe-2"/> {user.firstName} {user.lastName} - <br />
             {comment.text}
         </p>
         </>
