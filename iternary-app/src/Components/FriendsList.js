@@ -1,7 +1,7 @@
 import React from "react";
 import UserImage from "../Images/blank-profile-picture-gdf604cfb6_1280.png"
 import friends from "../models/friends";
-import session from "../session";
+import session from "../service/session";
 
 export function FriendsList({user, handleClick, setEmails}){
 

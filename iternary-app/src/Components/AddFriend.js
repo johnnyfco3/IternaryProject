@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import friends from "../models/friends";
 import users from "../models/users";
-import session from "../session";
+import session from "../service/session";
 
 export function AddFriend({setEmails}){
 

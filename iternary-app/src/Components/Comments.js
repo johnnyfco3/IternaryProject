@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import users from "../models/users";
-import session from "../session";
+import session from "../service/session";
 
 export function Comments({comment, id, index, removeComment}) {
 

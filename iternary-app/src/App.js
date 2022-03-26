@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProtectedRoutes from './service/protectedRoutes';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -45,16 +46,18 @@ function App() {
           <Route exact path="/" element={<Welcome />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
-          <Route path="/home" element={<Home />}/>
-          <Route path="/overview/:adventureID/:id" element={<Overview />}/>
-          <Route path="/history/:id" element={<History />}/>
-          <Route path="/history/upcoming/:id" element={<Upcoming date={date} />}/>
-          <Route path="/history/current/:id" element={<Current date={date} />}/>
-          <Route path="/history/past/:id" element={<Past date={date} />}/>
-          <Route path="/add-adventure" element={<AddAdventure />}/>
-          <Route path="/add-post/:adventureID/:id" element={<AddPost />}/>
-          <Route path="/add-stop/:adventureID" element={<AddStop />}/>
-          <Route path="/friends" element={<Friends />}/>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/home" element={<Home />}/>
+            <Route path="/overview/:adventureID/:id" element={<Overview />}/>
+            <Route path="/history/:id" element={<History />}/>
+            <Route path="/history/upcoming/:id" element={<Upcoming date={date} />}/>
+            <Route path="/history/current/:id" element={<Current date={date} />}/>
+            <Route path="/history/past/:id" element={<Past date={date} />}/>
+            <Route path="/add-adventure" element={<AddAdventure />}/>
+            <Route path="/add-post/:adventureID/:id" element={<AddPost />}/>
+            <Route path="/add-stop/:adventureID" element={<AddStop />}/>
+            <Route path="/friends" element={<Friends />}/>
+          </Route>
           <Route path="*" element={<NotFound />}/>
         </Routes>
       </Router>

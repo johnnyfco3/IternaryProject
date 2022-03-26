@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import session from "../session";
+import session from "../service/session";
 import Agenda from "./Agenda";
 
 export function Locations({stop, id, removeStop, index, allActive, setAllActive}) {

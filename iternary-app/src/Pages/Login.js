@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import users from '../models/users'
-import session from "../session";
+import session from "../service/session";
 
 export function Login(){
 

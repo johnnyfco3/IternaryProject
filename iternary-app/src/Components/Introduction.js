@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import session from "../session";
+import session from "../service/session";
 import users from "../models/users";
 
 export function Introduction({id}){

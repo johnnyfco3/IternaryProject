@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import itinerary from "../models/agenda";
-import session from "../session";
+import session from "../service/session";
 
 export function Itinerary({item, id, removeAgenda, index}){
 

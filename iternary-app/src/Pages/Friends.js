@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import session from "../session";
+import session from "../service/session";
 import friends from "../models/friends";
 import users from "../models/users";
 import Footer from "../Components/Footer";

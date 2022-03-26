@@ -5,7 +5,7 @@ import adventures from '../models/adventures';
 import posts from '../models/posts';
 import comments from '../models/comments';
 import stops from "../models/stops";
-import session from "../session";
+import session from "../service/session";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import Posts from "../Components/Posts";

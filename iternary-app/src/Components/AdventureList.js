@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import session from "../session"
+import session from "../service/session"
 
 export function AdventureList({trip, id, remove, index}){
 

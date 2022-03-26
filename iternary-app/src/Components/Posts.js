@@ -1,5 +1,5 @@
 import React from "react";
-import session from "../session";
+import session from "../service/session";
 
 export function Posts({post, id, removePost, index}){
     return(

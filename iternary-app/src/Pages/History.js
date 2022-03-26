@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Introduction from "../Components/Introduction";
 import Navbar from "../Components/Navbar";
-import session from "../session";
+import session from "../service/session";
 
 export function History(){
 
