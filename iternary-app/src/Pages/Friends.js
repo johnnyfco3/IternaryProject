@@ -30,7 +30,7 @@ export function Friends(){
     const list = emails.map((email) => (
         users.map((user, i) =>{
             if(user.email === email){
-                return <FriendsList user={user} handleClick={handleClick}/>
+                return <FriendsList user={user} handleClick={handleClick} setEmails={setEmails}/>
             }
         })
     ))
