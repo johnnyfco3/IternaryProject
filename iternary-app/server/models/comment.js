@@ -26,4 +26,36 @@ const comments = [
   
 ]
 
+function get(id){
+    return comments.find(comment => comment.id === parseInt(id))
+}
+
+function remove(id){
+    const index = comments.findIndex(comment => comment.id === parseInt(id))
+    comments.splice(index, 1)
+    return comments[0]
+}
+
+function update(id, updatedComment){
+    const index = comments.findIndex(comment => comment.id === parseInt(id))
+    const oldComment = comments[index]
+
+    updatedComment = comments[index] = { ...oldComment, ...updatedComment }
+
+    return updatedComment
+}
+
+function create(newComment){
+    newComment.id = comments.length + 1
+    comments.push(newComment)
+    return newComment
+}
+
+module.exports = {
+    get,
+    remove,
+    update,
+    create
+}
+
 module.exports.comments = comments;
