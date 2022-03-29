@@ -37,4 +37,30 @@ const itinerary = [
     }
 ]
 
+function get(id){
+    return itinerary.find(plan => plan.id === parseInt(id))
+}
+
+function remove(id){
+    const index = itinerary.findIndex(plan => plan.id === parseInt(id))
+    itinerary.splice(index, 1)
+    return itinerary[0]
+}
+
+function update(id, updatedPlan){
+    const index = itinerary.findIndex(plan => plan.id === parseInt(id))
+    const oldPlan = itinerary[index]
+
+    updatedPlan = itinerary[index] = { ...oldPlan, ...updatedPlan }
+
+    return updatedPlan
+}
+
+function create(newPlan){
+    newPlan.id = itinerary.length + 1
+    newPlan.completed = false
+    itinerary.push(newPlan)
+    return newPlan
+}
+
 export default itinerary;

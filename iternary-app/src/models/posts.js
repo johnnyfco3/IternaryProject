@@ -50,4 +50,29 @@ const posts = [
   
 ]
 
+function get(id){
+    return posts.find(post => post.id === parseInt(id))
+}
+
+function remove(id){
+    const index = posts.findIndex(post => post.id === parseInt(id))
+    posts.splice(index, 1)
+    return posts[0]
+}
+
+function update(id, updatedPost){
+    const index = posts.findIndex(post => post.id === parseInt(id))
+    const oldPost = posts[index]
+
+    updatedPost = posts[index] = { ...oldPost, ...updatedPost }
+
+    return updatedPost
+}
+
+function create(newPost){
+    newPost.id = posts.length + 1
+    posts.push(newPost)
+    return newPost
+}
+
 export default posts;

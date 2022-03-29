@@ -41,4 +41,29 @@ const adventures = [
     }
 ]
 
+function get(id){
+    return adventures.find(location => location.id === parseInt(id))
+}
+
+function remove(id){
+    const index = adventures.findIndex(location => location.id === parseInt(id))
+    adventures.splice(index, 1)
+    return adventures[0]
+}
+
+function update(id, updatedLocation){
+    const index = adventures.findIndex(location => location.id === parseInt(id))
+    const oldLocation = adventures[index]
+
+    updatedLocation = adventures[index] = { ...oldLocation, ...updatedLocation }
+
+    return updatedLocation
+}
+
+function create(newLocation){
+    newLocation.id = adventures.length + 1
+    adventures.push(newLocation)
+    return newLocation
+}
+
 export default adventures;

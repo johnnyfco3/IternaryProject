@@ -50,4 +50,29 @@ const stops = [
   
 ]
 
+function get(id){
+    return stops.find(stop => stop.id === parseInt(id))
+}
+
+function remove(id){
+    const index = stops.findIndex(stop => stop.id === parseInt(id))
+    stops.splice(index, 1)
+    return stops[0]
+}
+
+function update(id, updatedStop){
+    const index = stops.findIndex(stop => stop.id === parseInt(id))
+    const oldStop = stops[index]
+
+    updatedStop = stops[index] = { ...oldStop, ...updatedStop }
+
+    return updatedStop
+}
+
+function create(newStop){
+    newStop.id = stops.length + 1
+    stops.push(newStop)
+    return newStop
+}
+
 export default stops;

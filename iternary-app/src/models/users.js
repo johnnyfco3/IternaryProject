@@ -31,4 +31,29 @@ const users = [
     },
 ]
 
+function get(id){
+    return users.find(user => user.id === parseInt(id))
+}
+
+function remove(id){
+    const index = users.findIndex(user => user.id === parseInt(id))
+    users.splice(index, 1)
+    return users[0]
+}
+
+function update(id, updatedUser){
+    const index = users.findIndex(user => user.id === parseInt(id))
+    const oldUser = users[index]
+
+    updatedUser = users[index] = { ...oldUser, ...updatedUser }
+
+    return updatedUser
+}
+
+function create(newUser){
+    newUser.id = users.length + 1
+    users.push(newUser)
+    return newUser
+}
+
 export default users;
