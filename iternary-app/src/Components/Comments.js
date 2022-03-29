@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import users from "../models/users";
 import session from "../service/session";
+import UserImage from "../Images/blank-profile-picture-gdf604cfb6_1280.png"
 
 export function Comments({comment, id, index, removeComment}) {
 
@@ -19,7 +20,7 @@ export function Comments({comment, id, index, removeComment}) {
                 <></>
         )}
         <p>
-            <img src={user.pic} alt="Profile Pic" className="img-fluid rounded-circle pe-2"/> {user.firstName} {user.lastName} - <br />
+            <img src={user.pic === "" ? UserImage : user.pic} alt="Profile Pic" className="img-fluid rounded-circle pe-2"/> {user.firstName} {user.lastName} - <br />
             {comment.text}
         </p>
         </>

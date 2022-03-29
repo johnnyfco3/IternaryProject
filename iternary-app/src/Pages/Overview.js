@@ -149,14 +149,14 @@ export function Overview(){
                                 {postComp}
                             </div>
                             <div className="button text-center pb-5">
-                                <Link to={`/add-post/${adventureID}/${id}`}><button className="btn btn-success px-4">New Post</button></Link>
+                                <Link to={`/add-post/${adventureID}/${session.userID}`}><button className="btn btn-success px-4">New Post</button></Link>
                             </div>
                             <div className="comment reveal">
                                 <h3 className="title text-center pt-5">Comments</h3>
                                 {commentSection}
                                 {addComment ? ( 
                                     <div className="add-comment">
-                                        <AddComment adventureID={adventureID} id={id} setAddComment={setAddComment}/>
+                                        <AddComment adventureID={adventureID} id={session.userID} setAddComment={setAddComment}/>
                                         <div className="text-center">
                                             <button className="btn btn-light px-4 mt-3" onClick={toggleAdd}>Cancel</button>
                                         </div>
@@ -186,7 +186,7 @@ export function Overview(){
                                 {commentSection}
                                 {addComment ? ( 
                                     <div className="add-comment">
-                                        <AddComment adventureID={adventureID} id={id} setAddComment={setAddComment}/>
+                                        <AddComment adventureID={adventureID} id={session.userID} setAddComment={setAddComment}/>
                                         <div className="text-center">
                                             <button className="btn btn-light px-4 mt-3" onClick={toggleAdd}>Cancel</button>
                                         </div>
