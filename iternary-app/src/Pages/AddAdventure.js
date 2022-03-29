@@ -38,7 +38,7 @@ export function AddAdventure(){
                     background: newAdventure.background,
                     description: newAdventure.description,
                     link: newAdventure.link,
-                    userID: session.userID
+                    userID: session.user.id
             })
 
             setNewAdventure({
@@ -50,7 +50,7 @@ export function AddAdventure(){
                 link: ""
             })
 
-            navigate(`/history/${session.userID}`)
+            navigate(`/history/${session.user.email}`)
         }
     }
 

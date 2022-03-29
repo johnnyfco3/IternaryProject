@@ -14,7 +14,7 @@ export function Home(){
             <main>
                 <section className="hero">
                     <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Hero"/>
-                    <Introduction id={session.userID}/>
+                    <Introduction email={session.user.email}/>
                 </section>
                 <div className="container">
                     <section className="sections">
@@ -30,7 +30,7 @@ export function Home(){
                                 <div className="card">
                                     <i class="fa-solid fa-map-location-dot py-4"></i>
                                     <h1>Current, Past or Upcoming Travels</h1>
-                                    <Link to={`/history/${session.userID}`}><button className="btn">View</button></Link>
+                                    <Link to={`/history/${session.user.email}`}><button className="btn">View</button></Link>
                                 </div>
                             </div>
                             <div className="col-4">

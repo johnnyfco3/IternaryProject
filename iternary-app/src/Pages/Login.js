@@ -27,7 +27,7 @@ export function Login(){
         
         if(user){
             hasAccount = true;
-            session.Login(user.id)
+            session.Login(user)
         }
         
         if(hasAccount){

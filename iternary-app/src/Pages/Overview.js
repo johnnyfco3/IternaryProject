@@ -17,7 +17,7 @@ import AdventureIntro from "../Components/AdventureIntro";
 
 export function Overview(){
 
-    const {adventureID, id} = useParams()
+    const {adventureID, email} = useParams()
 
     const [location, setLocation] = useState({})
     const [postsList, setPostList] = useState([])
@@ -44,7 +44,7 @@ export function Overview(){
 
     const postComp = postsList.map((post, i) => {
         if(post.adventureID === parseInt(adventureID)){
-            return <Posts post={post} key={i} index={i} id={id} removePost={removePost}/>
+            return <Posts post={post} key={i} index={i} email={email} removePost={removePost}/>
         }
     })
 
@@ -52,7 +52,7 @@ export function Overview(){
         <Slider {...settings} className="pt-3">
             {stopsList.map((stop, i) => {
                 if(stop.adventureID === parseInt(adventureID)){
-                    return <Locations stop={stop} id={id} key={i} index={i} removeStop={removeStop} allActive={allActive} setAllActive={setAllActive}/>
+                    return <Locations stop={stop} email={email} key={i} index={i} removeStop={removeStop} allActive={allActive} setAllActive={setAllActive}/>
                 }
             })}
         </Slider>
@@ -61,7 +61,7 @@ export function Overview(){
         if(comment.adventureID === parseInt(adventureID)){
             return (
                 <div className="comments">
-                    <Comments comment={comment} id={id} index={i} removeComment={removeComment}/>
+                    <Comments comment={comment} email={session.user.email} index={i} removeComment={removeComment}/>
                 </div>
             )
         }
@@ -130,7 +130,7 @@ export function Overview(){
 
                     <FlightInfo adventureID={adventureID}/>
                     
-                    {parseInt(id) === session.userID ? (
+                    {email === session.user.email ? (
                         <>
                         <section className="stops reveal">
                             <div className="d-flex justify-content-between">
@@ -156,7 +156,7 @@ export function Overview(){
                                 {commentSection}
                                 {addComment ? ( 
                                     <div className="add-comment">
-                                        <AddComment adventureID={adventureID} id={session.userID} setAddComment={setAddComment}/>
+                                        <AddComment adventureID={adventureID} email={session.user.email} setAddComment={setAddComment}/>
                                         <div className="text-center">
                                             <button className="btn btn-light px-4 mt-3" onClick={toggleAdd}>Cancel</button>
                                         </div>
@@ -189,7 +189,7 @@ export function Overview(){
                                 {commentSection}
                                 {addComment ? ( 
                                     <div className="add-comment">
-                                        <AddComment adventureID={adventureID} id={session.userID} setAddComment={setAddComment}/>
+                                        <AddComment adventureID={adventureID} email={session.user.email} setAddComment={setAddComment}/>
                                         <div className="text-center">
                                             <button className="btn btn-light px-4 mt-3" onClick={toggleAdd}>Cancel</button>
                                         </div>

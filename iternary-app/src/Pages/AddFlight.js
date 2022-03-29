@@ -6,7 +6,7 @@ import flightInfo from "../models/flights";
 
 export function AddFlight(){
 
-    const {id} = useParams()
+    const {adventureID} = useParams()
 
     const [flight, setFlight] = useState({
         number: "",
@@ -33,7 +33,7 @@ export function AddFlight(){
                 to: flight.to,
                 depart: flight.depart,
                 arrival: flight.arrival,
-                adventureID: parseInt(id)
+                adventureID: parseInt(adventureID)
             })
             setFlight({
                 number: "",

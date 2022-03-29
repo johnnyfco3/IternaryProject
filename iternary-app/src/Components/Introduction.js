@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import session from "../service/session";
 import users from "../models/users";
 
-export function Introduction({id}){
+export function Introduction({email}){
 
     const [user, setUser] = useState({})
 
     useEffect(()=>{
-        const u = users.find(u=> u.id === parseInt(id))
+        const u = users.find(u=> u.email === email)
         if(u){
             setUser(u)
         }
-    }, [id])
+    }, [email])
 
     const today = new Date()
     const hour = today.getHours()
@@ -31,7 +31,7 @@ export function Introduction({id}){
     return( 
         <>
             <div className="top-content text-center pt-4">
-                {parseInt(id) === session.userID ? (
+                {email === session.user.email ? (
                     <>
                     <h2>{determineTime()} {user.firstName}</h2>
                     <blockquote>{user.quote}

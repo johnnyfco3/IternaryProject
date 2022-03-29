@@ -1,7 +1,7 @@
 import React from "react";
 import session from "../service/session";
 
-export function Posts({post, id, removePost, index}){
+export function Posts({post, email, removePost, index}){
     return(
         <div className="col-4 posts">
             <div className="card">
@@ -9,7 +9,7 @@ export function Posts({post, id, removePost, index}){
                     <img src={post.img} alt="Location" />
                 </div>
                 <div className="back">
-                    {parseInt(id) === session.userID ? ( 
+                    {email === session.user.email ? ( 
                         <i class="fa-solid fa-xmark delete" onClick={(e)=> removePost(e, index, post.id)}></i>
                         ) : (
                             <></>

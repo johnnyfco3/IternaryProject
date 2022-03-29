@@ -1,10 +1,10 @@
 const session = {
-    userID: null,
+    user: null,
     Login(user){
-        this.userID = user
+        this.user = user
     },
     Logout(){
-        this.userID = null
+        this.user = null
     }
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import session from "../service/session";
 import Agenda from "./Agenda";
 
-export function Locations({stop, id, removeStop, index, allActive, setAllActive}) {
+export function Locations({stop, email, removeStop, index, allActive, setAllActive}) {
 
     const [active, setActive] = useState(false)
 
@@ -22,7 +22,7 @@ export function Locations({stop, id, removeStop, index, allActive, setAllActive}
                     <img src={stop.img} alt="Location" onClick={toggleActive}/>
                 </div>
                 <div className="back">
-                    {parseInt(id) === session.userID ? ( 
+                    {email === session.user.email ? ( 
                         <i class="fa-solid fa-trash-can delete" onClick={(e)=> removeStop(e, index, stop.id)}></i>
                         ) : (
                             <></>
@@ -30,7 +30,7 @@ export function Locations({stop, id, removeStop, index, allActive, setAllActive}
                     <i className="fa-solid fa-arrow-left flip" onClick={toggleActive}></i>
                     <h3 className="title text-center">Agenda</h3>
                     <div className="agenda mt-5">
-                        <Agenda stop={stop} id={id}/>
+                        <Agenda stop={stop} email={email}/>
                     </div>
                 </div>
             </div>

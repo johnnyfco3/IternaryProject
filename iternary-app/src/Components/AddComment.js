@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import comments from "../models/comments";
 
-export function AddComment({adventureID, id, setAddComment}){
+export function AddComment({adventureID, email, setAddComment}){
 
     const [commentForm, setCommentForm] = useState({
         text: ""
@@ -20,7 +20,7 @@ export function AddComment({adventureID, id, setAddComment}){
             comments.push({
                 id: comments.length + 1,
                 text: commentForm.text,
-                user: parseInt(id),
+                user: email,
                 adventureID: parseInt(adventureID)
             })
 

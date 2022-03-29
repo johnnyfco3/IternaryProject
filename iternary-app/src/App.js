@@ -49,11 +49,11 @@ function App() {
           <Route path="/register" element={<Register />}/>
           <Route element={<ProtectedRoutes />}>
             <Route path="/home" element={<Home />}/>
-            <Route path="/overview/:adventureID/:id" element={<Overview />}/>
-            <Route path="/history/:id" element={<History />}/>
-            <Route path="/history/upcoming/:id" element={<Upcoming date={date} />}/>
-            <Route path="/history/current/:id" element={<Current date={date} />}/>
-            <Route path="/history/past/:id" element={<Past date={date} />}/>
+            <Route path="/overview/:adventureID/:email" element={<Overview />}/>
+            <Route path="/history/:email" element={<History />}/>
+            <Route path="/history/upcoming/:email" element={<Upcoming date={date} />}/>
+            <Route path="/history/current/:email" element={<Current date={date} />}/>
+            <Route path="/history/past/:email" element={<Past date={date} />}/>
             <Route path="/add-adventure" element={<AddAdventure />}/>
             <Route path="/add-post/:adventureID" element={<AddPost />}/>
             <Route path="/add-stop/:adventureID" element={<AddStop />}/>

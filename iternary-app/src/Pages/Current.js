@@ -7,7 +7,7 @@ import Navbar from "../Components/Navbar";
 
 export function Current({date}){
 
-    const {id} = useParams();
+    const {email} = useParams();
     const [adventuresList, setAdventuresList] = useState([])
     
     useEffect(() =>{
@@ -23,8 +23,8 @@ export function Current({date}){
     let navigate = useNavigate();
 
     const currentList = adventuresList.map((trip, i) => {
-            if(trip.startD <= date && trip.endD >= date && trip.userID === parseInt(id)){
-                return <AdventureList trip={trip} id={id} index={i} remove={remove}/>
+            if(trip.startD <= date && trip.endD >= date && trip.user === email){
+                return <AdventureList trip={trip} email={email} index={i} remove={remove}/>
             }
         })
 

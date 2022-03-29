@@ -1,12 +1,12 @@
 const friends = [
     {
         id: 1,
-        userID: 1,
+        user: "example@gmail.com", 
         friends: ["example1@gmail.com"]
     },
     {
         id: 2,
-        userID: 2,
+        user: "example1@gmail.com",
         friends: ["example@gmail.com"]
     }
 ]

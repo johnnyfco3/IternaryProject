@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import itinerary from "../models/agenda";
 import session from "../service/session";
 
-export function Itinerary({item, id, removeAgenda, index}){
+export function Itinerary({item, email, removeAgenda, index}){
 
     const [completed, setCompleted] = useState(item.completed)
 
@@ -15,7 +15,7 @@ export function Itinerary({item, id, removeAgenda, index}){
 
     return (
         <>
-            {parseInt(id) === session.userID ? ( 
+            {email === session.user.email ? ( 
                 <i class="fa-solid fa-xmark delete" onClick={(e)=> removeAgenda(e, index, item.id)}></i>
                 ) : (
                     <></>

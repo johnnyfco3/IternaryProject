@@ -16,7 +16,7 @@ export function AddFriend({setEmails}){
                 return [...prevState, formData]
             })
             
-            const friend = friends.find(friend => friend.userID === session.userID)
+            const friend = friends.find(friend => friend.user === session.user.email)
             friend.friends.push(formData)
                 
             setFormData("")

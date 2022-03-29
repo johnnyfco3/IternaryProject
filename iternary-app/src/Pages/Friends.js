@@ -22,9 +22,9 @@ export function Friends(){
 
     let navigate = useNavigate();
     
-    function handleClick(e, id){
+    function handleClick(e, email){
         e.preventDefault();
-        navigate(`/history/${id}`)
+        navigate(`/history/${email}`)
     }
 
     const list = emails.map((email) => (
@@ -43,7 +43,7 @@ export function Friends(){
             
             <section className="hero">
                     <img src="https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Hero"/>
-                    <Introduction id={session.userID}/>
+                    <Introduction email={session.user.email}/>
             </section>
 
             <main>

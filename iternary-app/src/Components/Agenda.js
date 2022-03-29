@@ -3,7 +3,7 @@ import itinerary from "../models/agenda";
 import session from "../service/session";
 import Itinerary from "./Itinerary";
 
-export function Agenda({stop, id}){
+export function Agenda({stop, email}){
 
     const [itineraryList, setItineraryList] = useState([])
     const [agendaForm, setAgendaForm] = useState({
@@ -19,7 +19,7 @@ export function Agenda({stop, id}){
         if(item.stopID === stop.id){
             return (
                 <div className="plan">
-                    <Itinerary item={item} id={id} index={i} removeAgenda={removeAgenda}/>
+                    <Itinerary item={item} email={email} index={i} removeAgenda={removeAgenda}/>
                 </div>
             )
         }
@@ -64,7 +64,7 @@ export function Agenda({stop, id}){
     return (
         <>
             {agenda}
-            {parseInt(id) === session.userID ? (
+            {email === session.user.email ? (
                 formActive ? (
                 <>
                 <form onSubmit={handleSubmit} className="text-center">
