@@ -149,7 +149,7 @@ export function Overview(){
                                 {postComp}
                             </div>
                             <div className="button text-center pb-5">
-                                <Link to={`/add-post/${adventureID}/${session.userID}`}><button className="btn btn-success px-4">New Post</button></Link>
+                                <Link to={`/add-post/${adventureID}`}><button className="btn btn-success px-4">New Post</button></Link>
                             </div>
                             <div className="comment reveal">
                                 <h3 className="title text-center pt-5">Comments</h3>
@@ -173,7 +173,10 @@ export function Overview(){
                     ) : (
                         <>
                         <section className="stops reveal">
-                            <h1>Planning To Visit</h1>
+                            <div className="d-flex justify-content-between">
+                                <h1>Planning To Visit</h1>
+                                <h4 className="mt-4" onClick={toggleAllActive}>Flip cards to see Itinerary</h4>
+                            </div>
                             {stopComp}
                         </section>
                         <section className="bottom-content reveal">

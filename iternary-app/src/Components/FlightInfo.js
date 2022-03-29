@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Airplane from "../Images/tusik-only-Fde7w9q0sWw-unsplash.jpg";
 import flightInfo from "../models/flights";
 import Flights from "./Flights";
@@ -26,7 +27,11 @@ export function FlightInfo({adventureID}){
                     <div className="flight-content">
                         {flights}
                     </div>
-                    <button className="btn" onClick={toggleFlight}>{flightView ? 'Close' : 'View'}</button>
+                    <div className="d-flex justify-content-between">
+                        <button className="btn left" onClick={toggleFlight}>{flightView ? 'Close' : 'View'}</button>
+                        <Link to={`/add-flight/${adventureID}`}><button className="btn right">Add Flight</button></Link>
+                    </div>
+                    
                 </div>
             </div>
         </section>

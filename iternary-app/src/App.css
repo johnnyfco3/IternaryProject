@@ -471,12 +471,18 @@ html {
 #overview .flight-info .card button {
   position: absolute;
   top: 65%;
-  left: 42%;
-  width: 15%;
   font-size: 1.6rem;
   background-color: antiquewhite;
   transform: translateY(65%);
   transition: 0.5s;
+}
+#overview .flight-info .card .left {
+  left: 30%;
+  width: 15%;
+}
+#overview .flight-info .card .right {
+  right: 30%;
+  width: 20%;
 }
 #overview .flight-info .card button:focus {
   border-color: none;
@@ -691,32 +697,38 @@ html {
 
 /* ADD-ADVENTURE style */
 /* ADD-POST style */
+/* ADD-FLIGHT style */
 
 #add-adventure,
 #add-post,
-#add-stop {
+#add-stop,
+#add-flight {
   background-color: whitesmoke;
   color: black;
 }
 #add-adventure .title,
 #add-post .title,
-#add-stop .title {
+#add-stop .title,
+#add-flight .title {
   font-weight: 600;
 }
 #add-adventure label,
 #add-post label,
-#add-stop label {
+#add-stop label,
+#add-flight label {
   font-size: 1.2rem;
 }
 #add-adventure input,
 #add-post input,
-#add-stop input {
+#add-stop input,
+#add-flight input {
   border-radius: 1rem;
   border-color: black;
 }
 #add-adventure input:focus,
 #add-post input:focus,
-#add-stop input:focus {
+#add-stop input:focus,
+#add-flight input:focus {
   border-color: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -727,7 +739,8 @@ html {
 }
 #add-adventure .button button,
 #add-post .button button,
-#add-stop .button button {
+#add-stop .button button,
+#add-flight .button button {
   font-size: 1.3rem;
   margin-top: 5%;
   background-color: transparent;
@@ -737,7 +750,8 @@ html {
 }
 #add-adventure .button button:hover,
 #add-post .button button:hover,
-#add-stop .button button:hover {
+#add-stop .button button:hover,
+#add-flight .button button:hover {
   background-color: rgb(63, 165, 63);
   border: 2px solid rgb(63, 165, 63);
   transition: 0.3s ease;
