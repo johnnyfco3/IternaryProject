@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import itinerary from "../models/agenda";
+import session from "../service/session";
 import Itinerary from "./Itinerary";
 
 export function Agenda({stop, id}){
@@ -63,7 +64,8 @@ export function Agenda({stop, id}){
     return (
         <>
             {agenda}
-            {formActive ? (
+            {parseInt(id) === session.userID ? (
+                formActive ? (
                 <>
                 <form onSubmit={handleSubmit} className="text-center">
                     <input className="form-control mx-4" id="plan" name="text" value={agendaForm.text} onChange={handleChange}></input>
@@ -76,6 +78,9 @@ export function Agenda({stop, id}){
                 <div className="add-itinerary text-center">
                     <button className="btn btn-light px-4 mt-5" onClick={toggleForm}>Add to Itinerary</button>
                 </div>
+                )
+                ) : (
+                    <></>
                 )
             }
         </>
