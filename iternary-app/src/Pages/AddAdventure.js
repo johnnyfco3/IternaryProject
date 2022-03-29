@@ -66,37 +66,37 @@ export function AddAdventure(){
                         <h1 className="title">Where Are You Heading?</h1>
                     </div>
                     <form className="row g-3 my-1" onSubmit={handleSubmit}>
-                        <h1 className="heading">Location</h1>
                         <div class="col-md-6">
+                            <h1 className="heading">Location</h1>
                             <label htmlFor="location" className="form-label">Continent / Country / State</label>
                             <input type="text" className="form-control" id="location" name="location" value={newAdventure.location} onChange={handleChange} required/>
                         </div>
+                        <div class="col-md-6">
+                        </div>
                         
-                        <div className="date">
-                            <h1 className="heading">Date</h1>
-                            <div className="col-md-6">
-                                <label htmlFor="start" className="form-label">Start Date</label>
-                                <input type="date" className="form-control" id="start" name="startD" value={newAdventure.startD} onChange={handleChange} required/>
-                            </div>
-                            <div className="col-md-6">
-                                <label htmlFor="end" className="form-label">End Date</label>
-                                <input type="date" className="form-control" id="end" name="endD" value={newAdventure.endD} onChange={handleChange} required/>
-                            </div>
+                        <h1 className="heading">Date</h1>
+                        <div className="col-md-6">
+                            <label htmlFor="start" className="form-label">Start Date</label>
+                            <input type="date" className="form-control" id="start" name="startD" value={newAdventure.startD} onChange={handleChange} required/>
+                        </div>
+                        <div className="col-md-6">
+                            <label htmlFor="end" className="form-label">End Date</label>
+                            <input type="date" className="form-control" id="end" name="endD" value={newAdventure.endD} onChange={handleChange} required/>
                         </div>
 
-                        <h1 className="heading">Tell us about the location</h1>
                         <div className="col-12">
+                            <h1 className="heading">Tell us about the location</h1>
                             <textarea id="description" rows={5} cols={100} name="description" value={newAdventure.description} onChange={handleChange} required/>
                         </div>
 
-                        <h1 className="heading">Background Image</h1>
                         <div className="col-6">
+                            <h1 className="heading">Background Image</h1>
                             <label htmlFor="inputState" className="form-label">Enter the URL of image</label>
                             <input type="url" class="form-control" id="inputGroupFile02" name="background" value={newAdventure.background} onChange={handleChange} required/>
                         </div>
 
-                        <h1 className="heading">Google Link of Location</h1>
-                        <div className="col-6">
+                        <div className="col-6 pt-4 mt-4">
+                            <h1 className="heading">Google Link of Location</h1>
                             <input type="url" className="form-control" name="link" value={newAdventure.link} onChange={handleChange} required/>
                         </div>
 

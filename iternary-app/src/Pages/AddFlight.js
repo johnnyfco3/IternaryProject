@@ -17,24 +17,28 @@ export function AddFlight(){
                     
                     <form className="my-1">
                     <div class="row g-3">
-                        <h1 className="heading">Flight Number</h1>
-                        <div className="col-md-4">
+                        <div className="col-md-6">
+                            <h1 className="heading">Flight Number</h1>
                             <input type="text" className="form-control" id="number" name="number" required/>
                         </div>
-                        <h1 className="heading">From</h1>
+                        <div className="col-md-6">
+                        </div>
                         <div className="col-md-4">
+                            <h1 className="heading">From</h1>
                             <input type="text" className="form-control" id="from" name="from" placeholder='Input Airport Abbreviation' required/>
                         </div>
-                        <h1 className="heading">To</h1>
                         <div className="col-md-4">
+                            <h1 className="heading">To</h1>
                             <input type="text" className="form-control" id="to" name="to" placeholder='Input Airport Abbreviation' required/>
                         </div>
-                        <h1 className="heading">Depart Time</h1>
-                        <div className="col-md-2">
+                        <div className="col-md-4">
+                        </div>
+                        <div className="col-md-3">
+                            <h1 className="heading">Depart Time</h1>
                             <input type="time" className="form-control" id="depart" name="depart" required/>
                         </div>
-                        <h1 className="heading">Arrival Time</h1>
-                        <div className="col-md-2">
+                        <div className="col-md-3">
+                            <h1 className="heading">Arrival Time</h1>
                             <input type="time" className="form-control" id="arrival" name="arrival" required/>
                         </div>
                     </div>
