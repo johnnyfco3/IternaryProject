@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link }  from "react-router-dom";
 import session from "../service/session";
 import Agenda from "./Agenda";
 
@@ -16,7 +17,14 @@ export function Locations({stop, email, removeStop, index, allActive, setAllActi
 
     return(
         <div className="locations">
-            <h3 className="text-center">{stop.location}</h3>
+            <div className="locations-header d-flex justify-content-center">
+                <h3 className="text-center">{stop.location}</h3>
+                {email === session.user.email ? ( 
+                        <Link to={`/edit-stops/${stop.id}`}><i className="fa-solid fa-pencil pt-2 px-3"></i></Link>
+                        ) : (
+                            <></>
+                    )}
+            </div>
             <div className={active || allActive ? "card mt-3 mx-2 active" : "card mt-3 mx-2"}>
                 <div className="front">
                     <img src={stop.img} alt="Location" onClick={toggleActive}/>

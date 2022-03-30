@@ -19,6 +19,8 @@ import Past from './Pages/Past';
 import Home from './Pages/Home';
 import AddStop from './Pages/AddStop';
 import AddFlight from './Pages/AddFlight';
+import EditStops from './Pages/EditStops';
+import EditFlights from './Pages/EditFlights';
 
 
 function App() {
@@ -58,6 +60,8 @@ function App() {
             <Route path="/add-post/:adventureID" element={<AddPost />}/>
             <Route path="/add-stop/:adventureID" element={<AddStop />}/>
             <Route path="/add-flight/:adventureID" element={<AddFlight />}/>
+            <Route path="/edit-stops/:stopID" element={<EditStops />}/>
+            <Route path="/edit-flights/:adventureID" element={<EditFlights />}/>
             <Route path="/friends" element={<Friends />}/>
           </Route>
           <Route path="*" element={<NotFound />}/>

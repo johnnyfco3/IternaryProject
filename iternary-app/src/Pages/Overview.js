@@ -128,7 +128,7 @@ export function Overview(){
                         <AdventureIntro location={location}/>
                     </section>
 
-                    <FlightInfo adventureID={adventureID}/>
+                    <FlightInfo adventureID={adventureID} email={email}/>
                     
                     {email === session.user.email ? (
                         <>
