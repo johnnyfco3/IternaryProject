@@ -19,7 +19,6 @@ html {
   opacity: 1;
 }
 /*  NAVBAR Style */
-/*  WELCOMEBAR Style */
 
 #Navbar {
   background-color: rgb(159, 179, 185);
@@ -706,6 +705,13 @@ html {
   background-color: whitesmoke;
   color: black;
 }
+#add-adventure .card,
+#add-post .card,
+#add-stop .card,
+#add-flight .card {
+  border-radius: 1rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
 #add-adventure .title,
 #add-post .title,
 #add-stop .title,
@@ -717,6 +723,12 @@ html {
 #add-stop label,
 #add-flight label {
   font-size: 1.2rem;
+}
+#add-adventure h1,
+#add-post h1,
+#add-stop h1,
+#add-flight h1 {
+  color: rgb(100, 129, 138);
 }
 #add-adventure input,
 #add-post input,

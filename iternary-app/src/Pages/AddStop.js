@@ -47,7 +47,7 @@ export function AddStop(){
             </header>
 
             <div className="container">
-                <main>
+                <main className="card p-4 mt-3">
                     <div className="top-content mt-4 text-center">
                         <h1 className="title">Where Are You Planning on Visiting?</h1>
                     </div>

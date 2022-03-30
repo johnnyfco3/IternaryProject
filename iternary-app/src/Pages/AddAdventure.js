@@ -61,7 +61,7 @@ export function AddAdventure(){
             </header>
 
             <div className="container">
-                <main>
+                <main className="card p-4 mt-3">
                     <div className="top-content mt-4 text-center">
                         <h1 className="title">Where Are You Heading?</h1>
                     </div>

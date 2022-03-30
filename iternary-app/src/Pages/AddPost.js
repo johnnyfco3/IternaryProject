@@ -50,7 +50,7 @@ export function AddPost(){
             </header>
 
             <div className="container">
-                <main>
+                <main className="card p-4 mt-3">
                     <div className="top-content mt-4 text-center">
                         <h1 className="title">Let's Add a New Post</h1>
                     </div>
