@@ -49,7 +49,7 @@ export function AddStop(){
             <div className="container">
                 <main className="card p-4 mt-3">
                     <div className="top-content mt-4 text-center">
-                        <h1 className="title">Where Are You Planning on Visiting?</h1>
+                        <h1 className="title">Where Are You Planning to Visit?</h1>
                     </div>
                     
                     <form className="my-1" onSubmit={handleSubmit}>

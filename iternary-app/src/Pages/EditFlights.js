@@ -46,11 +46,11 @@ export function EditFlights(){
                         </div>
                         <div className="col-md-3">
                             <h1 className="heading">Depart Time</h1>
-                            <input type="time" className="form-control" id="depart" name="depart" placeholder={flight.depart}/>
+                            <input type="text" className="form-control" id="depart" name="depart" placeholder={flight.depart}/>
                         </div>
                         <div className="col-md-3">
                             <h1 className="heading">Arrival Time</h1>
-                            <input type="time" className="form-control" id="arrival" name="arrival" placeholder={flight.arrival}/>
+                            <input type="text" className="form-control" id="arrival" name="arrival" placeholder={flight.arrival}/>
                         </div>
                     </div>
                         <div className="col-12 text-center button">

@@ -36,8 +36,12 @@ export function FlightInfo({adventureID, email}){
                         {flights}
                     </div>
                     <div className="d-flex justify-content-between">
-                        <button className="btn left" onClick={toggleFlight}>{flightView ? 'Close' : 'View'}</button>
-                        <Link to={`/add-flight/${adventureID}`}><button className="btn right">Add Flight</button></Link>
+                        <button className={email === session.user.email ? "btn left" : "btn center"} onClick={toggleFlight}>{flightView ? 'Close' : 'View'}</button>
+                        {email === session.user.email ? ( 
+                            <Link to={`/add-flight/${adventureID}`}><button className="btn right">Add Flight</button></Link>
+                            ) : (
+                                <></>
+                        )}
                     </div>
                     
                 </div>

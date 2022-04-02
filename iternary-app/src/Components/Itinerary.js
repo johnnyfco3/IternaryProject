@@ -22,7 +22,11 @@ export function Itinerary({item, email, removeAgenda, index}){
             )}
             <div className="item">
                 <i className={completed ? "fa-solid fa-circle-check px-2 pt-2 completed" : "fa-regular fa-circle-check px-2 pt-2"}></i>
-                <p className={completed ? 'completed' : ''} onClick={(e) => toggleCompleted(e, item.id)}>{item.text}</p>
+                {email === session.user.email ? (
+                    <p className={completed ? 'completed' : ''} onClick={(e) => toggleCompleted(e, item.id)}>{item.text}</p>
+                ) : (
+                    <p className={completed ? 'completed' : ''}>{item.text}</p>
+                )}
             </div>
         </>
     )
