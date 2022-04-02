@@ -5,7 +5,7 @@ import session from "../service/session"
 export function AdventureList({trip, email, remove, index}){
 
     return (
-        <div className="position col-6">
+        <div className="position col-lg-6">
                 <Link to={`/overview/${trip.id}/${email}`}><div className="card">
                     {email === session.user.email ? (
                         <i class="fa-solid fa-xmark delete" onClick={(e)=> remove(e, index, trip.id)}></i>

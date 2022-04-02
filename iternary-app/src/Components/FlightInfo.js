@@ -21,7 +21,7 @@ export function FlightInfo({adventureID, email}){
 
     return(
         <section className="flight-info d-flex justify-content-center pt-5 reveal">
-            <div className="col-10">
+            <div className="col-lg-10">
                 <div className={`card ${flightView ? 'transform' : ''}`}>
                     <img src={Airplane} alt="Flight Info"/>
                     <div className="flight-header">

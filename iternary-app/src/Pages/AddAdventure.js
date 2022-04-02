@@ -89,13 +89,13 @@ export function AddAdventure(){
                             <textarea id="description" rows={5} cols={100} name="description" value={newAdventure.description} onChange={handleChange} required/>
                         </div>
 
-                        <div className="col-6">
+                        <div className="col-md-6">
                             <h1 className="heading">Background Image</h1>
                             <label htmlFor="inputState" className="form-label">Enter the URL of image</label>
                             <input type="url" class="form-control" id="inputGroupFile02" name="background" value={newAdventure.background} onChange={handleChange} required/>
                         </div>
 
-                        <div className="col-6 pt-4 mt-4">
+                        <div className="col-md-6 pt-4 mt-4">
                             <h1 className="heading">Google Link of Location</h1>
                             <input type="url" className="form-control" name="link" value={newAdventure.link} onChange={handleChange} required/>
                         </div>

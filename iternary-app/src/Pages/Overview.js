@@ -39,7 +39,32 @@ export function Overview(){
         infinite: true,
         centerPadding: "60px",
         slidesToShow: 3,
-        swipeToSlide: true
+        swipeToSlide: true,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
     }
 
     const postComp = postsList.map((post, i) => {
@@ -49,7 +74,7 @@ export function Overview(){
     })
 
     const stopComp =
-        <Slider {...settings} className="pt-3">
+        <Slider {...settings} className="slider pt-3">
             {stopsList.map((stop, i) => {
                 if(stop.adventureID === parseInt(adventureID)){
                     return <Locations stop={stop} email={email} key={i} index={i} removeStop={removeStop} allActive={allActive} setAllActive={setAllActive}/>

@@ -16,7 +16,7 @@ export function FriendsList({user, handleClick, setEmails}){
     }
 
     return (
-        <div className="col-4">
+        <div className="col-lg-4">
             <div className="card shadow-lg mb-4">
                 <i class="fa-solid fa-xmark delete" onClick={(e)=> removeFriends(e, user.email)}></i>
                 <div className="card-img-top text-center pt-1" onClick={(e) => handleClick(e, user.email)}>

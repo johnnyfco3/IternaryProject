@@ -4,7 +4,7 @@ import session from "../service/session";
 
 export function Posts({post, email, removePost, index}){
     return(
-        <div className="col-4 posts">
+        <div className="col-lg-4 posts">
             <div className="card">
                 <div className="front">
                     <img src={post.img} alt="Location" />

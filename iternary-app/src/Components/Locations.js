@@ -20,7 +20,7 @@ export function Locations({stop, email, removeStop, index, allActive, setAllActi
             <div className="locations-header d-flex justify-content-center">
                 <h3 className="text-center">{stop.location}</h3>
                 {email === session.user.email ? ( 
-                        <Link to={`/edit-stops/${stop.id}`}><i className="fa-solid fa-pencil pt-2 px-3"></i></Link>
+                        <Link to={`/edit-stops/${stop.id}`}><i className="fa-solid fa-pencil pt-2 px-3 pencil"></i></Link>
                         ) : (
                             <></>
                     )}
