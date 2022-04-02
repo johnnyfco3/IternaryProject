@@ -14,7 +14,7 @@ export function Friends(){
     const [emails, setEmails] = useState([])
     
     useEffect(()=>{
-        const friend = friends.find(friend => friend.userID === session.userID)
+        const friend = friends.find(friend => friend.user === session.user.email)
         if(friend){
             setEmails(friend.friends)
         }

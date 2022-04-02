@@ -8,9 +8,9 @@ export function Comments({comment, email, index, removeComment}) {
     const [user, setUser] = useState({})
 
     useEffect(() =>{
-        const user = users.find(user => user.email === email)  
+        const user = users.find(user => user.id === comment.user)  
         setUser(user)
-    }, [email])
+    }, [comment])
 
     return (
         <>

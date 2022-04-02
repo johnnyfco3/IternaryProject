@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import comments from "../models/comments";
+import session from "../service/session";
 
-export function AddComment({adventureID, email, setAddComment}){
+export function AddComment({adventureID, setAddComment}){
 
     const [commentForm, setCommentForm] = useState({
         text: ""
@@ -20,7 +21,7 @@ export function AddComment({adventureID, email, setAddComment}){
             comments.push({
                 id: comments.length + 1,
                 text: commentForm.text,
-                user: email,
+                user: session.user.id,
                 adventureID: parseInt(adventureID)
             })
 
