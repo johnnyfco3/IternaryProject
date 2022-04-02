@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import session from "../service/session";
 
 export function Posts({post, email, removePost, index}){
@@ -15,6 +16,11 @@ export function Posts({post, email, removePost, index}){
                             <></>
                     )}
                     <h3 className="title text-center">Caption</h3>
+                    {email === session.user.email ? ( 
+                            <Link to={`/edit-posts/${post.id}`}><i className="fa-solid fa-pencil pt-2 px-3 pencil"></i></Link>
+                            ) : (
+                                <></>
+                        )}
                     <div className="caption pt-5">
                         <p className="text-center">
                             {post.caption}
