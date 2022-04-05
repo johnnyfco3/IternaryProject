@@ -34,10 +34,4 @@ app
         res.send({success: true, error: [], data: friend})
     })
 
-    // PATCH
-    .patch('/:id', (req, res) => {
-        const friend = FriendModel.update(req.params.id, req.body)
-        res.send({success: true, error: [], data: friend})
-    })
-
 module.exports = app;

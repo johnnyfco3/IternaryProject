@@ -44,6 +44,7 @@ function addFriends(id, friend){
 
 function create(newFriend){
     newFriend.id = friends.length + 1
+    newFriend.userID = friends.length + 1
     friends.push(newFriend)
     return newFriend
 }

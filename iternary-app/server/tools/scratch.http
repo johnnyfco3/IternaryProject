@@ -1,0 +1,119 @@
+###
+GET http://localhost:3000/api/users/
+
+###
+GET http://localhost:3000/api/users/1
+
+###
+DELETE  http://localhost:3000/api/users/4
+
+###
+POST http://localhost:3000/api/users/
+Content-Type: application/json
+
+{
+    "firstName": "Mike",
+    "lastName": "Tyson",
+    "birthday": "07-03-2000",
+    "email": "mtyson@gmail.com",
+    "password": "boxing",
+    "quote": "King",
+    "pic": ""
+}
+
+###
+PATCH  http://localhost:3000/api/users/4
+Content-Type: application/json
+
+{
+    "lastName": "Jackson",
+    "password": "testing"
+}
+
+###
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+    "email": "mtyson@gmail.com",
+    "password": "boxing"
+}
+
+
+###
+GET http://localhost:3000/api/posts/
+
+###
+GET http://localhost:3000/api/posts/1
+
+###
+DELETE  http://localhost:3000/api/posts/9
+
+###
+POST http://localhost:3000/api/posts/
+Content-Type: application/json
+
+{
+    "img": "https://images.unsplash.com/photo-1516098455581-e8d9a8f8d7e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+    "caption": "Testing",
+    "adventureID": 2
+}
+
+###
+PATCH  http://localhost:3000/api/posts/9
+Content-Type: application/json
+
+{
+    "caption": "updated caption"
+}
+
+
+
+###
+GET http://localhost:3000/api/friends/
+
+###
+GET http://localhost:3000/api/friends/3
+
+###
+DELETE  http://localhost:3000/api/friends/3
+
+###
+POST http://localhost:3000/api/friends/3/example1@gmail.com
+
+###
+POST http://localhost:3000/api/friends/
+Content-Type: application/json
+
+{
+    "friends": ["example@gmail.com"]
+}
+
+
+
+###
+GET http://localhost:3000/api/stops/
+
+###
+GET http://localhost:3000/api/stops/3
+
+###
+DELETE  http://localhost:3000/api/stops/4
+
+###
+POST http://localhost:3000/api/stops/
+Content-Type: application/json
+
+{
+    "location": "New York",
+    "img": "https://images.unsplash.com/photo-1582436416930-f533b50a7cd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80",
+    "adventureID": 5
+}
+
+###
+PATCH  http://localhost:3000/api/stops/9
+Content-Type: application/json
+
+{
+    "adventureID": 1
+}
