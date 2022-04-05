@@ -51,13 +51,17 @@ const posts = [
 ]
 
 function get(id){
-    return posts.find(post => post.id === parseInt(id))
+    const post = posts.find(post => post.id === parseInt(id))
+    if(!post){
+        throw { statusCode: 404, msg: 'Post not found' }
+    }
+    return { ...post }
 }
 
 function remove(id){
     const index = posts.findIndex(post => post.id === parseInt(id))
     posts.splice(index, 1)
-    return posts[0]
+    return { ...posts[0] }
 }
 
 function update(id, updatedPost){
@@ -66,7 +70,7 @@ function update(id, updatedPost){
 
     updatedPost = posts[index] = { ...oldPost, ...updatedPost }
 
-    return updatedPost
+    return { ...updatedPost }
 }
 
 function create(newPost){

@@ -20,13 +20,17 @@ const flightInfo = [
 ]
 
 function get(id){
-    return flightInfo.find(flight => flight.id === parseInt(id))
+    const flight = flightInfo.find(flight => flight.id === parseInt(id))
+    if(!flight){
+        throw { status: 404, msg: 'Flight not found' }
+    }
+    return { ...flight }
 }
 
 function remove(id){
     const index = flightInfo.findIndex(flight => flight.id === parseInt(id))
     flightInfo.splice(index, 1)
-    return flightInfo[0]
+    return { ...flightInfo[0] }
 }
 
 function update(id, updatedFlight){
@@ -35,7 +39,7 @@ function update(id, updatedFlight){
 
     updatedFlight = flightInfo[index] = { ...oldFlight, ...updatedFlight }
 
-    return updatedFlight
+    return { ...updatedFlight }
 }
 
 function create(newFlight){

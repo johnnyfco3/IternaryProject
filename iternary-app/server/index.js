@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require('express')
 
 const usersController = require('./controllers/users')
@@ -10,20 +11,31 @@ const commentsController = require('./controllers/comments')
 const adventuresController = require('./controllers/adventures')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app
-  .get('/', (req, res) => {
+  .use('/', express.static(__dirname + '/../public'))
+  .use(express.json())
+
+  .get('/api/', (req, res) => {
     res.send('Hello World!')
   })
-  .use('/users', usersController)
-  .use('/posts', postsController)
-  .use('/friends', friendsController)
-  .use('/stops', stopsController)
-  .use('/flights', flightsController)
-  .use('/agendas', agendasController)
-  .use('/comments', commentsController)
-  .use('/adventures', adventuresController)
+
+  .use('/api/users', usersController)
+  .use('/api/posts', postsController)
+  .use('/api/friends', friendsController)
+  .use('/api/stops', stopsController)
+  .use('/api/flights', flightsController)
+  .use('/api/agendas', agendasController)
+  .use('/api/comments', commentsController)
+  .use('/api/adventures', adventuresController)
+
+  .use((err, req, res, next) => {
+    console.error(err)
+    res .status(err.statusCode || 500)
+        .send({ errors: [ err.message ?? 'Internal Server Error' ] })
+  })
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)

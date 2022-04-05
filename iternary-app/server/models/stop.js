@@ -51,13 +51,17 @@ const stops = [
 ]
 
 function get(id){
-    return stops.find(stop => stop.id === parseInt(id))
+    const stop = stops.find(stop => stop.id === parseInt(id))
+    if(!stop){
+        throw { status: 404, msg: 'Stop not found' }
+    }
+    return { ...stop }
 }
 
 function remove(id){
     const index = stops.findIndex(stop => stop.id === parseInt(id))
     stops.splice(index, 1)
-    return stops[0]
+    return { ...stops[0] }
 }
 
 function update(id, updatedStop){
@@ -66,7 +70,7 @@ function update(id, updatedStop){
 
     updatedStop = stops[index] = { ...oldStop, ...updatedStop }
 
-    return updatedStop
+    return { ...updatedStop }
 }
 
 function create(newStop){

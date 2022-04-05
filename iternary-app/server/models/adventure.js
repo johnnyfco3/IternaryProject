@@ -1,3 +1,5 @@
+const UserModel = require('./user')
+
 const adventures = [
     { 
         id: 1, 
@@ -41,14 +43,20 @@ const adventures = [
     }
 ]
 
+const includeUser = (adventure) => ({ ...adventure, user: UserModel.get(adventure.userID)})
+
 function get(id){
-    return adventures.find(location => location.id === parseInt(id))
+    const adventure = adventures.find(location => location.id === parseInt(id))
+    if(!adventure){
+        throw { status: 404, message: `Adventure with id ${id} not found` }
+    }
+    return includeUser(adventure)
 }
 
 function remove(id){
     const index = adventures.findIndex(location => location.id === parseInt(id))
-    adventures.splice(index, 1)
-    return adventures[0]
+    const adventure = adventures.splice(index, 1)
+    return includeUser(adventure[0])
 }
 
 function update(id, updatedLocation){
@@ -57,7 +65,7 @@ function update(id, updatedLocation){
 
     updatedLocation = adventures[index] = { ...oldLocation, ...updatedLocation }
 
-    return updatedLocation
+    return includeUser(updatedLocation)
 }
 
 function create(newLocation){

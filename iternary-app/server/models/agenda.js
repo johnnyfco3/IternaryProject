@@ -1,3 +1,5 @@
+const StopModel = require('./stop')
+
 const itinerary = [
     {
         id: 1,
@@ -37,14 +39,20 @@ const itinerary = [
     }
 ]
 
+const includeStop = (plan) => ({ ...plan, stop: StopModel.get(plan.stopID)})
+
 function get(id){
-    return itinerary.find(plan => plan.id === parseInt(id))
+    const plan = itinerary.find(plan => plan.id === parseInt(id))
+    if(!plan){
+        throw { status: 404, msg: 'Plan not found' }
+    }
+    return includeStop(plan)
 }
 
 function remove(id){
     const index = itinerary.findIndex(plan => plan.id === parseInt(id))
     itinerary.splice(index, 1)
-    return itinerary[0]
+    return includeStop(itinerary[0])
 }
 
 function update(id, updatedPlan){
@@ -53,7 +61,7 @@ function update(id, updatedPlan){
 
     updatedPlan = itinerary[index] = { ...oldPlan, ...updatedPlan }
 
-    return updatedPlan
+    return includeStop(updatedPlan)
 }
 
 function create(newPlan){

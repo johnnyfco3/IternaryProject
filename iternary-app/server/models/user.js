@@ -32,22 +32,35 @@ const users = [
 ]
 
 function get(id){
-    return users.find(u => u.id === parseInt(id))
+    const user = users.find(user => user.id === parseInt(id))
+    if(!user){
+        throw { statusCode: 404, message: 'User not Found' }
+    }
+    return { ...user, password: undefined }
+}
+
+function getByEmail(email){
+    const user = users.find(user => user.email === email)
+    if(!user){
+        throw { statusCode: 404, message: 'User not Found' }
+    }
+    return { ...user, password: undefined }
 }
 
 function remove(id){
-    const index = users.findIndex(u => u.id === parseInt(id))
+    const index = users.findIndex(user => user.id === parseInt(id))
     users.splice(index, 1)
-    return users[0]
+
+    return { ...users[0], password: undefined }
 }
 
 function update(id, updatedUser){
-    const index = users.findIndex(u => u.id === parseInt(id))
+    const index = users.findIndex(user => user.id === parseInt(id))
     const oldUser = users[index]
 
     updatedUser = users[index] = { ...oldUser, ...updatedUser }
 
-    return updatedUser
+    return { ...updatedUser, password: undefined }
 }
 
 function create(newUser){
@@ -56,11 +69,25 @@ function create(newUser){
     return newUser
 }
 
+function login(email, password){
+    const user = users.find(user => user.email === email)
+    if(!user){
+        throw { status: 404, message: 'User not Found' }
+    }
+    if(user.password !== password){
+        throw { status: 401, message: 'Invalid Password' }
+    }
+    return { ...user, password: undefined }
+}
+
 module.exports = {
     get,
     remove,
     update,
-    create
+    create,
+    getByEmail,
+    login,
+    get list(){
+        return users.map(user => ({ ...user, password: undefined }))
+    }
 }
-
-module.exports.users = users

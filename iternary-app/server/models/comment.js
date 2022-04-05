@@ -1,3 +1,5 @@
+const UserModel = require('./user')
+
 const comments = [
     { 
         id: 1,
@@ -26,14 +28,20 @@ const comments = [
   
 ]
 
+const includeUser = (comment) => ({ ...comment, user: UserModel.get(comment.user)})
+
 function get(id){
-    return comments.find(comment => comment.id === parseInt(id))
+    const comment = comments.find(comment => comment.id === parseInt(id))
+    if(!comment){
+        throw { status: 404, msg: 'Comment not found' }
+    }
+    return includeUser(comment)
 }
 
 function remove(id){
     const index = comments.findIndex(comment => comment.id === parseInt(id))
     comments.splice(index, 1)
-    return comments[0]
+    return includeUser(comments[0])
 }
 
 function update(id, updatedComment){
@@ -42,7 +50,7 @@ function update(id, updatedComment){
 
     updatedComment = comments[index] = { ...oldComment, ...updatedComment }
 
-    return updatedComment
+    return includeUser(updatedComment)
 }
 
 function create(newComment){
