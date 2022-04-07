@@ -1,5 +1,6 @@
 require("dotenv").config()
 const express = require('express')
+const path = require('path')
 
 const usersController = require('./controllers/users')
 const postsController = require('./controllers/posts')
@@ -14,8 +15,15 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app
-  .use('/', express.static(__dirname + '/../public'))
+
+  .use('/', express.static(path.join(__dirname, '/../build/')))
   .use(express.json())
+  .use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");  
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");  
+    next();
+  })
 
   .get('/api/', (req, res) => {
     res.send('Hello World!')
@@ -36,6 +44,7 @@ app
         .send({ errors: [ err.message ?? 'Internal Server Error' ] })
   })
 
+  .get('*', (req, res) => res.sendFile(path.join(__dirname, '../build/index.html')) )
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)

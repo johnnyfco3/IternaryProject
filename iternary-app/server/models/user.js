@@ -69,7 +69,7 @@ function create(newUser){
     return newUser
 }
 
-function login(email, password){
+async function login(email, password){
     const user = users.find(user => user.email === email)
     if(!user){
         throw { status: 404, message: 'User not Found' }

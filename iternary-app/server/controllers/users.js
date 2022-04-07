@@ -23,9 +23,11 @@ app
         const newUser = UserModel.create(req.body)
         res.status(CREATED_STATUS).send(newUser)
     })
-    .post('/login', (req, res) => {
-        const user = UserModel.login(req.body.email, req.body.password)
-        res.send({success: true, error: [], data: user})
+    .post('/login', (req, res, next) => {
+        UserModel.login(req.body.email, req.body.password)
+        .then(user => {
+            res.send({success: true, error: [], data: user})
+        }).catch(next)
     })
 
     //DELETE
