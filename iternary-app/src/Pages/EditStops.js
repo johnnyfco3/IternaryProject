@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import stops from "../models/stops";
+import { getById } from "../service/stops";
 
 export function EditStops(){
 
@@ -10,8 +10,9 @@ export function EditStops(){
     const [stop, setStop] = useState({})
 
     useEffect(() => {
-        const location = stops.find(stop => stop.id === parseInt(stopID))
-        setStop(location)
+        getById(parseInt(stopID)).then(data => {
+            setStop(data)
+        })
     }, [stopID])
 
     return(

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import stops from "../models/stops";
+import { createStop } from "../service/stops";
 
 export function AddStop(){
 
@@ -11,6 +11,7 @@ export function AddStop(){
     const [newStop, setNewStop] = useState({
         location: "",
         img: "",
+        adventureID: parseInt(adventureID),
     })
 
     let navigate = useNavigate();
@@ -22,21 +23,20 @@ export function AddStop(){
         }))
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
-        stops.push({
-            id: stops.length + 1,
-            location: newStop.location,
-            img: newStop.img,
-            adventureID: parseInt(adventureID)
-        })
-
-        setNewStop({
-            location: "",
-            img: "",
-        })
-
-        navigate(-1)
+        try{
+            await createStop(newStop)
+            setNewStop({
+                location: "",
+                img: "",
+                adventureID: parseInt(adventureID),
+            })
+            navigate(-1)
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
 

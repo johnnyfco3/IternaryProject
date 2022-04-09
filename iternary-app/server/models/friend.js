@@ -3,12 +3,12 @@ const UserModel = require('./user')
 const friends = [
     {
         id: 1,
-        userID: 1,
+        user: "example@gmail.com",
         friends: ["example1@gmail.com"]
     },
     {
         id: 2,
-        userID: 2,
+        user: "example1@gmail.com",
         friends: ["example@gmail.com"]
     }
 ]
@@ -17,6 +17,14 @@ const includeUser = (friend) => ({ ...friend, user: UserModel.get(friend.userID)
 
 function get(id){
     const friend = friends.find(friend => friend.id === parseInt(id))
+    if(!friend){
+        throw { status: 404, msg: 'Friend not found' }
+    }
+    return includeUser(friend)
+}
+
+function getByUser(user){
+    const friend = friends.find(friend => friend.user === user)
     if(!friend){
         throw { status: 404, msg: 'Friend not found' }
     }
@@ -51,6 +59,7 @@ function create(newFriend){
 
 module.exports = {
     get,
+    getByUser,
     remove,
     removeFriend,
     create,

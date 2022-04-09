@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import session from "../service/session";
-import friends from "../models/friends";
-import users from "../models/users";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import FriendsList from "../Components/FriendsList";
 import AddFriend from "../Components/AddFriend";
 import Introduction from "../Components/Introduction";
+import { getByUser } from "../service/friend";
+import { getUsers } from "../service/users";
 
 export function Friends(){
 
     const [emails, setEmails] = useState([])
+    const [users, setUsers] = useState([])
     
     useEffect(()=>{
-        const friend = friends.find(friend => friend.user === session.user.email)
-        if(friend){
-            setEmails(friend.friends)
-        }
+        getByUser(session.user.email).then(data => {
+            setEmails(data.friends)
+        })
+        getUsers().then(data => {
+            setUsers(data)
+        })
     }, [])
 
     let navigate = useNavigate();

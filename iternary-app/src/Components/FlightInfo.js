@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Airplane from "../Images/tusik-only-Fde7w9q0sWw-unsplash.jpg";
-import flightInfo from "../models/flights";
+import { getByAdventure } from "../service/flights";
 import session from "../service/session";
 import Flights from "./Flights";
 
 export function FlightInfo({adventureID, email}){
 
     const [flightView, setFlightView] = useState(false)
+    const [flightInfo, setFlightInfo] = useState([])
+
+    useEffect(() => {
+        getByAdventure(parseInt(adventureID)).then(data => {
+            setFlightInfo(data)
+        })
+    }, [])
 
     function toggleFlight(){
         setFlightView(prevState => !prevState)
     }
 
     const flights = flightInfo.map((flight, i) => {
-        if(flight.adventureID === parseInt(adventureID)){
-            return <Flights flight={flight} key={i}/>
-        }
+        return <Flights flight={flight} key={i}/>
     })
 
     return(

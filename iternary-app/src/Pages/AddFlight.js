@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import flightInfo from "../models/flights";
+import { createFlight } from "../service/flights";
+
 
 export function AddFlight(){
 
@@ -14,6 +15,7 @@ export function AddFlight(){
         to: "",
         depart: "",
         arrival: "",
+        adventureID: parseInt(adventureID)
     })
 
     function handleChange(event){
@@ -23,25 +25,23 @@ export function AddFlight(){
         }))
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
         if(flight){
-            flightInfo.push({
-                id: flightInfo.length + 1,
-                number: flight.number,
-                from: flight.from,
-                to: flight.to,
-                depart: flight.depart,
-                arrival: flight.arrival,
-                adventureID: parseInt(adventureID)
-            })
-            setFlight({
-                number: "",
-                from: "",
-                to: "",
-                depart: "",
-                arrival: "",
-            })
+            try{
+                await createFlight(flight)
+                setFlight({
+                    number: "",
+                    from: "",
+                    to: "",
+                    depart: "",
+                    arrival: "",
+                    adventureID: parseInt(adventureID)
+                })
+            }
+            catch(err){
+                console.log(err)
+            }
         }
     }
 

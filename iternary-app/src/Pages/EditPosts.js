@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import posts from "../models/posts";
+import { getById } from "../service/posts";
 
 export function EditPosts(){
 
@@ -10,8 +10,9 @@ export function EditPosts(){
     const [post, setPost] = useState({})
 
     useEffect(() => {
-        const post = posts.find(post => post.id === parseInt(postID))
-        setPost(post)
+        getById(parseInt(postID)).then(data => {
+            setPost(data)
+        })
     }, [postID])
 
     return (

@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-import itinerary from "../models/agenda";
+import { updateAgenda } from "../service/agendas";
 import session from "../service/session";
 
 export function Itinerary({item, email, removeAgenda, index}){
 
     const [completed, setCompleted] = useState(item.completed)
 
-    function toggleCompleted(e, id){
-        const plan = itinerary.find(plan => plan.id === id)
-        plan.completed = !plan.completed
-
-        setCompleted(prevState => !prevState)
+    async function toggleCompleted(e, id){
+        e.preventDefault();
+        const data = {
+            completed: !completed,
+        }
+        try{
+            await updateAgenda(id, data);
+            setCompleted(prevState => !prevState);
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
     return (

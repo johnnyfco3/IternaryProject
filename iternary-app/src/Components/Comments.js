@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import users from "../models/users";
 import session from "../service/session";
 import UserImage from "../Images/blank-profile-picture-gdf604cfb6_1280.png"
+import { getById } from "../service/users";
 
 export function Comments({comment, email, index, removeComment}) {
 
     const [user, setUser] = useState({})
 
     useEffect(() =>{
-        const user = users.find(user => user.id === comment.user)  
-        setUser(user)
+        getById(comment.user).then(data => {
+            setUser(data)
+        })
     }, [comment])
 
     return (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import posts from "../models/posts";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer"
+import { createPost } from "../service/posts";
 
 export function AddPost(){
 
@@ -11,7 +11,8 @@ export function AddPost(){
     const [newPost, setNewPost] = useState(
         {
             post: "",
-            caption: ""
+            caption: "",
+            adventureID: parseInt(adventureID),
         }
     )
 
@@ -25,22 +26,20 @@ export function AddPost(){
 
     let navigate = useNavigate();
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
-        posts.push({
-                id: posts.length + 1,
-                img: newPost.post,
-                caption: newPost.caption,
-                adventureID: parseInt(adventureID)
-            })
-        
-        setNewPost(
-            {
+        try{
+            await createPost(newPost)
+            setNewPost({
                 post: "",
-                caption: ""
-            }
-        )
-        navigate(-1)
+                caption: "",
+                adventureID: parseInt(adventureID),
+            })
+            navigate(-1)
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
     return (

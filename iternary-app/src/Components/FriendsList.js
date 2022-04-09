@@ -1,18 +1,19 @@
 import React from "react";
 import UserImage from "../Images/blank-profile-picture-gdf604cfb6_1280.png"
-import friends from "../models/friends";
+import { removeFriend } from "../service/friends";
 import session from "../service/session";
 
 export function FriendsList({user, handleClick, setEmails}){
 
-    function removeFriends(e, email){
+    async function removeFriends(e, email){
         e.preventDefault();
-        const friend = friends.find(friend => friend.userID === session.userID)
-        const index = friend.friends.indexOf(email)
-        friend.friends.splice(index, 1)
-        setEmails(prevState => {
-            return prevState.filter(e => e !== email)
-        })
+        try{
+            await removeFriend(session.user.id, email);
+            setEmails(prevState => prevState.filter(item => item !== email))
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
     return (

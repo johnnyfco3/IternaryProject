@@ -1,7 +1,16 @@
+import { login } from './users'
+
 const session = {
     user: null,
-    Login(user){
-        this.user = user
+    async Login(user){
+        try{
+            const response = await login(user.email, user.password)
+            session.user = response
+            return response
+        }
+        catch(err){
+            console.log(err)
+        }
     },
     Logout(){
         this.user = null

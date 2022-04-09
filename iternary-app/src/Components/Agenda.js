@@ -1,28 +1,33 @@
 import React, { useEffect, useState } from "react";
-import itinerary from "../models/agenda";
+import { createAgenda, getAgendas, getByStopID } from "../service/agendas";
 import session from "../service/session";
 import Itinerary from "./Itinerary";
 
 export function Agenda({stop, email}){
 
-    const [itineraryList, setItineraryList] = useState([])
+    const [itinerary, setItinerary] = useState([])
     const [agendaForm, setAgendaForm] = useState({
         text: "",
+        stopID: stop.id,
     })
     const [formActive, setFormActive] = useState(false)
+    const [itineraryList, setItineraryList] = useState([])
 
     useEffect(() => {
-        setItineraryList(itinerary)
-    }, [])
+        getByStopID(stop.id).then(data => {
+            setItinerary(data)
+        })
+        getAgendas().then(data => {
+            setItineraryList(data)
+        })
+    }, [stop])
 
-    const agenda = itineraryList.map((item, i) => {
-        if(item.stopID === stop.id){
-            return (
-                <div className="plan">
-                    <Itinerary item={item} email={email} index={i} removeAgenda={removeAgenda}/>
-                </div>
-            )
-        }
+    const agenda = itinerary.map((item, i) => {
+        return (
+            <div className="plan">
+                <Itinerary item={item} email={email} index={i} removeAgenda={removeAgenda}/>
+            </div>
+        )
     })
 
     function handleChange(e){
@@ -32,22 +37,20 @@ export function Agenda({stop, email}){
         }))
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
         if(agendaForm){
-            itinerary.push({
-                id: itinerary.length + 1,
-                text: agendaForm.text,
-                completed: false,
-                stopID: stop.id
-            })
-            setItineraryList(prevState => [...prevState, agendaForm])
-
-            setAgendaForm({
-                text: ""
-            })
-
-            setFormActive(false)
+            try{
+                const res = await createAgenda(agendaForm);
+                setAgendaForm({
+                    text: "",
+                    stopID: stop.id,
+                })
+                setItineraryList(prevState => [...prevState, res])
+                setFormActive(false)
+            }catch(err){
+                console.log(err)
+            }
         }
     }
 

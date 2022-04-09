@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import users from '../models/users'
 import session from "../service/session";
 
 export function Login(){
@@ -19,26 +18,18 @@ export function Login(){
     }
 
     let navigate = useNavigate()
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
-
-        let hasAccount = false;
-        const user = users.find(user => user.email === login.email && user.password === login.password)
-        
-        if(user){
-            hasAccount = true;
-            session.Login(user)
-        }
-        
-        if(hasAccount){
+        try{
+            await session.Login(login)
             setLogin({
                 email: "",
-                password: ""
+                password: "",
             })
-            navigate(`/home`)
+            navigate("/home")
         }
-        else{
-            alert("Account not found")
+        catch(err){
+            console.log(err)
         }
     }
 

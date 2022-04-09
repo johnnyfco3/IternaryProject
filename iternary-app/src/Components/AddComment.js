@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import comments from "../models/comments";
+import { createComment } from "../service/comments";
 import session from "../service/session";
 
 export function AddComment({adventureID, setAddComment}){
 
     const [commentForm, setCommentForm] = useState({
-        text: ""
+        text: "",
+        user: session.user.id,
+        adventureID: parseInt(adventureID),
     })
 
     function handleChange(event){
@@ -15,21 +17,21 @@ export function AddComment({adventureID, setAddComment}){
         }))
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
         if(commentForm){
-            comments.push({
-                id: comments.length + 1,
-                text: commentForm.text,
-                user: session.user.id,
-                adventureID: parseInt(adventureID)
-            })
-
-            setCommentForm({
-                text: ""
-            })
-
-            setAddComment(false)
+            try{
+                await createComment(commentForm);
+                setCommentForm({
+                    text: "",
+                    user: session.user.id,
+                    adventureID: parseInt(adventureID),
+                })
+                setAddComment(false)
+            }
+            catch(err){
+                console.log(err)
+            }
         }
     }
 

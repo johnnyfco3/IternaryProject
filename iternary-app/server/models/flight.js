@@ -27,6 +27,14 @@ function get(id){
     return { ...flight }
 }
 
+function getByAdventure(adventureID){
+    const flight = flightInfo.find(flight => flight.adventureID === parseInt(adventureID))
+    if(!flight){
+        throw { status: 404, msg: 'Flight not found' }
+    }
+    return { ...flight }
+}
+
 function remove(id){
     const index = flightInfo.findIndex(flight => flight.id === parseInt(id))
     flightInfo.splice(index, 1)
@@ -52,7 +60,8 @@ module.exports = {
     get,
     remove,
     update,
-    create
+    create,
+    getByAdventure
 }
 
 module.exports.flightInfo = flightInfo;

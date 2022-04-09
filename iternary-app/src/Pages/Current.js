@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import adventures from "../models/adventures";
 import AdventureList from "../Components/AdventureList";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
+import { getAdventures, removeAdventure } from "../service/adventures";
 
 export function Current({date}){
 
@@ -11,13 +11,20 @@ export function Current({date}){
     const [adventuresList, setAdventuresList] = useState([])
     
     useEffect(() =>{
-        setAdventuresList(adventures)
+        getAdventures().then(data => {
+            setAdventuresList(data)
+        })
     },[])
 
-    function remove(e, i, id){
+    async function remove(e, id){
         e.stopPropagation();
-        adventures.splice(i,1)
-        setAdventuresList(prevState => prevState.filter(loc => loc.id !== id))
+        try{
+            await removeAdventure(id)
+            setAdventuresList(adventuresList.filter(adventure => adventure.id !== id))
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
     let navigate = useNavigate();

@@ -49,6 +49,14 @@ function get(id){
     return includeStop(plan)
 }
 
+function getByStopID(id){
+    const plan = itinerary.find(plan => plan.stopID === parseInt(id))
+    if(!plan){
+        throw { status: 404, msg: 'Plan not found' }
+    }
+    return includeStop(plan)
+}
+
 function remove(id){
     const index = itinerary.findIndex(plan => plan.id === parseInt(id))
     itinerary.splice(index, 1)
@@ -75,7 +83,8 @@ module.exports = {
     get,
     remove,
     update,
-    create
+    create,
+    getByStopID
 }
 
 module.exports.itinerary = itinerary;

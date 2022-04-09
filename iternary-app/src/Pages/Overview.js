@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
-import adventures from '../models/adventures';
-import posts from '../models/posts';
-import comments from '../models/comments';
-import stops from "../models/stops";
 import session from "../service/session";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -14,6 +10,10 @@ import Comments from "../Components/Comments";
 import Locations from "../Components/Locations";
 import AddComment from "../Components/AddComment";
 import AdventureIntro from "../Components/AdventureIntro";
+import { getById } from "../service/adventures";
+import { getPosts, removePost } from "../service/posts";
+import { getComments, removeComment } from "../service/comments";
+import { getStops, removeStop } from "../service/stops";
 
 export function Overview(){
 
@@ -27,11 +27,18 @@ export function Overview(){
     const [allActive, setAllActive] = useState(false)
 
     useEffect(() => {
-        const trip = adventures.find(trip => trip.id === parseInt(adventureID))
-        setLocation(trip)
-        setPostList(posts)
-        setStopsList(stops)
-        setCommentsList(comments)
+        getById(parseInt(adventureID)).then(data => {
+            setLocation(data.location)
+        })
+        getPosts().then(data => {
+            setPostList(data)
+        })
+        getComments().then(data => {
+            setCommentsList(data)
+        })
+        getStops().then(data => {
+            setStopsList(data)
+        })
     }, [adventureID])
 
     const settings = {
@@ -69,7 +76,7 @@ export function Overview(){
 
     const postComp = postsList.map((post, i) => {
         if(post.adventureID === parseInt(adventureID)){
-            return <Posts post={post} key={i} index={i} email={email} removePost={removePost}/>
+            return <Posts post={post} key={i} index={i} email={email} removePost={removePosts}/>
         }
     })
 
@@ -77,7 +84,7 @@ export function Overview(){
         <Slider {...settings} className="slider pt-3">
             {stopsList.map((stop, i) => {
                 if(stop.adventureID === parseInt(adventureID)){
-                    return <Locations stop={stop} email={email} key={i} index={i} removeStop={removeStop} allActive={allActive} setAllActive={setAllActive}/>
+                    return <Locations stop={stop} email={email} key={i} index={i} removeStop={removeStops} allActive={allActive} setAllActive={setAllActive}/>
                 }
             })}
         </Slider>
@@ -86,7 +93,7 @@ export function Overview(){
         if(comment.adventureID === parseInt(adventureID)){
             return (
                 <div className="comments">
-                    <Comments comment={comment} email={email} index={i} removeComment={removeComment}/>
+                    <Comments comment={comment} email={email} index={i} removeComment={removeComments}/>
                 </div>
             )
         }
@@ -115,22 +122,36 @@ export function Overview(){
       
     window.addEventListener("scroll", reveal);
 
-    function removePost(e, i, id){
+    async function removePosts(e, i, id){
         e.stopPropagation();
-        posts.splice(i,1)
-        setPostList(prevState => prevState.filter(post => post.id !== id))
+        try{
+            await removePost(id)
+            setPostList(postsList.filter((post, i) => post.id !== id))
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
-    function removeStop(e, i, id){
+    async function removeStops(e, id){
         e.stopPropagation();
-        stops.splice(i,1)
-        setStopsList(prevState => prevState.filter(stop => stop.id !== id))
+        try{
+            await removeStop(id)
+            setStopsList(stopsList.filter((stop) => stop.id !== id))
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
-    function removeComment(e, i, id){
+    async function removeComments(e, id){
         e.stopPropagation();
-        comments.splice(i,1)
-        setCommentsList(prevState => prevState.filter(comment => comment.id !== id))
+        try {
+            await removeComment(id)
+            setCommentsList(commentsList.filter((comment) => comment.id !== id))
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     function toggleAdd(){

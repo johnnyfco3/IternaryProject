@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import flightInfo from "../models/flights";
+import { getByAdventure } from "../service/flights";
 
 export function EditFlights(){
 
@@ -10,8 +10,9 @@ export function EditFlights(){
     const [flight, setFlight] = useState({})
 
     useEffect(() => {
-        const info = flightInfo.find(flight => flight.adventureID === parseInt(adventureID))
-        setFlight(info)
+        getByAdventure(parseInt(adventureID)).then(data => {
+            setFlight(data)
+        })
     }, [adventureID])
 
     return(

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import users from "../models/users";
+import { createAdventure } from "../service/adventures";
 
 export function Register(){
 
     const [confirm, setConfirm] = useState("")
 
     const [newUser, setNewUsers] = useState({
-        id: users.length + 1,
         firstName: "",
         lastName: "",
         birthday: "",
@@ -31,21 +30,26 @@ export function Register(){
     
     let navigate = useNavigate()
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
 
         if(confirm === newUser.password){
-            users.push(newUser)
-            setNewUsers({
-                firstName: "",
-                lastName: "",
-                birthday: "",
-                email: "",
-                password: "",
-                quote: "",
-                pic: "",
-            })
-            navigate("/login")
+            try{
+                await createAdventure(newUser)
+                setNewUsers({
+                    firstName: "",
+                    lastName: "",
+                    birthday: "",
+                    email: "",
+                    password: "",
+                    quote: "",
+                    pic: "",
+                })
+                navigate("/login")
+            }
+            catch(err){
+                console.log(err)
+            }
         }
         else{
             alert("Passwords do not match!")

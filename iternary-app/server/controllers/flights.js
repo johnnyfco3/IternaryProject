@@ -13,6 +13,10 @@ app
         const flight = FlightModel.get(req.params.id)
         res.send(flight)
     })
+    .get('/adventure/:id', (req, res) => {
+        const flight = FlightModel.getByAdventure(req.params.id)
+        res.send(flight)
+    })
 
     // POST
     .post('/', (req, res) => {

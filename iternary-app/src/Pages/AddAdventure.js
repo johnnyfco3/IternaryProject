@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import session from "../service/session";
-import adventures from "../models/adventures";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import { createAdventure } from "../service/adventures";
 
 export function AddAdventure(){
 
@@ -27,30 +27,24 @@ export function AddAdventure(){
 
     let navigate = useNavigate()
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
         if(newAdventure){
-            adventures.push({
-                    id: adventures.length + 1,
-                    location: newAdventure.location,
-                    startD: newAdventure.startD,
-                    endD: newAdventure.endD,
-                    background: newAdventure.background,
-                    description: newAdventure.description,
-                    link: newAdventure.link,
-                    userID: session.user.id
-            })
-
-            setNewAdventure({
-                location: "",
-                startD: "",
-                endD: "",
-                description: "",
-                background: "",
-                link: ""
-            })
-
-            navigate(`/history/${session.user.email}`)
+            try{
+                await createAdventure(newAdventure)
+                setNewAdventure({
+                    location: "",
+                    startD: "",
+                    endD: "",
+                    description: "",
+                    background: "",
+                    link: ""
+                })
+                navigate(`/history/${session.user.email}`)
+            }
+            catch(err){
+                console.log(err)
+            }
         }
     }
 

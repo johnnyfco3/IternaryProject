@@ -13,6 +13,10 @@ app
         const stop = StopModel.get(req.params.id)
         res.send(stop)
     })
+    .get('/stop/:id', (req, res) => {
+        const stop = StopModel.getByStopID(req.params.id)
+        res.send(stop)
+    })
 
     // POST
     .post('/', (req, res) => {

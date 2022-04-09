@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import session from "../service/session";
-import users from "../models/users";
+import { getByEmail } from "../service/users";
 
 export function Introduction({email}){
 
     const [user, setUser] = useState({})
 
     useEffect(()=>{
-        const u = users.find(u=> u.email === email)
-        if(u){
-            setUser(u)
-        }
+        getByEmail(email).then(data => {
+            setUser(data)
+        })
     }, [email])
 
     const today = new Date()
