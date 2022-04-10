@@ -12,8 +12,9 @@ export function Itinerary({item, email, removeAgenda, index}){
             completed: !completed,
         }
         try{
-            await updateAgenda(id, data);
-            setCompleted(prevState => !prevState);
+            const res = await updateAgenda(id, data);
+            console.log(res)
+            setCompleted(prevState => !prevState)
         }
         catch(err){
             console.log(err);

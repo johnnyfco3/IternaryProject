@@ -8,9 +8,11 @@ export function Comments({comment, email, index, removeComment}) {
     const [user, setUser] = useState({})
 
     useEffect(() =>{
-        getById(comment.user).then(data => {
-            setUser(data)
-        })
+        const fetchData = async () => {
+            const user = await getById(comment.user)
+            setUser(user)
+        }
+        fetchData()
     }, [comment])
 
     return (

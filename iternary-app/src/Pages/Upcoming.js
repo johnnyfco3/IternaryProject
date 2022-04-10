@@ -4,19 +4,25 @@ import AdventureList from "../Components/AdventureList";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { getAdventures, removeAdventure } from "../service/adventures";
+import { getByEmail } from "../service/users";
 
 export function Upcoming({date}){
 
     const {email} = useParams()
     const [adventuresList, setAdventuresList] = useState([])
+    const [user, setUser] = useState({})
     
     useEffect(() =>{
-        getAdventures(email).then(data => {
-            setAdventuresList(data)
-        })
+        const fetchData = async () => {
+            const adventures = await getAdventures(email)
+            setAdventuresList(adventures)
+            const user = await getByEmail(email)
+            setUser(user)
+        }
+        fetchData()
     },[email])
 
-    async function remove(e, i, id){
+    async function remove(e, id){
         e.stopPropagation();
         try{
             await removeAdventure(id)
@@ -30,7 +36,7 @@ export function Upcoming({date}){
     let navigate = useNavigate()
 
     const upcomingList = adventuresList.map((trip, i) => {
-        if(trip.startD > date && trip.user === email){
+        if(trip.startD > date && trip.userID === user.id){
             return <AdventureList trip={trip} email={email} index={i} remove={remove}/>
         }
     })

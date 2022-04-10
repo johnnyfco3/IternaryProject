@@ -14,7 +14,7 @@ app
         res.send(friend)
     })
     .get('/email/:email', (req, res) => {
-        const friend = FriendModel.getByEmail(req.params.email)
+        const friend = FriendModel.getByUser(req.params.email)
         res.send(friend)
     })
 

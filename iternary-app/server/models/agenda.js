@@ -39,7 +39,7 @@ const itinerary = [
     }
 ]
 
-const includeStop = (plan) => ({ ...plan, stop: StopModel.get(plan.stopID)})
+const includeStop = (plan) => ({ ...plan, stop: StopModel.get(plan.id)})
 
 function get(id){
     const plan = itinerary.find(plan => plan.id === parseInt(id))
@@ -50,11 +50,11 @@ function get(id){
 }
 
 function getByStopID(id){
-    const plan = itinerary.find(plan => plan.stopID === parseInt(id))
-    if(!plan){
+    const plans = itinerary.filter(plan => plan.stopID === parseInt(id))
+    if(!plans){
         throw { status: 404, msg: 'Plan not found' }
     }
-    return includeStop(plan)
+    return plans.map(includeStop)
 }
 
 function remove(id){

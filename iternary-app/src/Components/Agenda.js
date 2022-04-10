@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createAgenda, getAgendas, getByStopID } from "../service/agendas";
+import { createAgenda, getByStopID, removeAgenda } from "../service/agendas";
 import session from "../service/session";
 import Itinerary from "./Itinerary";
 
@@ -11,21 +11,19 @@ export function Agenda({stop, email}){
         stopID: stop.id,
     })
     const [formActive, setFormActive] = useState(false)
-    const [itineraryList, setItineraryList] = useState([])
 
     useEffect(() => {
-        getByStopID(stop.id).then(data => {
-            setItinerary(data)
-        })
-        getAgendas().then(data => {
-            setItineraryList(data)
-        })
+        const fetchData = async () => {
+            const itinerary = await getByStopID(stop.id)
+            setItinerary(itinerary)
+        }
+        fetchData()
     }, [stop])
 
     const agenda = itinerary.map((item, i) => {
         return (
             <div className="plan">
-                <Itinerary item={item} email={email} index={i} removeAgenda={removeAgenda}/>
+                <Itinerary item={item} email={email} index={i} removeAgenda={removeAgendas}/>
             </div>
         )
     })
@@ -46,7 +44,7 @@ export function Agenda({stop, email}){
                     text: "",
                     stopID: stop.id,
                 })
-                setItineraryList(prevState => [...prevState, res])
+                setItinerary(prevState => [...prevState, res])
                 setFormActive(false)
             }catch(err){
                 console.log(err)
@@ -58,10 +56,15 @@ export function Agenda({stop, email}){
         setFormActive(prevState => !prevState)
     }
 
-    function removeAgenda(e, i, id){
+    async function removeAgendas(e, id){
         e.stopPropagation();
-        itinerary.splice(i,1)
-        setItineraryList(prevState => prevState.filter(plan => plan.id !== id))
+        try{
+            await removeAgenda(id)
+            setItinerary(itinerary.filter((agenda) => agenda.id !== id))
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
     return (

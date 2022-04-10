@@ -7,9 +7,11 @@ export function Introduction({email}){
     const [user, setUser] = useState({})
 
     useEffect(()=>{
-        getByEmail(email).then(data => {
-            setUser(data)
-        })
+        const fetchData = async () => {
+            const user = await getByEmail(email)
+            setUser(user)
+        }
+        fetchData()
     }, [email])
 
     const today = new Date()

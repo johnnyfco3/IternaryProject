@@ -27,18 +27,17 @@ export function Overview(){
     const [allActive, setAllActive] = useState(false)
 
     useEffect(() => {
-        getById(parseInt(adventureID)).then(data => {
-            setLocation(data.location)
-        })
-        getPosts().then(data => {
-            setPostList(data)
-        })
-        getComments().then(data => {
-            setCommentsList(data)
-        })
-        getStops().then(data => {
-            setStopsList(data)
-        })
+        const fetchData = async () => {
+            const adventure = await getById(parseInt(adventureID))
+            setLocation(adventure)
+            const posts = await getPosts()
+            setPostList(posts)
+            const stops = await getStops()
+            setStopsList(stops)
+            const comments = await getComments()
+            setCommentsList(comments)
+        }
+        fetchData()
     }, [adventureID])
 
     const settings = {

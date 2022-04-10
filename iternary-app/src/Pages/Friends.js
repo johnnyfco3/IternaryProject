@@ -6,7 +6,7 @@ import Navbar from "../Components/Navbar";
 import FriendsList from "../Components/FriendsList";
 import AddFriend from "../Components/AddFriend";
 import Introduction from "../Components/Introduction";
-import { getByUser } from "../service/friend";
+import { getByUser } from "../service/friends";
 import { getUsers } from "../service/users";
 
 export function Friends(){
@@ -15,12 +15,13 @@ export function Friends(){
     const [users, setUsers] = useState([])
     
     useEffect(()=>{
-        getByUser(session.user.email).then(data => {
+        const fetchData = async () => {
+            const data = await getByUser(session.user.email)
             setEmails(data.friends)
-        })
-        getUsers().then(data => {
-            setUsers(data)
-        })
+            const userData = await getUsers()
+            setUsers(userData)
+        }
+        fetchData()
     }, [])
 
     let navigate = useNavigate();

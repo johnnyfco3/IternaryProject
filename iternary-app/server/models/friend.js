@@ -13,7 +13,7 @@ const friends = [
     }
 ]
 
-const includeUser = (friend) => ({ ...friend, user: UserModel.get(friend.userID)})
+const includeUser = (friend) => ({ ...friend, user: UserModel.getByEmail(friend.user)})
 
 function get(id){
     const friend = friends.find(friend => friend.id === parseInt(id))

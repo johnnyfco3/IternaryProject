@@ -10,9 +10,11 @@ export function EditPosts(){
     const [post, setPost] = useState({})
 
     useEffect(() => {
-        getById(parseInt(postID)).then(data => {
-            setPost(data)
-        })
+        const fetchData = async () => {
+            const post = await getById(parseInt(postID))
+            setPost(post)
+        }
+        fetchData()
     }, [postID])
 
     return (

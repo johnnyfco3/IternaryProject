@@ -10,9 +10,11 @@ export function EditFlights(){
     const [flight, setFlight] = useState({})
 
     useEffect(() => {
-        getByAdventure(parseInt(adventureID)).then(data => {
-            setFlight(data)
-        })
+        const fetchData = async () => {
+            const flight = await getByAdventure(parseInt(adventureID))
+            setFlight(flight)
+        }
+        fetchData()
     }, [adventureID])
 
     return(

@@ -7,10 +7,14 @@ const CREATED_STATUS = 201;
 app
     // GET
     .get('/', (req, res) => {
-        res.send(AgendaModel.agendas)
+        res.send(AgendaModel.itinerary)
     })
     .get('/:id', (req, res) => {
         const agenda = AgendaModel.get(req.params.id)
+        res.send(agenda)
+    })
+    .get('/stop/:id', (req, res) => {
+        const agenda = AgendaModel.getByStopID(req.params.id)
         res.send(agenda)
     })
 

@@ -11,18 +11,19 @@ export function FlightInfo({adventureID, email}){
     const [flightInfo, setFlightInfo] = useState([])
 
     useEffect(() => {
-        getByAdventure(parseInt(adventureID)).then(data => {
-            setFlightInfo(data)
-        })
-    }, [])
+        const  fetchData = async () => {
+            const flight = await getByAdventure(parseInt(adventureID))
+            setFlightInfo(flight)
+        }
+        fetchData()
+    }, [adventureID])
 
     function toggleFlight(){
         setFlightView(prevState => !prevState)
     }
 
-    const flights = flightInfo.map((flight, i) => {
-        return <Flights flight={flight} key={i}/>
-    })
+    const flights = 
+        <Flights flight={flightInfo}/>
 
     return(
         <section className="flight-info d-flex justify-content-center pt-5 reveal">

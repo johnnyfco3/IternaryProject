@@ -10,9 +10,11 @@ export function EditStops(){
     const [stop, setStop] = useState({})
 
     useEffect(() => {
-        getById(parseInt(stopID)).then(data => {
-            setStop(data)
-        })
+        const fetchData = async () => {
+            const stop = await getById(parseInt(stopID))
+            setStop(stop)
+        }
+        fetchData()
     }, [stopID])
 
     return(
