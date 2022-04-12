@@ -12,10 +12,6 @@ export function login(email, password){
     return api('users/login', { email, password }, 'POST');
 }
 
-export function logout(){
-    return api('users/logout', null, 'POST');
-}
-
 export function removeUser(id){
     return api(`users/${id}`, null, 'DELETE');
 }

@@ -5,7 +5,7 @@ const session = {
     async Login(user){
         try{
             const response = await login(user.email, user.password)
-            session.user = response.data
+            session.user = response
             return response
         }
         catch(err){

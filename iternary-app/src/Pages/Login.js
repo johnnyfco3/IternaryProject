@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import { login } from "../service/users";
+import session from "../service/session";
 
 export function Login(){
-
-    localStorage.removeItem('user')
 
     const [loginForm, setLoginForm] = useState({
         email: "",
@@ -23,12 +21,11 @@ export function Login(){
     async function handleSubmit(e){
         e.preventDefault();
         try{
-            const user = await login(loginForm.email, loginForm.password)
+            await session.Login(loginForm)
             setLoginForm({
                 email: "",
                 password: "",
             })
-            localStorage.setItem('user', JSON.stringify(user))
             navigate("/home")
         }
         catch(err){
@@ -52,14 +49,14 @@ export function Login(){
                                         <label htmlFor="email" className="form-label">Email address</label>
                                         <div className="input-group">
                                             <span className="input-group-text" id="inputGroupPrepend"><i className="fa-solid fa-envelope"></i></span>
-                                            <input type="email" className="form-control" id="email" name="email" aria-describedby="inputGroupPrepend" value={login.email} onChange={handleChange} required />
+                                            <input type="email" className="form-control" id="email" name="email" aria-describedby="inputGroupPrepend" value={loginForm.email} onChange={handleChange} required />
                                         </div>
                                     </div>
                                     <div className="mb-4 field">
                                         <label htmlFor="password" className="form-label">Password</label>
                                         <div className="input-group">
                                             <span className="input-group-text" id="inputGroupPrepend"><i className="fa-solid fa-lock"></i></span>
-                                            <input type="password" className="form-control" id="password" name="password" aria-describedby="inputGroupPrepend" value={login.password} onChange={handleChange} required />
+                                            <input type="password" className="form-control" id="password" name="password" aria-describedby="inputGroupPrepend" value={loginForm.password} onChange={handleChange} required />
                                         </div>
                                     </div>
                                     <div className="submit">

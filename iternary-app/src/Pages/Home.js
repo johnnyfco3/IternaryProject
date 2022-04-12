@@ -22,21 +22,21 @@ export function Home(){
                         <div className="row">
                             <div className="col-lg-4">
                                 <div className="card">
-                                    <i class="fa-solid fa-plane-up pb-4"></i>
+                                    <i className="fa-solid fa-plane-up pb-4"></i>
                                     <h1>Begin Your Travels</h1>
                                     <Link to="/add-adventure"><button className="btn">Start</button></Link>
                                 </div>
                             </div>
                             <div className="col-lg-4">
                                 <div className="card">
-                                    <i class="fa-solid fa-map-location-dot py-4"></i>
+                                    <i className="fa-solid fa-map-location-dot py-4"></i>
                                     <h1>Current, Past or Upcoming Travels</h1>
                                     <Link to={`/history/${session.user.email}`}><button className="btn">View</button></Link>
                                 </div>
                             </div>
                             <div className="col-lg-4">
                                 <div className="card">
-                                    <i class="fa-solid fa-people-group pb-4"></i>
+                                    <i className="fa-solid fa-people-group pb-4"></i>
                                     <h1>Share with your Friends</h1>
                                     <Link to="/friends"><button className="btn px-4">Your Friends</button></Link>
                                 </div>

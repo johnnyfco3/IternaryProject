@@ -60,12 +60,12 @@ export function AddAdventure(){
                         <h1 className="title">Where Are You Heading?</h1>
                     </div>
                     <form className="row g-3 my-1" onSubmit={handleSubmit}>
-                        <div class="col-md-6">
+                        <div className="col-md-6">
                             <h1 className="heading">Location</h1>
                             <label htmlFor="location" className="form-label">Continent / Country / State</label>
                             <input type="text" className="form-control" id="location" name="location" value={newAdventure.location} onChange={handleChange} required/>
                         </div>
-                        <div class="col-md-6">
+                        <div className="col-md-6">
                         </div>
                         
                         <h1 className="heading">Date</h1>
