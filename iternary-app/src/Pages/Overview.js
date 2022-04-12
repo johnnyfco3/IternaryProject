@@ -92,7 +92,7 @@ export function Overview(){
         if(comment.adventureID === parseInt(adventureID)){
             return (
                 <div className="comments">
-                    <Comments comment={comment} email={email} index={i} removeComment={removeComments}/>
+                    <Comments comment={comment} email={email} index={i} removeComment={removeComments} key={i} />
                 </div>
             )
         }
@@ -201,7 +201,7 @@ export function Overview(){
                                 {commentSection}
                                 {addComment ? ( 
                                     <div className="add-comment">
-                                        <AddComment adventureID={adventureID} setAddComment={setAddComment}/>
+                                        <AddComment adventureID={adventureID} setAddComment={setAddComment} setCommentsList={setCommentsList}/>
                                         <div className="text-center">
                                             <button className="btn btn-light px-4 mt-3" onClick={toggleAdd}>Cancel</button>
                                         </div>
@@ -234,7 +234,7 @@ export function Overview(){
                                 {commentSection}
                                 {addComment ? ( 
                                     <div className="add-comment">
-                                        <AddComment adventureID={adventureID} setAddComment={setAddComment}/>
+                                        <AddComment adventureID={adventureID} setAddComment={setAddComment} setCommentsList={setCommentsList}/>
                                         <div className="text-center">
                                             <button className="btn btn-light px-4 mt-3" onClick={toggleAdd}>Cancel</button>
                                         </div>

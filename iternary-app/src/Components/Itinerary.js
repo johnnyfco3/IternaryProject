@@ -24,7 +24,7 @@ export function Itinerary({item, email, removeAgenda, index}){
     return (
         <>
             {email === session.user.email ? ( 
-                <i class="fa-solid fa-xmark delete" onClick={(e)=> removeAgenda(e, index, item.id)}></i>
+                <i className="fa-solid fa-xmark delete" onClick={(e)=> removeAgenda(e, index, item.id)}></i>
                 ) : (
                     <></>
             )}

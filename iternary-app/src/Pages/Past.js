@@ -37,7 +37,7 @@ export function Past({date}){
 
     const pastList = adventuresList.map((trip, i) => {
         if(trip.endD < date && trip.userID === user.id){
-            return <AdventureList trip={trip} email={email} index={i} remove={remove}/>
+            return <AdventureList trip={trip} email={email} index={i} remove={remove} key={i}/>
         }
     })
 

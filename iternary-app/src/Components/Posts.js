@@ -11,7 +11,7 @@ export function Posts({post, email, removePost, index}){
                 </div>
                 <div className="back">
                     {email === session.user.email ? ( 
-                        <i class="fa-solid fa-xmark delete" onClick={(e)=> removePost(e, index, post.id)}></i>
+                        <i className="fa-solid fa-xmark delete" onClick={(e)=> removePost(e, index, post.id)}></i>
                         ) : (
                             <></>
                     )}

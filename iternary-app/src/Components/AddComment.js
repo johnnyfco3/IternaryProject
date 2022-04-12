@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createComment } from "../service/comments";
 import session from "../service/session";
 
-export function AddComment({adventureID, setAddComment}){
+export function AddComment({adventureID, setAddComment, setCommentsList}){
 
     const [commentForm, setCommentForm] = useState({
         text: "",
@@ -21,13 +21,14 @@ export function AddComment({adventureID, setAddComment}){
         e.preventDefault();
         if(commentForm){
             try{
-                await createComment(commentForm);
+                const res = await createComment(commentForm);
                 setCommentForm({
                     text: "",
                     user: session.user.id,
                     adventureID: parseInt(adventureID),
                 })
                 setAddComment(false)
+                setCommentsList(prevState => [...prevState, res])
             }
             catch(err){
                 console.log(err)
@@ -38,7 +39,7 @@ export function AddComment({adventureID, setAddComment}){
     return (
         <form onSubmit={handleSubmit}>
             <label for="comment" class="form-label">Comment</label>
-            <textarea class="form-control" id="comment" rows="3" name="text" value={commentForm.text} onChange={handleChange}></textarea>
+            <textarea className="form-control" id="comment" rows="3" name="text" value={commentForm.text} onChange={handleChange}></textarea>
             <button className="btn btn-success px-4 mt-3">Submit</button>
         </form>
     )

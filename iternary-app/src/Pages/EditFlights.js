@@ -30,7 +30,7 @@ export function EditFlights(){
                     </div>
                     
                     <form className="my-1">
-                    <div class="row g-3">
+                    <div className="row g-3">
                         <div className="col-md-6">
                             <h1 className="heading">Flight Number</h1>
                             <input type="text" className="form-control" id="number" name="number" placeholder={flight.number} />

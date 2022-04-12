@@ -10,7 +10,7 @@ export function AddPost(){
 
     const [newPost, setNewPost] = useState(
         {
-            post: "",
+            img: "",
             caption: "",
             adventureID: parseInt(adventureID),
         }
@@ -31,7 +31,7 @@ export function AddPost(){
         try{
             await createPost(newPost)
             setNewPost({
-                post: "",
+                img: "",
                 caption: "",
                 adventureID: parseInt(adventureID),
             })
@@ -56,9 +56,9 @@ export function AddPost(){
                     
                     <form className="row g-3 my-1" onSubmit={handleSubmit}>
                         <h1 className="heading mt-4">Upload Post</h1>
-                        <div className="col-6">
+                        <div className="col-md-6">
                             <label htmlFor="inputState" className="form-label">Enter image URL</label>
-                            <input type="url" className="form-control" id="inputGroupFile02" name="post" value={newPost.post} onChange={handleChange} required/>
+                            <input type="text" className="form-control" name="img" value={newPost.img} onChange={handleChange} required/>
                         </div>
 
                         <h1 className="heading">Caption</h1>
