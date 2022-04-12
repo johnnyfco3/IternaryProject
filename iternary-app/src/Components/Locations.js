@@ -31,7 +31,7 @@ export function Locations({stop, email, removeStop, index, allActive, setAllActi
                 </div>
                 <div className="back">
                     {email === session.user.email ? ( 
-                        <i className="fa-solid fa-trash-can delete" onClick={(e)=> removeStop(e, index, stop.id)}></i>
+                        <i className="fa-solid fa-trash-can delete" onClick={(e)=> removeStop(e, stop.id)}></i>
                         ) : (
                             <></>
                     )}

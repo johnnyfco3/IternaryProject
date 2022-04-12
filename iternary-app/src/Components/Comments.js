@@ -3,7 +3,7 @@ import session from "../service/session";
 import UserImage from "../Images/blank-profile-picture-gdf604cfb6_1280.png"
 import { getById } from "../service/users";
 
-export function Comments({comment, email, index, removeComment}) {
+export function Comments({comment, email, removeComment}) {
 
     const [user, setUser] = useState({})
 
@@ -18,7 +18,7 @@ export function Comments({comment, email, index, removeComment}) {
     return (
         <>
         {email === session.user.email ? ( 
-            <i className="fa-solid fa-xmark delete" onClick={(e)=> removeComment(e, index, comment.id)}></i>
+            <i className="fa-solid fa-xmark delete" onClick={(e)=> removeComment(e, comment.id)}></i>
             ) : (
                 <></>
         )}

@@ -92,13 +92,13 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/api/stops/
+GET http://localhost:3001/api/stops/
 
 ###
 GET http://localhost:3000/api/stops/3
 
 ###
-DELETE  http://localhost:3000/api/stops/4
+DELETE  http://localhost:3001/api/stops/1
 
 ###
 POST http://localhost:3000/api/stops/

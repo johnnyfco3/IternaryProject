@@ -75,7 +75,7 @@ export function Overview(){
 
     const postComp = postsList.map((post, i) => {
         if(post.adventureID === parseInt(adventureID)){
-            return <Posts post={post} key={i} index={i} email={email} removePost={removePosts}/>
+            return <Posts post={post} key={i} email={email} removePost={removePosts}/>
         }
     })
 
@@ -83,7 +83,7 @@ export function Overview(){
         <Slider {...settings} className="slider pt-3">
             {stopsList.map((stop, i) => {
                 if(stop.adventureID === parseInt(adventureID)){
-                    return <Locations stop={stop} email={email} key={i} index={i} removeStop={removeStops} allActive={allActive} setAllActive={setAllActive}/>
+                    return <Locations stop={stop} email={email} key={i} removeStop={removeStops} allActive={allActive} setAllActive={setAllActive}/>
                 }
             })}
         </Slider>
@@ -92,7 +92,7 @@ export function Overview(){
         if(comment.adventureID === parseInt(adventureID)){
             return (
                 <div className="comments">
-                    <Comments comment={comment} email={email} index={i} removeComment={removeComments} key={i} />
+                    <Comments comment={comment} email={email} removeComment={removeComments} key={i} />
                 </div>
             )
         }
@@ -121,11 +121,12 @@ export function Overview(){
       
     window.addEventListener("scroll", reveal);
 
-    async function removePosts(e, i, id){
+    async function removePosts(e, id){
         e.stopPropagation();
         try{
-            await removePost(id)
-            setPostList(postsList.filter((post, i) => post.id !== id))
+            const res = await removePost(id)
+            setPostList(postsList.filter((post) => post.id !== id))
+            console.log(res)
         }
         catch(err){
             console.log(err)

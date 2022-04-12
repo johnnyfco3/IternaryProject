@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import session from "../service/session";
 
-export function Posts({post, email, removePost, index}){
+export function Posts({post, email, removePost}){
     return(
         <div className="col-lg-4 posts">
             <div className="card">
@@ -11,7 +11,7 @@ export function Posts({post, email, removePost, index}){
                 </div>
                 <div className="back">
                     {email === session.user.email ? ( 
-                        <i className="fa-solid fa-xmark delete" onClick={(e)=> removePost(e, index, post.id)}></i>
+                        <i className="fa-solid fa-xmark delete" onClick={(e)=> removePost(e, post.id)}></i>
                         ) : (
                             <></>
                     )}
