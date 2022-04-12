@@ -1,14 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import session from "../service/session";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Navbar(){
+
+    let navigate = useNavigate()
+
+    function endSession(){
+       localStorage.removeItem('user')
+        navigate("/")
+    }
 
     return (
         <div id="Navbar">
             <nav className="navbar navbar-expand-lg">
                 <div className="container">
-                    {session.user ? (
+                    {localStorage.getItem("user") ? (
                         <>
                         <Link className="navbar-brand" to="/home">Vacay</Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +32,7 @@ export function Navbar(){
                                 <Link className="nav-link" to="/friends">Friends</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="" onClick={session.Logout}>Log Out</a>
+                                <a className="nav-link" href="" onClick={endSession()}>Log Out</a>
                             </li>
                         </ul>
                         </div>

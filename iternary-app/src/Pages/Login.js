@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import session from "../service/session";
+import { login } from "../service/users";
 
 export function Login(){
 
-    const [login, setLogin] = useState({
+    localStorage.removeItem('user')
+
+    const [loginForm, setLoginForm] = useState({
         email: "",
         password: "",
     })
 
     function handleChange(event){
-        setLogin(prevState => ({
+        setLoginForm(prevState => ({
             ...prevState,
             [event.target.name]: event.target.value
         }))
@@ -21,11 +23,12 @@ export function Login(){
     async function handleSubmit(e){
         e.preventDefault();
         try{
-            await session.Login(login)
-            setLogin({
+            const user = await login(loginForm.email, loginForm.password)
+            setLoginForm({
                 email: "",
                 password: "",
             })
+            localStorage.setItem('user', JSON.stringify(user))
             navigate("/home")
         }
         catch(err){

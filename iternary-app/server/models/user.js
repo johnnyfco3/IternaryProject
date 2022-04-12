@@ -33,17 +33,21 @@ const users = [
 
 function get(id){
     const user = users.find(user => user.id === parseInt(id))
+    
     if(!user){
         throw { statusCode: 404, message: 'User not Found' }
     }
+    
     return { ...user, password: undefined }
 }
 
 function getByEmail(email){
     const user = users.find(user => user.email === email)
+    
     if(!user){
         throw { statusCode: 404, message: 'User not Found' }
     }
+    
     return { ...user, password: undefined }
 }
 
@@ -64,19 +68,28 @@ function update(id, updatedUser){
 }
 
 function create(newUser){
+    const user = users.find(user => user.email === newUser.email)
+    
+    if(user){
+        throw { statusCode: 400, message: 'User already exists' }
+    }
+    
     newUser.id = users.length + 1
     users.push(newUser)
-    return newUser
+    return { ...newUser, password: undefined }
+    
 }
 
-async function login(email, password){
+ function login(email, password){
     const user = users.find(user => user.email === email)
+    
     if(!user){
         throw { status: 404, message: 'User not Found' }
     }
     if(user.password !== password){
         throw { status: 401, message: 'Invalid Password' }
     }
+    
     return { ...user, password: undefined }
 }
 
