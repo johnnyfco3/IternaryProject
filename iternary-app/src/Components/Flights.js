@@ -1,8 +1,14 @@
 import React from "react";
+import session from "../service/session";
 
-export function Flights({flight}){
+export function Flights({flight, email, removeFlight}){
     return (
-        <>
+        <div className="flights">
+        {email === session.user.email ? ( 
+                <i className="fa-solid fa-xmark delete" onClick={(e)=> removeFlight(e, flight.id)}></i>
+                ) : (
+                    <></>
+        )}
         <h3 className="text-center">{flight.number}</h3>
         <div className="row">
             <div className="col-4 text-center">
@@ -21,7 +27,7 @@ export function Flights({flight}){
                 <p className="pt-1">{flight.arrival}</p>
             </div>
         </div>
-        </>
+        </div>
     )
 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Airplane from "../Images/tusik-only-Fde7w9q0sWw-unsplash.jpg";
-import { getByAdventure } from "../service/flights";
+import { getByAdventure, removeFlight } from "../service/flights";
 import session from "../service/session";
 import Flights from "./Flights";
 
@@ -22,8 +22,20 @@ export function FlightInfo({adventureID, email}){
         setFlightView(prevState => !prevState)
     }
 
-    const flights = 
-        <Flights flight={flightInfo}/>
+    async function removeFlights(e, id){
+        e.stopPropagation();
+        try{
+            await removeFlight(id)
+            setFlightInfo(prevState => prevState.filter(flight => flight.id !== id))
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
+    const flights = flightInfo.map(flight => {
+            return <Flights flight={flight} email={email} removeFlight={removeFlights}/>
+        })
 
     return(
         <section className="flight-info d-flex justify-content-center pt-5 reveal">

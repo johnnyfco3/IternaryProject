@@ -28,11 +28,11 @@ function get(id){
 }
 
 function getByAdventure(adventureID){
-    const flight = flightInfo.find(flight => flight.adventureID === parseInt(adventureID))
-    if(!flight){
-        throw { status: 404, msg: 'Flight not found' }
+    const flights = flightInfo.filter(flight => flight.adventureID === parseInt(adventureID))
+    if(!flights){
+        throw { status: 404, msg: 'Flights not found' }
     }
-    return { ...flight }
+    return flights
 }
 
 function remove(id){
