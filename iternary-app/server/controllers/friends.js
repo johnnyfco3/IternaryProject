@@ -23,8 +23,8 @@ app
         const newFriend = FriendModel.create(req.body)
         res.status(CREATED_STATUS).send(newFriend)
     })
-    .post('/:id', (req, res) => {
-        const friend = FriendModel.addFriends(req.params.id, req.body)
+    .post('/:user/:email', (req, res) => {
+        const friend = FriendModel.addFriends(req.params.user, req.params.email)
         res.send({success: true, error: [], data: friend})
     })
     
@@ -33,8 +33,8 @@ app
         const friend = FriendModel.remove(req.params.id)
         res.send({success: true, error: [], data: friend})
     })
-    .delete('/email/:id', (req, res) => {
-        const friend = FriendModel.removeFriend(req.params.id, req.body)
+    .delete('/email/:user/:email', (req, res) => {
+        const friend = FriendModel.removeFriend(req.params.user, req.params.email)
         res.send({success: true, error: [], data: friend})
     })
 

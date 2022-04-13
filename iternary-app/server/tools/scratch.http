@@ -70,16 +70,19 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/api/friends/
+GET http://localhost:3001/api/friends/
 
 ###
-GET http://localhost:3000/api/friends/3
+GET http://localhost:3001/api/friends/3
 
 ###
 DELETE  http://localhost:3000/api/friends/3
 
 ###
-POST http://localhost:3000/api/friends/3/example1@gmail.com
+DELETE  http://localhost:3001/api/friends/email/cbrown@gmail.com/example@gmail.com
+
+###
+POST http://localhost:3001/api/friends/3/example1@gmail.com
 
 ###
 POST http://localhost:3000/api/friends/
@@ -88,6 +91,9 @@ Content-Type: application/json
 {
     "friends": ["example@gmail.com"]
 }
+
+###
+POST http://localhost:3001/api/friends/cbrown@gmail.com/example@gmail.com
 
 
 

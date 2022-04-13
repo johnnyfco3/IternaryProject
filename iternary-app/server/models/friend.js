@@ -37,22 +37,22 @@ function remove(id){
     return includeUser(friends[0])
 }
 
-function removeFriend(id, friend){
-    const index = friends.findIndex(friend => friend.id === parseInt(id))
+function removeFriend(user, friend){
+    const index = friends.findIndex(friend => friend.user === user)
     const friendIndex = friends[index].friends.findIndex(f => f === friend)
     friends[index].friends.splice(friendIndex, 1)
-    return includeUser(friends[0])
+    return friends
 }
 
-function addFriends(id, friend){
-    const index = friends.findIndex(friend => friend.id === parseInt(id))
+function addFriends(user, friend){
+    const index = friends.findIndex(friend => friend.user === user)
     friends[index].friends.push(friend)
     return includeUser(friends[0])
 }
 
 function create(newFriend){
     newFriend.id = friends.length + 1
-    newFriend.userID = friends.length + 1
+    newFriend.friends = []
     friends.push(newFriend)
     return newFriend
 }

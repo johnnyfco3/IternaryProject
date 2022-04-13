@@ -8,7 +8,7 @@ export function FriendsList({user, handleClick, setEmails}){
     async function removeFriends(e, email){
         e.preventDefault();
         try{
-            await removeFriend(session.user.id, email);
+            await removeFriend(session.user.email, email);
             setEmails(prevState => prevState.filter(item => item !== email))
         }
         catch(err){

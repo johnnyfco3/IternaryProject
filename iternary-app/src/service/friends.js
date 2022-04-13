@@ -8,14 +8,14 @@ export function createFriend(newFriend){
     return api('friends', newFriend, 'POST');
 }
 
-export function addFriends(id, email){
-    return api(`friends/${id}`, email, 'POST');
+export function addFriends(user, email){
+    return api(`friends/${user}/${email}`, null, 'POST');
 }
 
 export function removeIndex(id){
     return api(`friends/${id}`, null, 'DELETE');
 }
 
-export function removeFriend(id, email){
-    return api(`friends/email/${id}`, email, 'DELETE');
+export function removeFriend(user, email){
+    return api(`friends/email/${user}/${email}`, null, 'DELETE');
 }

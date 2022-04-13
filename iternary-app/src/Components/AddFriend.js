@@ -18,7 +18,7 @@ export function AddFriend({setEmails}){
             })
             
             try{
-                await addFriends(session.user.id, formData)
+                await addFriends(session.user.email, formData)
                 setFormData("")
             }
             catch(err){
