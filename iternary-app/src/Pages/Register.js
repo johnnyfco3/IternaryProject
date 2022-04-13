@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
+import { createFriend } from "../service/friends";
 import { createUser } from "../service/users";
 
 export function Register(){
@@ -36,6 +37,10 @@ export function Register(){
         if(confirm === newUser.password){
             try{
                 await createUser(newUser)
+                const user = {
+                    user: newUser.email,
+                }
+                await createFriend(user)
                 setNewUsers({
                     firstName: "",
                     lastName: "",

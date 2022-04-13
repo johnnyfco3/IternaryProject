@@ -33,8 +33,8 @@ export function FlightInfo({adventureID, email}){
         }
     }
 
-    const flights = flightInfo.map(flight => {
-            return <Flights flight={flight} email={email} removeFlight={removeFlights}/>
+    const flights = flightInfo.map((flight,i) => {
+            return <Flights flight={flight} email={email} removeFlight={removeFlights} key={i}/>
         })
 
     return(

@@ -840,6 +840,16 @@ html {
   transition: 0.3s ease;
   color: white;
 }
+#edit-flight .selections h2{
+  color: rgb(100, 129, 138);
+}
+#edit-flight .selections p{
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+#edit-flight .selections p:hover{
+  font-size: 1.5rem;
+}
 
 /* FRIENDS style */
 #friends {

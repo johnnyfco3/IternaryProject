@@ -14,7 +14,8 @@ export function AddAdventure(){
             endD: "",
             description: "",
             background: "",
-            link: ""
+            link: "",
+            userID: session.user.id,
         }
     )
 
@@ -86,7 +87,7 @@ export function AddAdventure(){
                         <div className="col-md-6">
                             <h1 className="heading">Background Image</h1>
                             <label htmlFor="inputState" className="form-label">Enter the URL of image</label>
-                            <input type="url" class="form-control" id="inputGroupFile02" name="background" value={newAdventure.background} onChange={handleChange} required/>
+                            <input type="url" className="form-control" id="inputGroupFile02" name="background" value={newAdventure.background} onChange={handleChange} required/>
                         </div>
 
                         <div className="col-md-6 pt-4 mt-4">
