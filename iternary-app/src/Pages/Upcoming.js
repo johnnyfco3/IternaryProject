@@ -14,7 +14,7 @@ export function Upcoming({date}){
     
     useEffect(() =>{
         const fetchData = async () => {
-            const adventures = await getAdventures(email)
+            const adventures = await getAdventures()
             setAdventuresList(adventures)
             const user = await getByEmail(email)
             setUser(user)
@@ -23,7 +23,7 @@ export function Upcoming({date}){
     },[email])
 
     async function remove(e, id){
-        e.stopPropagation();
+        e.preventDefault();
         try{
             await removeAdventure(id)
             setAdventuresList(adventuresList.filter(adventure => adventure.id !== id))
@@ -37,7 +37,7 @@ export function Upcoming({date}){
 
     const upcomingList = adventuresList.map((trip, i) => {
         if(trip.startD > date && trip.userID === user.id){
-            return <AdventureList trip={trip} email={email} index={i} remove={remove} key={i}/>
+            return <AdventureList trip={trip} email={email} remove={remove} key={i}/>
         }
     })
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { updateAgenda } from "../service/agendas";
 import session from "../service/session";
 
-export function Itinerary({item, email, removeAgenda, index}){
+export function Itinerary({item, email, removeAgenda}){
 
     const [completed, setCompleted] = useState(item.completed)
 

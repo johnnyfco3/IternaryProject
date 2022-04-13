@@ -38,7 +38,7 @@ export function AddComment({adventureID, setAddComment, setCommentsList}){
 
     return (
         <form onSubmit={handleSubmit}>
-            <label for="comment" class="form-label">Comment</label>
+            <label htmlFor="comment" class="form-label">Comment</label>
             <textarea className="form-control" id="comment" rows="3" name="text" value={commentForm.text} onChange={handleChange}></textarea>
             <button className="btn btn-success px-4 mt-3">Submit</button>
         </form>

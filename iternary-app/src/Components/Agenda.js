@@ -23,7 +23,7 @@ export function Agenda({stop, email}){
     const agenda = itinerary.map((item, i) => {
         return (
             <div className="plan">
-                <Itinerary item={item} email={email} index={i} removeAgenda={removeAgendas} key={i}/>
+                <Itinerary item={item} email={email} removeAgenda={removeAgendas} key={i}/>
             </div>
         )
     })

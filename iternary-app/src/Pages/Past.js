@@ -14,7 +14,7 @@ export function Past({date}){
     
     useEffect(() =>{
         const fetchData = async () => {
-            const adventures = await getAdventures(email)
+            const adventures = await getAdventures()
             setAdventuresList(adventures)
             const user = await getByEmail(email)
             setUser(user)

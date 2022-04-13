@@ -3,7 +3,7 @@ import { Link }  from "react-router-dom";
 import session from "../service/session";
 import Agenda from "./Agenda";
 
-export function Locations({stop, email, removeStop, index, allActive, setAllActive}) {
+export function Locations({stop, email, removeStop, allActive, setAllActive}) {
 
     const [active, setActive] = useState(false)
 
