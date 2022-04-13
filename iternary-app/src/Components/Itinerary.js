@@ -12,8 +12,7 @@ export function Itinerary({item, email, removeAgenda, index}){
             completed: !completed,
         }
         try{
-            const res = await updateAgenda(id, data);
-            console.log(res)
+            await updateAgenda(id, data);
             setCompleted(prevState => !prevState)
         }
         catch(err){
@@ -24,7 +23,7 @@ export function Itinerary({item, email, removeAgenda, index}){
     return (
         <>
             {email === session.user.email ? ( 
-                <i className="fa-solid fa-xmark delete" onClick={(e)=> removeAgenda(e, index, item.id)}></i>
+                <i className="fa-solid fa-xmark delete" onClick={(e)=> removeAgenda(e, item.id)}></i>
                 ) : (
                     <></>
             )}

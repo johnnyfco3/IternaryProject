@@ -18,15 +18,18 @@ export function Login(){
     }
 
     let navigate = useNavigate()
+
     async function handleSubmit(e){
         e.preventDefault();
         try{
-            await session.Login(loginForm)
+            const res = await session.Login(loginForm)
             setLoginForm({
                 email: "",
                 password: "",
             })
-            navigate("/home")
+            if(res){
+                navigate("/home")
+            }
         }
         catch(err){
             console.log(err)
@@ -44,6 +47,7 @@ export function Login(){
                                 <div className="title text-center">
                                     <h5 className="card-title p-2 pb-4">Sign In</h5>
                                 </div>
+                                <p className="error text-center">{session.message}</p>
                                 <form onSubmit={handleSubmit}>
                                     <div className="mb-4 field">
                                         <label htmlFor="email" className="form-label">Email address</label>

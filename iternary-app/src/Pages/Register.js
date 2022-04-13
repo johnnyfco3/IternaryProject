@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import { createAdventure } from "../service/adventures";
+import { createUser } from "../service/users";
 
 export function Register(){
 
@@ -35,7 +35,7 @@ export function Register(){
 
         if(confirm === newUser.password){
             try{
-                await createAdventure(newUser)
+                await createUser(newUser)
                 setNewUsers({
                     firstName: "",
                     lastName: "",

@@ -18,6 +18,10 @@ html {
   transform: translateY(0);
   opacity: 1;
 }
+.error{
+  color: red;
+  font-size: 1.3rem;
+}
 /*  NAVBAR Style */
 
 #Navbar {
@@ -530,6 +534,16 @@ html {
 #overview .flight-content p {
   font-size: 1.3rem;
   color: black;
+}
+#overview .flight-content .flights {
+  position: relative;
+}
+#overview .flight-content .flights .delete{
+  color: black;
+  cursor: pointer;
+  position: absolute;
+  right: 10%;
+  top: 50%;
 }
 #overview .bar {
   width: 100%;
