@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { createFlight } from "../service/flights";
@@ -25,6 +25,8 @@ export function AddFlight(){
         }))
     }
 
+    let navigate = useNavigate()
+
     async function handleSubmit(e){
         e.preventDefault();
         if(flight){
@@ -38,6 +40,7 @@ export function AddFlight(){
                     arrival: "",
                     adventureID: parseInt(adventureID)
                 })
+                navigate(-1)
             }
             catch(err){
                 console.log(err)

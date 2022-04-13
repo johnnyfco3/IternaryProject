@@ -1,21 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import { getById } from "../service/posts";
+import { getById, updatePost } from "../service/posts";
 
 export function EditPosts(){
 
     const {postID} = useParams()
-    const [post, setPost] = useState({})
+    const [editPost, setEditPost] = useState({})
 
     useEffect(() => {
         const fetchData = async () => {
             const post = await getById(parseInt(postID))
-            setPost(post)
+            setEditPost(post)
         }
         fetchData()
     }, [postID])
+
+    let navigate = useNavigate()
+
+    function handleChange(event){
+        setEditPost(prevState =>({
+            ...prevState,
+            [event.target.name]: event.target.value
+        }))
+    }
+
+    async function handleSubmit(event){
+        event.preventDefault()
+        try{
+            await updatePost(postID, editPost)
+            navigate(-1)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
 
     return (
         <div id="edit-post">
@@ -29,16 +49,16 @@ export function EditPosts(){
                         <h1 className="title">Edit Post</h1>
                     </div>
                     
-                    <form className="row g-3 my-1">
+                    <form className="row g-3 my-1" onSubmit={handleSubmit}>
                         <h1 className="heading mt-4">Upload Post</h1>
                         <div className="col-6">
                             <label htmlFor="img" className="form-label">Enter image URL</label>
-                            <input type="url" className="form-control" id="img" name="post" placeholder={post.img}/>
+                            <input type="url" className="form-control" id="img" name="img" value={editPost.img} onChange={handleChange}/>
                         </div>
 
                         <h1 className="heading">Caption</h1>
                         <div className="col-md-6">
-                            <input type="text" className="form-control" id="caption" name="caption" placeholder={post.caption}/>
+                            <input type="text" className="form-control" id="caption" name="caption" value={editPost.caption} onChange={handleChange}/>
                         </div>
 
                         <div className="col-12 text-center button">
