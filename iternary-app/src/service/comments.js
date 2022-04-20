@@ -8,7 +8,7 @@ export function createComment(newComment){
 }
 
 export function removeComment(id){
-    return api(`comments/${id}`, null, 'DELETE');
+    return api(`comments/${id}`, {}, 'DELETE');
 }
 
 export function updateComment(id, comment){

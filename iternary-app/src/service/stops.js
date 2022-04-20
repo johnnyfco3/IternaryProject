@@ -8,7 +8,7 @@ export function createStop(newStop){
 }
 
 export function removeStop(id){
-    return api(`stops/${id}`, null, 'DELETE');
+    return api(`stops/${id}`, {}, 'DELETE');
 }
 
 export function updateStop(id, updatedStop){

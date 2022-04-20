@@ -8,7 +8,7 @@ export function createAdventure(newAdventure){
 }
 
 export function removeAdventure(id){
-    return api(`adventures/${id}`, null, 'DELETE');
+    return api(`adventures/${id}`, {}, 'DELETE');
 }
 
 export function updateAdventure(id, adventure){

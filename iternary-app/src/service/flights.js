@@ -9,7 +9,7 @@ export function createFlight(newFlight){
 }
 
 export function removeFlight(id){
-    return api(`flights/${id}`, null, 'DELETE');
+    return api(`flights/${id}`, {}, 'DELETE');
 }
 
 export function updateFlight(id, flight){

@@ -9,7 +9,7 @@ export function createAgenda(newAgenda){
 }
 
 export function removeAgenda(id){
-    return api(`agendas/${id}`, null, 'DELETE');
+    return api(`agendas/${id}`, {}, 'DELETE');
 }
 
 export function updateAgenda(id, agenda){

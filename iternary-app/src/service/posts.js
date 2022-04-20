@@ -8,7 +8,7 @@ export function createPost(newPost){
 }
 
 export function removePost(id){
-    return api(`posts/${id}`, null, 'DELETE');
+    return api(`posts/${id}`, {}, 'DELETE');
 }
 
 export function updatePost(id, updatedPost){

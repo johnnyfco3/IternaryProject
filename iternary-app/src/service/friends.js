@@ -13,9 +13,9 @@ export function addFriends(user, email){
 }
 
 export function removeIndex(id){
-    return api(`friends/${id}`, null, 'DELETE');
+    return api(`friends/${id}`, {}, 'DELETE');
 }
 
 export function removeFriend(user, email){
-    return api(`friends/email/${user}/${email}`, null, 'DELETE');
+    return api(`friends/email/${user}/${email}`, {}, 'DELETE');
 }
