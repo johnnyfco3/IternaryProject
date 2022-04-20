@@ -20,7 +20,7 @@ export function Current({date}){
             setUser(user)
         }
         fetchData()
-    },[])
+    },[email])
 
     async function remove(e, id){
         e.stopPropagation();

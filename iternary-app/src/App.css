@@ -41,6 +41,14 @@ html {
 #Navbar a:hover {
   font-weight: 700;
 }
+#Navbar .dropdown .dropdown-menu{
+  background-color: rgb(159, 179, 185);
+  border: none;
+}
+#Navbar .dropdown .dropdown-menu a:hover{
+  font-weight: 600;
+  background-color: rgb(159, 179, 185);
+}
 
 /*  WElCOME Style    */
 
@@ -741,6 +749,7 @@ html {
 /* EDIT-STOP style */
 /* EDIT-FLIGHT style */
 /* EDIT-POST style */
+/* EDIT-USER style */
 
 #add-adventure,
 #add-post,
@@ -748,7 +757,8 @@ html {
 #add-flight,
 #edit-stop,
 #edit-flight,
-#edit-post {
+#edit-post,
+#edit-user {
   background-color: whitesmoke;
   color: black;
 }
@@ -758,7 +768,8 @@ html {
 #add-flight .card,
 #edit-stop .card,
 #edit-flight .card,
-#edit-post .card {
+#edit-post .card,
+#edit-user .card {
   border-radius: 1rem;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
@@ -768,7 +779,8 @@ html {
 #add-flight .title,
 #edit-stop .title,
 #edit-flight .title,
-#edit-post .title {
+#edit-post .title,
+#edit-user .title {
   font-weight: 600;
 }
 #add-adventure label,
@@ -777,7 +789,8 @@ html {
 #add-flight label,
 #edit-stop label,
 #edit-flight label,
-#edit-post label {
+#edit-post label,
+#edit-user label {
   font-size: 1.2rem;
 }
 #add-adventure h1,
@@ -786,7 +799,8 @@ html {
 #add-flight h1,
 #edit-stop h1,
 #edit-flight h1,
-#edit-post h1 {
+#edit-post h1,
+#edit-user h1 {
   color: rgb(100, 129, 138);
 }
 #add-adventure input,
@@ -795,7 +809,8 @@ html {
 #add-flight input,
 #edit-stop input,
 #edit-flight input,
-#edit-post input {
+#edit-post input,
+#edit-user input {
   border-radius: 1rem;
   border-color: black;
 }
@@ -805,12 +820,14 @@ html {
 #add-flight input:focus,
 #edit-stop input:focus,
 #edit-flight input:focus,
-#edit-post input:focus {
+#edit-post input:focus,
+#edit-user input:focus {
   border-color: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-#add-adventure textarea {
+#add-adventure textarea,
+#edit-user textarea {
   padding: 1%;
   border-radius: 1rem;
 }
@@ -820,7 +837,8 @@ html {
 #add-flight .button button,
 #edit-stop .button button,
 #edit-flight .button button,
-#edit-post .button button {
+#edit-post .button button,
+#edit-user .button button {
   font-size: 1.3rem;
   margin-top: 5%;
   background-color: transparent;
@@ -828,13 +846,18 @@ html {
   border-radius: 1rem;
   color: black;
 }
+#edit-user .buttons button{
+  font-size: 1.3rem;
+  border-radius: 1rem; 
+}
 #add-adventure .button button:hover,
 #add-post .button button:hover,
 #add-stop .button button:hover,
 #add-flight .button button:hover,
 #edit-stop .button button:hover,
 #edit-flight .button button:hover,
-#edit-post .button button:hover {
+#edit-post .button button:hover,
+#edit-user .button button:hover {
   background-color: rgb(63, 165, 63);
   border: 2px solid rgb(63, 165, 63);
   transition: 0.3s ease;
@@ -848,7 +871,7 @@ html {
   cursor: pointer;
 }
 #edit-flight .selections p:hover{
-  font-size: 1.5rem;
+  color: rgb(100, 129, 138);
 }
 
 /* FRIENDS style */

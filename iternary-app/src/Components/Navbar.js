@@ -25,6 +25,14 @@ export function Navbar(){
                             <li className="nav-item">
                                 <Link className="nav-link" to="/friends">Friends</Link>
                             </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Settings
+                                </a>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><Link className="dropdown-item" to='/edit-users'>Edit Account</Link></li>
+                                </ul>
+                            </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="" onClick={session.Logout}>Log Out</a>
                             </li>

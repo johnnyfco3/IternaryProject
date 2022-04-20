@@ -22,6 +22,7 @@ import AddFlight from './Pages/AddFlight';
 import EditStops from './Pages/EditStops';
 import EditFlights from './Pages/EditFlights';
 import EditPosts from './Pages/EditPosts';
+import EditUsers from './Pages/EditUser';
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
             <Route path="/edit-stops/:stopID" element={<EditStops />}/>
             <Route path="/edit-flights/:adventureID" element={<EditFlights />}/>
             <Route path="/edit-posts/:postID" element={<EditPosts />}/>
+            <Route path="/edit-users" element={<EditUsers />}/>
             <Route path="/friends" element={<Friends />}/>
           </Route>
           <Route path="*" element={<NotFound />}/>

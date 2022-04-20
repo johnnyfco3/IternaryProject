@@ -13,7 +13,7 @@ export function login(email, password){
 }
 
 export function removeUser(id){
-    return api(`users/${id}`, null, 'DELETE');
+    return api(`users/${id}`, {}, 'DELETE');
 }
 
 export function updateUser(id, updatedUser){
