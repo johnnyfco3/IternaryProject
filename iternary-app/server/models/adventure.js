@@ -1,4 +1,24 @@
 const UserModel = require('./user')
+const con = require('./db_connect')
+
+con.connect(function(err) {
+    if (err) throw err;
+    let sql = `CREATE TABLE IF NOT EXISTS adventures (
+        adventureID INT NOT NULL AUTO_INCREMENT,
+        location VARCHAR(255) NOT NULL,
+        startDate DATE NOT NULL,
+        endDate DATE NOT NULL,
+        backgroundImg VARCHAR(255) NOT NULL,
+        description VARCHAR(255) NOT NULL,
+        link VARCHAR(255) NOT NULL,
+        userID INT NOT NULL,
+        CONSTRAINT adventure_pk PRIMARY KEY (adventureID),
+        CONSTRAINT adventure_fk FOREIGN KEY (userID) REFERENCES users(userID))`;
+
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+    });
+});
 
 const adventures = [
     { 

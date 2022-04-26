@@ -1,3 +1,23 @@
+const con = require('./db_connect')
+
+con.connect(function(err) {
+    if (err) throw err;
+    let sql = `CREATE TABLE IF NOT EXISTS users (
+        userID INT NOT NULL AUTO_INCREMENT,
+        firstName VARCHAR(255) NOT NULL,
+        lastName VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL,
+        birthday DATE NOT NULL,
+        quote VARCHAR(255),
+        profilePic VARCHAR(255),
+        CONSTRAINT user_pk PRIMARY KEY (userID))`;
+
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+    });
+});
+
 const users = [
     { 
         id: 1,

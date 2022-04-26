@@ -1,3 +1,20 @@
+const con = require('./db_connect')
+
+con.connect(function(err) {
+    if (err) throw err;
+    let sql = `CREATE TABLE IF NOT EXISTS stops (
+        stopID INT NOT NULL AUTO_INCREMENT,
+        location VARCHAR(255) NOT NULL,
+        image VARCHAR(255) NOT NULL,
+        adventureID INT NOT NULL,
+        CONSTRAINT stopID_pk PRIMARY KEY (stopID),
+        CONSTRAINT fk_adventureID FOREIGN KEY (adventureID) REFERENCES adventures(adventureID))`;
+        
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+    });
+});
+
 const stops = [
     { 
         id: 1,

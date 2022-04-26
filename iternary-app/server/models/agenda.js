@@ -1,4 +1,20 @@
 const StopModel = require('./stop')
+const con = require('./db_connect')
+
+con.connect(function(err) {
+    if (err) throw err;
+    let sql = `CREATE TABLE IF NOT EXISTS agendas (
+        agendaID INT NOT NULL AUTO_INCREMENT,
+        text VARCHAR(255) NOT NULL,
+        completed BOOLEAN NOT NULL,
+        stopID INT NOT NULL,
+        CONSTRAINT agenda_pk PRIMARY KEY (agendaID),
+        CONSTRAINT agenda_fk FOREIGN KEY (stopID) REFERENCES stops(stopID))`;
+    
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+    });
+});
 
 const itinerary = [
     {

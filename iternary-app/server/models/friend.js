@@ -1,4 +1,31 @@
 const UserModel = require('./user')
+const con = require('./db_connect')
+
+con.connect(function(err) {
+    if (err) throw err;
+    let sql = `CREATE TABLE IF NOT EXISTS friends (
+        friendID INT NOT NULL AUTO_INCREMENT,
+        userID INT NOT NULL,
+        CONSTRAINT friend_pk PRIMARY KEY (friendID),
+        CONSTRAINT friend_fk FOREIGN KEY (userID) REFERENCES users(userID))`;
+    
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+    });
+});
+
+con.connect(function(err) {
+    if (err) throw err;
+    let sql = `CREATE TABLE IF NOT EXISTS friendList (
+        id INT NOT NULL AUTO_INCREMENT,
+        newFriend VARCHAR(255) NOT NULL,
+        friendID INT NOT NULL,
+        CONSTRAINT friendList_pk PRIMARY KEY (id),
+        CONSTRAINT friendList_fk FOREIGN KEY (friendID) REFERENCES friends(friendID))`;
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+    });
+});
 
 const friends = [
     {
