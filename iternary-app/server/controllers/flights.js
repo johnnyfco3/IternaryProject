@@ -2,38 +2,55 @@ const express = require('express');
 const app = express.Router();
 const FlightModel = require('../models/flight');
 
-const CREATED_STATUS = 201;
-
 app
     // GET
-    .get('/', (req, res) => {
-        res.send(FlightModel.flightInfo)
+    .get('/', (req, res, next) => {
+        FlightModel.getList()
+        .then(flights => {
+            res.send({success: true, error: [], data: flights})
+        })
+        .catch(next)
     })
-    .get('/:id', (req, res) => {
-        const flight = FlightModel.get(req.params.id)
-        res.send(flight)
+    .get('/:id', (req, res, next) => {
+        FlightModel.get(req.params.id)
+        .then(flight => {
+            res.send({success: true, error: [], data: flight})
+        })
+        .catch(next)
     })
-    .get('/adventure/:id', (req, res) => {
-        const flight = FlightModel.getByAdventure(req.params.id)
-        res.send(flight)
+    .get('/adventure/:id', (req, res, next) => {
+        FlightModel.getByAdventure(req.params.id)
+        .then(flights => {
+            res.send({success: true, error: [], data: flights})
+        })
+        .catch(next)
     })
 
     // POST
-    .post('/', (req, res) => {
-        const newFlight = FlightModel.create(req.body)
-        res.status(CREATED_STATUS).send(newFlight)
+    .post('/', (req, res, next) => {
+        FlightModel.create(req.body)
+        .then(flight => {
+            res.send({success: true, error: [], data: flight})
+        })
+        .catch(next)
     })
     
     // DELETE
-    .delete('/:id', (req, res) => {
-        const flight = FlightModel.remove(req.params.id)
-        res.send({success: true, error: [], data: flight})
+    .delete('/:id', (req, res, next) => {
+        FlightModel.remove(req.params.id)
+        .then(flight => {
+            res.send({success: true, error: [], data: flight})
+        })
+        .catch(next)
     })
 
     // PATCH
-    .patch('/:id', (req, res) => {
-        const flight = FlightModel.update(req.params.id, req.body)
-        res.send({success: true, error: [], data: flight})
+    .patch('/:id', (req, res, next) => {
+        FlightModel.update(req.params.id, req.body)
+        .then(flight => {
+            res.send({success: true, error: [], data: flight})
+        })
+        .catch(next)
     })
 
 module.exports = app;

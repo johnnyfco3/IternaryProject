@@ -1,9 +1,8 @@
 const UserModel = require('./user')
 const con = require('./db_connect')
 
-con.connect(function(err) {
-    if (err) throw err;
-    let sql = `CREATE TABLE IF NOT EXISTS comments (
+async function createTable(){
+    const sql = `CREATE TABLE IF NOT EXISTS comments (
         commentID INT NOT NULL AUTO_INCREMENT,
         text VARCHAR(255) NOT NULL,
         userID INT NOT NULL,
@@ -11,11 +10,9 @@ con.connect(function(err) {
         CONSTRAINT comment_pk PRIMARY KEY (commentID),
         CONSTRAINT comment_fk FOREIGN KEY (userID) REFERENCES users(userID),
         CONSTRAINT comment_fk2 FOREIGN KEY (adventureID) REFERENCES adventures(adventureID))`;
-    
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-    });
-});
+    await con.query(sql)
+}
+createTable()
 
 const comments = [
     { 
@@ -47,40 +44,47 @@ const comments = [
 
 const includeUser = (comment) => ({ ...comment, user: UserModel.get(comment.user)})
 
-function get(id){
-    const comment = comments.find(comment => comment.id === parseInt(id))
-    if(!comment){
-        throw { status: 404, msg: 'Comment not found' }
+async function get(id){
+     const comment = await con.query(`SELECT * FROM comments WHERE commentID = ${id}`)
+    if(!comment[0]){
+        throw { status: 404, message: `Comment with id ${id} not Found` }
     }
-    return includeUser(comment)
+    return includeUser(comment[0])
 }
 
-function remove(id){
-    const index = comments.findIndex(comment => comment.id === parseInt(id))
-    comments.splice(index, 1)
-    return includeUser(comments[0])
+async function remove(id){
+    const result = await con.query(`DELETE FROM comments WHERE commentID = ${id}`)
+    if(!result.affectedRows){
+        throw { status: 404, message: `Comment with id ${id} not Found` }
+    }
+    return { message: `Comment with id ${id} deleted` }
 }
 
-function update(id, updatedComment){
-    const index = comments.findIndex(comment => comment.id === parseInt(id))
-    const oldComment = comments[index]
+async function update(id, updatedComment){
+    const comment = await con.query(`UPDATE comments SET 
+    text = '${updatedComment.text}' ,
+    userID = ${updatedComment.userID} ,
+    adventureID = ${updatedComment.adventureID}
+    WHERE commentID = ${id}`)
 
-    updatedComment = comments[index] = { ...oldComment, ...updatedComment }
-
-    return includeUser(updatedComment)
+    return { message: `Comment with id ${id} updated` }
 }
 
-function create(newComment){
-    newComment.id = comments.length + 1
-    comments.push(newComment)
-    return newComment
+async function create(newComment){
+    const result = await con.query(`INSERT INTO comments
+    (text, userID, adventureID) 
+    VALUES ('${newComment.text}', ${newComment.userID}, ${newComment.adventureID})`)
+
+    return { ...newComment, id: result.insertId }
 }
 
 module.exports = {
     get,
     remove,
     update,
-    create
+    create,
+    async getList(){
+        const comments = await con.query(`SELECT * FROM comments`)
+        return comments.map(includeUser)
+    }
 }
-
-module.exports.comments = comments;

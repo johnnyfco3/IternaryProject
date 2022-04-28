@@ -1,20 +1,17 @@
 const StopModel = require('./stop')
 const con = require('./db_connect')
 
-con.connect(function(err) {
-    if (err) throw err;
-    let sql = `CREATE TABLE IF NOT EXISTS agendas (
+async function createTable(){
+    const sql = `CREATE TABLE IF NOT EXISTS agendas (
         agendaID INT NOT NULL AUTO_INCREMENT,
         text VARCHAR(255) NOT NULL,
         completed BOOLEAN NOT NULL,
         stopID INT NOT NULL,
         CONSTRAINT agenda_pk PRIMARY KEY (agendaID),
         CONSTRAINT agenda_fk FOREIGN KEY (stopID) REFERENCES stops(stopID))`;
-    
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-    });
-});
+    await con.query(sql)
+}
+createTable()
 
 const itinerary = [
     {
@@ -55,44 +52,48 @@ const itinerary = [
     }
 ]
 
-const includeStop = (plan) => ({ ...plan, stop: StopModel.get(plan.id)})
+const includeStop = (plan) => ({ ...plan, stop: StopModel.get(plan.stopID) })
 
-function get(id){
-    const plan = itinerary.find(plan => plan.id === parseInt(id))
-    if(!plan){
-        throw { status: 404, msg: 'Plan not found' }
+async function get(id){
+    const plan = await con.query(`SELECT * FROM agendas WHERE agendaID = ${id}`)
+    if(!plan[0]){
+        throw { status: 404, message: `Plan with id ${id} not Found` }
     }
-    return includeStop(plan)
+    return includeStop(plan[0])
 }
 
-function getByStopID(id){
-    const plans = itinerary.filter(plan => plan.stopID === parseInt(id))
-    if(!plans){
-        throw { status: 404, msg: 'Plan not found' }
+async function getByStopID(id){
+    const plans = await con.query(`SELECT * FROM agendas WHERE stopID = ${id}`)
+    if(!plans[0]){
+        throw { status: 404, message: `Plan with stopID ${id} not Found` }
     }
     return plans.map(includeStop)
 }
 
-function remove(id){
-    const index = itinerary.findIndex(plan => plan.id === parseInt(id))
-    itinerary.splice(index, 1)
-    return includeStop(itinerary[0])
+async function remove(id){
+    const result = await con.query(`DELETE FROM agendas WHERE agendaID = ${id}`)
+    if(!result.affectedRows){
+        throw { status: 404, message: `Plan with id ${id} not Found` }
+    }
+    return { message: `Plan with id ${id} deleted` }
 }
 
-function update(id, updatedPlan){
-    const index = itinerary.findIndex(plan => plan.id === parseInt(id))
-    const oldPlan = itinerary[index]
+async function update(id, updatedPlan){
+    const plan = await con.query(`UPDATE agendas SET 
+        text = '${updatedPlan.text}',
+        completed = ${updatedPlan.completed},
+        stopID = ${updatedPlan.stopID}
+        WHERE agendaID = ${id}`)
 
-    updatedPlan = itinerary[index] = { ...oldPlan, ...updatedPlan }
-
-    return includeStop(updatedPlan)
+    return { message: `Plan with id ${id} updated` }
 }
 
-function create(newPlan){
-    newPlan.id = itinerary.length + 1
-    newPlan.completed = false
-    itinerary.push(newPlan)
-    return newPlan
+async function create(newPlan){
+    const plan = await con.query(`INSERT INTO agendas 
+        (text, completed, stopID) 
+        VALUES ('${newPlan.text}', ${newPlan.completed}, ${newPlan.stopID})`)
+
+    return { ...newPlan, id: plan.insertId }
 }
 
 module.exports = {
@@ -100,7 +101,9 @@ module.exports = {
     remove,
     update,
     create,
-    getByStopID
+    getByStopID,
+    async getList(){
+        const plans = await con.query(`SELECT * FROM agendas`)
+        return plans.map(includeStop)
+    }
 }
-
-module.exports.itinerary = itinerary;

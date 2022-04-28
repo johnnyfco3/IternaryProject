@@ -1,9 +1,8 @@
 const UserModel = require('./user')
 const con = require('./db_connect')
 
-con.connect(function(err) {
-    if (err) throw err;
-    let sql = `CREATE TABLE IF NOT EXISTS adventures (
+async function createTable(){
+    const sql = `CREATE TABLE IF NOT EXISTS adventures (
         adventureID INT NOT NULL AUTO_INCREMENT,
         location VARCHAR(255) NOT NULL,
         startDate DATE NOT NULL,
@@ -14,11 +13,9 @@ con.connect(function(err) {
         userID INT NOT NULL,
         CONSTRAINT adventure_pk PRIMARY KEY (adventureID),
         CONSTRAINT adventure_fk FOREIGN KEY (userID) REFERENCES users(userID))`;
-
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-    });
-});
+    await con.query(sql)
+}
+createTable()
 
 const adventures = [
     { 
@@ -65,40 +62,53 @@ const adventures = [
 
 const includeUser = (adventure) => ({ ...adventure, user: UserModel.get(adventure.userID)})
 
-function get(id){
-    const adventure = adventures.find(location => location.id === parseInt(id))
-    if(!adventure){
+async function get(id){
+    const adventure = await con.query(`SELECT * FROM adventures WHERE adventureID = ${id}`)
+    
+    if(!adventure[0]){
         throw { status: 404, message: `Adventure with id ${id} not found` }
     }
-    return includeUser(adventure)
-}
 
-function remove(id){
-    const index = adventures.findIndex(location => location.id === parseInt(id))
-    const adventure = adventures.splice(index, 1)
     return includeUser(adventure[0])
 }
 
-function update(id, updatedLocation){
-    const index = adventures.findIndex(location => location.id === parseInt(id))
-    const oldLocation = adventures[index]
+async function remove(id){
+    const result = await con.query(`DELETE FROM adventures WHERE adventureID = ${id}`)
+    
+    if(!result.affectedRows){
+        throw { status: 404, message: `Adventure not found` }
+    }
 
-    updatedLocation = adventures[index] = { ...oldLocation, ...updatedLocation }
-
-    return includeUser(updatedLocation)
+    return { id }
 }
 
-function create(newLocation){
-    newLocation.id = adventures.length + 1
-    adventures.push(newLocation)
-    return newLocation
+async function update(id, updatedLocation){
+    const adventure = await con.query(`UPDATE adventures SET 
+    location = '${updatedLocation.location}', 
+    startDate = '${updatedLocation.startD}', 
+    endDate = '${updatedLocation.endD}', 
+    backgroundImg = '${updatedLocation.background}', 
+    description = '${updatedLocation.description}', 
+    link = '${updatedLocation.link}' 
+    WHERE adventureID = ${id}`)
+
+    return includeUser(adventure[0])
+}
+
+async function create(newLocation){
+    const result = await con.query(`INSERT INTO adventures (location, startDate, endDate, backgroundImg, description, link, userID) 
+    VALUES ('${newLocation.location}', '${newLocation.startD}', '${newLocation.endD}', '${newLocation.background}', '${newLocation.description}', '${newLocation.link}', ${newLocation.userID})`)
+
+    return includeUser({ ...newLocation, adventureID: result.insertId })
 }
 
 module.exports = {
     get,
     remove,
     update,
-    create
+    create,
+    async getList(){
+        const adventures = await con.query(`SELECT * FROM adventures`)
+        return adventures.map(adventure => includeUser(adventure))
+    }
 }
-
-module.exports.adventures = adventures;

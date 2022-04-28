@@ -2,38 +2,55 @@ const express = require('express');
 const app = express.Router();
 const AgendaModel = require('../models/agenda');
 
-const CREATED_STATUS = 201;
-
 app
     // GET
-    .get('/', (req, res) => {
-        res.send(AgendaModel.itinerary)
+    .get('/', (req, res, next) => {
+        AgendaModel.getList()
+        .then(agendas => {
+            res.send({success: true, error: [], data: agendas})
+        })
+        .catch(next)
     })
-    .get('/:id', (req, res) => {
-        const agenda = AgendaModel.get(req.params.id)
-        res.send(agenda)
+    .get('/:id', (req, res, next) => {
+        AgendaModel.get(req.params.id)
+        .then(agenda => {
+            res.send({success: true, error: [], data: agenda})
+        })
+        .catch(next)
     })
-    .get('/stop/:id', (req, res) => {
-        const agenda = AgendaModel.getByStopID(req.params.id)
-        res.send(agenda)
+    .get('/stop/:id', (req, res, next) => {
+        AgendaModel.getByStopID(req.params.id)
+        .then(agendas => {
+            res.send({success: true, error: [], data: agendas})
+        })
+        .catch(next)
     })
 
     // POST
-    .post('/', (req, res) => {
-        const newAgenda = AgendaModel.create(req.body)
-        res.status(CREATED_STATUS).send(newAgenda)
+    .post('/', (req, res, next) => {
+        AgendaModel.create(req.body)
+        .then(agenda => {
+            res.send({success: true, error: [], data: agenda})
+        })
+        .catch(next)
     })
 
     // DELETE
-    .delete('/:id', (req, res) => {
-        const agenda = AgendaModel.remove(req.params.id)
-        res.send({success: true, error: [], data: agenda})
+    .delete('/:id', (req, res, next) => {
+        AgendaModel.remove(req.params.id)
+        .then(agenda => {
+            res.send({success: true, error: [], data: agenda})
+        })
+        .catch(next)
     })
 
     // PATCH
-    .patch('/:id', (req, res) => {
-        const agenda = AgendaModel.update(req.params.id, req.body)
-        res.send({success: true, error: [], data: agenda})
+    .patch('/:id', (req, res, next) => {
+        AgendaModel.update(req.params.id, req.body)
+        .then(agenda => {
+            res.send({success: true, error: [], data: agenda})
+        })
+        .catch(next)
     })
 
 module.exports = app;

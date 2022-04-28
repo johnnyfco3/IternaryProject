@@ -1,42 +1,75 @@
 ###
-GET http://localhost:3000/api/users/
+GET http://localhost:3001/api/users/
 
 ###
-GET http://localhost:3000/api/users/1
+GET http://localhost:3001/api/users/1
 
 ###
-DELETE  http://localhost:3000/api/users/4
+DELETE  http://localhost:3001/api/users/4
 
 ###
-POST http://localhost:3000/api/users/
+POST http://localhost:3001/api/users/
 Content-Type: application/json
 
 {
-    "firstName": "Mike",
-    "lastName": "Tyson",
-    "birthday": "07-03-2000",
-    "email": "mtyson@gmail.com",
-    "password": "boxing",
-    "quote": "King",
-    "pic": ""
+    "firstName": "Johnny", 
+    "lastName": "Tejada", 
+    "birthday": "2000-07-03", 
+    "email": "example@gmail.com", 
+    "password": "12345", 
+    "quote": "Lets make today a memorable one!",
+    "profilePic": ""
 }
 
 ###
-PATCH  http://localhost:3000/api/users/4
+POST http://localhost:3001/api/users/
 Content-Type: application/json
 
 {
-    "lastName": "Jackson",
-    "password": "testing"
+    "firstName": "John", 
+    "lastName": "Smith", 
+    "birthday": "1999-05-10", 
+    "email": "example1@gmail.com", 
+    "password": "123456", 
+    "quote": "Hey there, lets travel together!!",
+    "profilePic": "https://randomuser.me/api/portraits/men/1.jpg"
 }
 
 ###
-POST http://localhost:3000/api/users/login
+POST http://localhost:3001/api/users/
 Content-Type: application/json
 
 {
-    "email": "mtyson@gmail.com",
-    "password": "boxing"
+    "firstName": "Michael", 
+    "lastName": "Jordan", 
+    "birthday": "1969-08-20", 
+    "email": "example2@gmail.com", 
+    "password": "1234", 
+    "quote": "Make the world a better place!",
+    "profilePic": "https://randomuser.me/api/portraits/men/9.jpg"
+}
+
+###
+PATCH  http://localhost:3001/api/users/2
+Content-Type: application/json
+
+{
+    "firstName": "John", 
+    "lastName": "Smith", 
+    "birthday": "1999-05-10", 
+    "email": "example1@gmail.com", 
+    "password": "123456", 
+    "quote": "Hey there, lets travel together!!",
+    "profilePic": "https://randomuser.me/api/portraits/men/1.jpg"
+}
+
+###
+POST http://localhost:3001/api/users/login
+Content-Type: application/json
+
+{
+    "email": "example@gmail.com",
+    "password": "12345"
 }
 
 

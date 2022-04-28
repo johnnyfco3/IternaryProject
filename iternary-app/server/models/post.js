@@ -1,19 +1,16 @@
 const con = require('./db_connect')
 
-con.connect(function(err) {
-    if (err) throw err;
-    let sql = `CREATE TABLE IF NOT EXISTS posts (
+async function createTable(){
+    const sql = `CREATE TABLE IF NOT EXISTS posts (
         postID INT NOT NULL AUTO_INCREMENT,
         img VARCHAR(255) NOT NULL,
         caption VARCHAR(255) NOT NULL,
         adventureID INT NOT NULL,
         CONSTRAINT postID_pk PRIMARY KEY (postID),
-        CONSTRAINT adventureID_fk FOREIGN KEY (adventureID) REFERENCES adventures(adventureID))`;
-    
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-    });
-});
+        CONSTRAINT adventureID_fk FOREIGN KEY (adventureID) REFERENCES adventures(adventureID))`
+    await con.query(sql)
+}
+createTable()
 
 const posts = [
     { 
@@ -67,40 +64,48 @@ const posts = [
   
 ]
 
-function get(id){
-    const post = posts.find(post => post.id === parseInt(id))
-    if(!post){
-        throw { statusCode: 404, msg: 'Post not found' }
+async function get(id){
+    const post = await con.query(`SELECT * FROM posts WHERE postID = ${id}`)
+    if(!post[0]){
+        throw { status: 404, message: `Post with id ${id} not found` }
     }
-    return { ...post }
+
+    return { ...post[0] }
 }
 
-function remove(id){
-    const index = posts.findIndex(post => post.id === parseInt(id))
-    posts.splice(index, 1)
-    return { ...posts[0] }
+async function remove(id){
+    const result = await con.query(`DELETE FROM posts WHERE postID = ${id}`)
+    if(!result.affectedRows){
+        throw { status: 404, message: `Post with id ${id} not found` }
+    }
+    return { message: `Post with id ${id} deleted` }
 }
 
-function update(id, updatedPost){
-    const index = posts.findIndex(post => post.id === parseInt(id))
-    const oldPost = posts[index]
+async function update(id, updatedPost){
+    const post = await con.query(`UPDATE posts SET 
+    img = '${updatedPost.img}', 
+    caption = '${updatedPost.caption}', 
+    adventureID = ${updatedPost.adventureID} 
+    WHERE postID = ${id}`)
 
-    updatedPost = posts[index] = { ...oldPost, ...updatedPost }
-
-    return { ...updatedPost }
+    return { message: `Post with id ${id} updated` }
 }
 
-function create(newPost){
-    newPost.id = posts.length + 1
-    posts.push(newPost)
-    return newPost
+async function create(newPost){
+    const result = await con.query(`INSERT INTO posts 
+    (img, caption, adventureID) 
+    VALUES ('${newPost.img}', '${newPost.caption}', ${newPost.adventureID})`)
+    
+    return { ...newPost, id: result.insertId }
 }
 
 module.exports = {
     get,
     remove,
     update,
-    create
+    create,
+    async getList(){
+        const posts = await con.query(`SELECT * FROM posts`)
+        return posts.map(post => ({ ...post }))
+    }
 }
-
-module.exports.posts = posts;

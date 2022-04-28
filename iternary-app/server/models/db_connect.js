@@ -8,11 +8,19 @@ const con = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
-con.connect(function(err) {
-    if (err) throw err;
-    con.query("CREATE DATABASE IF NOT EXISTS iternaryproject", function (err, result) {
-        if (err) throw err;
-    })
-});
+const query = (sql, binding) => {
+    return new Promise((resolve, reject) => {
+        con.query(sql, binding, (err, results, fields) => {
+            if (err) reject(err);
+            resolve(results);
+        });
+    });
+}
 
-module.exports = con;
+const createQuery = "CREATE DATABASE IF NOT EXISTS iternaryproject";
+con.query(createQuery);
+
+module.exports = {
+    query,
+    con
+}

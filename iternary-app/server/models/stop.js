@@ -1,19 +1,16 @@
 const con = require('./db_connect')
 
-con.connect(function(err) {
-    if (err) throw err;
-    let sql = `CREATE TABLE IF NOT EXISTS stops (
+async function createTable(){
+    const sql = `CREATE TABLE IF NOT EXISTS stops (
         stopID INT NOT NULL AUTO_INCREMENT,
         location VARCHAR(255) NOT NULL,
         image VARCHAR(255) NOT NULL,
         adventureID INT NOT NULL,
         CONSTRAINT stopID_pk PRIMARY KEY (stopID),
-        CONSTRAINT fk_adventureID FOREIGN KEY (adventureID) REFERENCES adventures(adventureID))`;
-        
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-    });
-});
+        CONSTRAINT fk_adventureID FOREIGN KEY (adventureID) REFERENCES adventures(adventureID))`
+    await con.query(sql)
+}
+createTable()
 
 const stops = [
     { 
@@ -67,40 +64,47 @@ const stops = [
   
 ]
 
-function get(id){
-    const stop = stops.find(stop => stop.id === parseInt(id))
-    if(!stop){
-        throw { status: 404, msg: 'Stop not found' }
+async function get(id){
+    const stop = await con.query(`SELECT * FROM stops WHERE stopID = ${id}`)
+    if(!stop[0]){
+        throw { status: 404, message: `Stop with id ${id} does not exist` }
     }
-    return { ...stop }
+
+    return { ...stop[0] }
 }
 
-function remove(id){
-    const index = stops.findIndex(stop => stop.id === parseInt(id))
-    stops.splice(index, 1)
-    return { ...stops[0] }
+async function remove(id){
+    const result = await con.query(`DELETE FROM stops WHERE stopID = ${id}`)
+    if(result.affectedRows === 0){
+        throw { status: 404, message: `Stop with id ${id} does not exist` }
+    }
+
+    return { message: `Post with id ${id} deleted` }
 }
 
-function update(id, updatedStop){
-    const index = stops.findIndex(stop => stop.id === parseInt(id))
-    const oldStop = stops[index]
+async function update(id, updatedStop){
+    const stop = await con.query(`UPDATE stops SET 
+    location = '${updatedStop.location}', 
+    image = '${updatedStop.image}' 
+    WHERE stopID = ${id}`)
 
-    updatedStop = stops[index] = { ...oldStop, ...updatedStop }
-
-    return { ...updatedStop }
+    return { message: `Stop with id ${id} updated` }
 }
 
-function create(newStop){
-    newStop.id = stops.length + 1
-    stops.push(newStop)
-    return newStop
+async function create(newStop){
+    const result = await con.query(`INSERT INTO stops (location, image, adventureID) 
+    VALUES ('${newStop.location}', '${newStop.image}', ${newStop.adventureID})`)
+    
+    return { ...newStop, id: result.insertId }
 }
 
 module.exports = {
     get,
     remove,
     update,
-    create
+    create,
+    async getList(){
+        const stops = await con.query(`SELECT * FROM stops`)
+        return stops.map(stop => ({ ...stop }))
+    }
 }
-
-module.exports.stops = stops;

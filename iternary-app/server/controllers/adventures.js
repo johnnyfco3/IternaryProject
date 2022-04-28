@@ -2,34 +2,48 @@ const express = require('express');
 const app = express.Router();
 const AdventureModel = require('../models/adventure');
 
-const CREATED_STATUS = 201;
-
 app
     // GET
-    .get('/', (req, res) => {
-        res.send(AdventureModel.adventures)
+    .get('/', (req, res, next) => {
+        AdventureModel.getList()
+        .then(adventures => {
+            res.send({success: true, error: [], data: adventures})
+        })
+        .catch(next)
     })
-    .get('/:id', (req, res) => {
-        const adventure = AdventureModel.get(req.params.id)
-        res.send(adventure)
+    .get('/:id', (req, res, next) => {
+        AdventureModel.get(req.params.id)
+        .then(adventure => {
+            res.send({success: true, error: [], data: adventure})
+        })
+        .catch(next)
     })
 
     // POST
-    .post('/', (req, res) => {
-        const newAdventure = AdventureModel.create(req.body)
-        res.status(CREATED_STATUS).send(newAdventure)
+    .post('/', (req, res, next) => {
+        AdventureModel.create(req.body)
+        .then(adventure => {
+            res.send({success: true, error: [], data: adventure})
+        })
+        .catch(next)
     })
 
     // DELETE
-    .delete('/:id', (req, res) => {
-        const adventure = AdventureModel.remove(req.params.id)
-        res.send({success: true, error: [], data: adventure})
+    .delete('/:id', (req, res, next) => {
+        AdventureModel.remove(req.params.id)
+        .then(adventure => {
+            res.send({success: true, error: [], data: adventure})
+        })
+        .catch(next)
     })
 
     // PATCH
-    .patch('/:id', (req, res) => {
-        const adventure = AdventureModel.update(req.params.id, req.body)
-        res.send({success: true, error: [], data: adventure})
+    .patch('/:id', (req, res, next) => {
+        AdventureModel.update(req.params.id, req.body)
+        .then(adventure => {
+            res.send({success: true, error: [], data: adventure})
+        })
+        .catch(next)
     })
 
 module.exports = app;

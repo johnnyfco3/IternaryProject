@@ -1,8 +1,7 @@
 const con = require('./db_connect')
 
-con.connect(function(err) {
-    if (err) throw err;
-    let sql = `CREATE TABLE IF NOT EXISTS flights (
+async function createTable(){
+    const sql = `CREATE TABLE IF NOT EXISTS flights (
         flightID INT NOT NULL AUTO_INCREMENT,
         flightNumber VARCHAR(255) NOT NULL,
         departFrom VARCHAR(255) NOT NULL,
@@ -12,11 +11,9 @@ con.connect(function(err) {
         adventureID INT NOT NULL,
         CONSTRAINT flight_pk PRIMARY KEY (flightID),
         CONSTRAINT flight_fk FOREIGN KEY (adventureID) REFERENCES adventures(adventureID))`;
-    
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-    });
-});
+    await con.query(sql)
+}
+createTable()
 
 const flightInfo = [
     {
@@ -39,41 +36,49 @@ const flightInfo = [
     },
 ]
 
-function get(id){
-    const flight = flightInfo.find(flight => flight.id === parseInt(id))
-    if(!flight){
-        throw { status: 404, msg: 'Flight not found' }
+async function get(id){
+    const flight = await con.query(`SELECT * FROM flights WHERE flightID = ${id}`)
+    if(!flight[0]){
+        throw { status: 404, message: `Flight with id ${id} not Found` }
     }
-    return { ...flight }
+    return { ...flight[0] }
 }
 
-function getByAdventure(adventureID){
-    const flights = flightInfo.filter(flight => flight.adventureID === parseInt(adventureID))
-    if(!flights){
-        throw { status: 404, msg: 'Flights not found' }
+async function getByAdventure(adventureID){
+    const flights = await con.query(`SELECT * FROM flights WHERE adventureID = ${adventureID}`)
+    if(!flights[0]){
+        throw { status: 404, message: `Flight with adventureID ${adventureID} not Found` }
     }
-    return flights
+    return { ...flights[0] }
 }
 
-function remove(id){
-    const index = flightInfo.findIndex(flight => flight.id === parseInt(id))
-    flightInfo.splice(index, 1)
-    return { ...flightInfo[0] }
+async function remove(id){
+    const result = await con.query(`DELETE FROM flights WHERE flightID = ${id}`)
+    if(!result.affectedRows){
+        throw { status: 404, message: `Flight with id ${id} not Found` }
+    }
+    return { message: `Flight with id ${id} deleted` }
 }
 
-function update(id, updatedFlight){
-    const index = flightInfo.findIndex(flight => flight.id === parseInt(id))
-    const oldFlight = flightInfo[index]
+async function update(id, updatedFlight){
+    const flight = await con.query(`UPDATE flights SET 
+        flightNumber = '${updatedFlight.number}',
+        departFrom = '${updatedFlight.from}',
+        arriveAt = '${updatedFlight.to}',
+        depart = '${updatedFlight.depart}',
+        arrive = '${updatedFlight.arrival}',
+        adventureID = ${updatedFlight.adventureID}
+        WHERE flightID = ${id}`)
 
-    updatedFlight = flightInfo[index] = { ...oldFlight, ...updatedFlight }
-
-    return { ...updatedFlight }
+    return { message: `Flight with id ${id} updated` }
 }
 
-function create(newFlight){
-    newFlight.id = flightInfo.length + 1
-    flightInfo.push(newFlight)
-    return newFlight
+async function create(newFlight){
+    const flight = await con.query(`INSERT INTO flights 
+        (flightNumber, departFrom, arriveAt, depart, arrive, adventureID) 
+        VALUES ('${newFlight.number}', '${newFlight.from}', '${newFlight.to}', '${newFlight.depart}', '${newFlight.arrival}', ${newFlight.adventureID})`)
+
+    return { ...newFlight, id: flight.insertId }
 }
 
 module.exports = {
@@ -81,7 +86,9 @@ module.exports = {
     remove,
     update,
     create,
-    getByAdventure
+    getByAdventure,
+    async getList(){
+        const flights = await con.query(`SELECT * FROM flights`)
+        return flights.map(flight => ({ ...flight }))
+    }
 }
-
-module.exports.flightInfo = flightInfo;

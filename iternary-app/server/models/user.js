@@ -1,8 +1,7 @@
 const con = require('./db_connect')
 
-con.connect(function(err) {
-    if (err) throw err;
-    let sql = `CREATE TABLE IF NOT EXISTS users (
+async function createTable(){
+    const sql = `CREATE TABLE IF NOT EXISTS users (
         userID INT NOT NULL AUTO_INCREMENT,
         firstName VARCHAR(255) NOT NULL,
         lastName VARCHAR(255) NOT NULL,
@@ -11,12 +10,10 @@ con.connect(function(err) {
         birthday DATE NOT NULL,
         quote VARCHAR(255),
         profilePic VARCHAR(255),
-        CONSTRAINT user_pk PRIMARY KEY (userID))`;
-
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-    });
-});
+        CONSTRAINT user_pk PRIMARY KEY (userID))`
+    await con.query(sql)
+}
+createTable()
 
 const users = [
     { 
@@ -27,7 +24,7 @@ const users = [
         email: "example@gmail.com", 
         password: "12345", 
         quote: "Let's make today a memorable one!",
-        pic: ""
+        profilePic: ""
     },
     { 
         id: 2,
@@ -37,7 +34,7 @@ const users = [
         email: "example1@gmail.com", 
         password: "123456", 
         quote: "Hey there, lets travel together!!",
-        pic: "https://randomuser.me/api/portraits/men/1.jpg"
+        profilePic: "https://randomuser.me/api/portraits/men/1.jpg"
     },
     { 
         id: 3,
@@ -47,70 +44,63 @@ const users = [
         email: "example2@gmail.com", 
         password: "1234", 
         quote: "Make the world a better place!",
-        pic: "https://randomuser.me/api/portraits/men/9.jpg"
-    },
+        profilePic: "https://randomuser.me/api/portraits/men/9.jpg"
+    }
 ]
 
-function get(id){
-    const user = users.find(user => user.id === parseInt(id))
-    
-    if(!user){
-        throw { statusCode: 404, message: 'User not Found' }
-    }
-    
-    return { ...user, password: undefined }
-}
-
-function getByEmail(email){
-    const user = users.find(user => user.email === email)
-    
-    if(!user){
-        throw { statusCode: 404, message: 'User not Found' }
-    }
-    
-    return { ...user, password: undefined }
-}
-
-function remove(id){
-    const index = users.findIndex(user => user.id === parseInt(id))
-    users.splice(index, 1)
-
-    return { ...users[0], password: undefined }
-}
-
-function update(id, updatedUser){
-    const index = users.findIndex(user => user.id === parseInt(id))
-    const oldUser = users[index]
-
-    updatedUser = users[index] = { ...oldUser, ...updatedUser }
-
-    return { ...updatedUser, password: undefined }
-}
-
-function create(newUser){
-    const user = users.find(user => user.email === newUser.email)
-    
-    if(user){
-        throw { statusCode: 400, message: 'User already exists' }
-    }
-    
-    newUser.id = users.length + 1
-    users.push(newUser)
-    return { ...newUser, password: undefined }
-    
-}
-
- function login(email, password){
-    const user = users.find(user => user.email === email)
-    
-    if(!user){
+async function get(id){
+    const user = await con.query(`SELECT * FROM users WHERE userID = ${id}`)
+    if(!user[0]){
         throw { status: 404, message: 'User not Found' }
     }
-    if(user.password !== password){
-        throw { status: 401, message: 'Invalid Password' }
+    return { ...user[0], password: undefined }
+}
+
+async function getByEmail(email){
+    const user = await con.query(`SELECT * FROM users WHERE email = '${email}'`)
+    if(!user[0]){
+        throw { status: 404, message: `User with email ${email} not Found` }
     }
+    return { ...user[0], password: undefined }
+}
+
+async function remove(id){
+    const result = await con.query(`DELETE FROM users WHERE userID = ${id}`)
+    if(!result.affectedRows){
+        throw { status: 404, message: 'User not Found' }
+    }
+    return { message: `User with id ${id} deleted` }
+}
+
+async function update(id, updatedUser){
+    const user = await con.query(`UPDATE users SET 
+    firstName = '${updatedUser.firstName}', 
+    lastName = '${updatedUser.lastName}', 
+    birthday = '${updatedUser.birthday}', 
+    email = '${updatedUser.email}', 
+    password = '${updatedUser.password}', 
+    quote = '${updatedUser.quote}', 
+    profilePic = '${updatedUser.profilePic}'
+    WHERE userID = ${id}`)
+
+    return { message: `User with id ${id} updated` }
+}
+
+async function create(newUser){
+    const user = await con.query(`INSERT INTO users 
+    (firstName, lastName, birthday, email, password, quote, profilePic) 
+    VALUES ('${newUser.firstName}', '${newUser.lastName}', '${newUser.birthday}', '${newUser.email}', '${newUser.password}', '${newUser.quote}', '${newUser.profilePic}')`)
+
+    return { ...newUser, id: user.insertId, password: undefined }
     
-    return { ...user, password: undefined }
+}
+
+ async function login(email, password){
+    const user = await con.query(`SELECT * FROM users WHERE email = '${email}' AND password = '${password}'`)
+    if(!user[0]){
+        throw { status: 404, message: 'User not Found' }
+    }
+    return { ...user[0], password: undefined }
 }
 
 module.exports = {
@@ -120,7 +110,8 @@ module.exports = {
     create,
     getByEmail,
     login,
-    get list(){
+    async getList(){
+        const users = await con.query(`SELECT * FROM users`)
         return users.map(user => ({ ...user, password: undefined }))
     }
 }

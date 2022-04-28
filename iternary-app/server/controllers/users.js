@@ -2,47 +2,63 @@ const express = require('express');
 const app = express.Router();
 const UserModel = require('../models/user');
 
-const CREATED_STATUS = 201;
-
 app 
     // GET
-    .get('/', (req, res) => {
-        res.send(UserModel.list)
+    .get('/', (req, res, next) => {
+        UserModel.getList()
+        .then(users => {
+            res.send({success: true, error: [], data: users})
+        })
+        .catch(next)
     })
-    .get('/:id', (req, res) => {
-        const user = UserModel.get(req.params.id)
-        res.send(user)
+    .get('/:id', (req, res, next) => {
+        UserModel.get(req.params.id)
+        .then(user => {
+            res.send({success: true, error: [], data: user})
+        })
+        .catch(next)
     })
-    .get('/email/:email', (req, res) => {
-        const user = UserModel.getByEmail(req.params.email)
-        res.send(user)
+    .get('/email/:email', (req, res, next) => {
+        UserModel.getByEmail(req.params.email)
+        .then(user => {
+            res.send({success: true, error: [], data: user})
+        })
+        .catch(next)
     })
 
     // POST
-    .post('/', (req, res) => {
-        const newUser = UserModel.create(req.body)
-        res.status(CREATED_STATUS).send(newUser)
+    .post('/', (req, res, next) => {
+        UserModel.create(req.body)
+        .then(user => {
+            res.send({success: true, error: [], data: user})
+        })
+        .catch(next)
     })
-    .post('/login', (req, res,) => {
-        const user = UserModel.login(req.body.email, req.body.password)
-        res.send(user)
+    .post('/login', (req, res, next) => {
+        UserModel.login(req.body.email, req.body.password)
+        .then(user => {
+            res.send({success: true, error: [], data: user})
+        })
+        .catch(next)
         
-    })
-    .post('/logout', (req, res) => {
-        UserModel.logout()
-        res.send({success: true, error: [], data: {}})
     })
 
     //DELETE
-    .delete('/:id', (req, res) => {
-        const user = UserModel.remove(req.params.id)
-        res.send({success: true, error: [], data: user})
+    .delete('/:id', (req, res, next) => {
+        UserModel.remove(req.params.id)
+        .then(user => {
+            res.send({success: true, error: [], data: user})
+        })
+        .catch(next)
     })
 
     // PATCH
-    .patch('/:id', (req, res) => {
-        const user = UserModel.update(req.params.id, req.body)
-        res.send({success: true, error: [], data: user})
+    .patch('/:id', (req, res, next) => {
+        UserModel.update(req.params.id, req.body)
+        .then(user => {
+            res.send({success: true, error: [], data: user})
+        })
+        .catch(next)
     })
 
 module.exports = app;

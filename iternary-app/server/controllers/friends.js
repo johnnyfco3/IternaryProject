@@ -2,40 +2,46 @@ const express = require('express');
 const app = express.Router();
 const FriendModel = require('../models/friend');
 
-const CREATED_STATUS = 201;
-
 app
     // GET
-    .get('/', (req, res) => {
-        res.send(FriendModel.friends)
+    .get('/', (req, res, next) => {
+        FriendModel.getList()
+        .then(friends => {
+            res.send({success: true, error: [], data: friends})
+        })
+        .catch(next)
     })
-    .get('/:id', (req, res) => {
-        const friend = FriendModel.get(req.params.id)
-        res.send(friend)
+    .get('/:id', (req, res, next) => {
+        FriendModel.get(req.params.id)
+        .then(friend => {
+            res.send({success: true, error: [], data: friend})
+        })
+        .catch(next)
     })
-    .get('/email/:email', (req, res) => {
-        const friend = FriendModel.getByUser(req.params.email)
-        res.send(friend)
+    .get('/user/:userID', (req, res, next) => {
+        FriendModel.getByUser(req.params.userID)
+        .then(friend => {
+            res.send({success: true, error: [], data: friend})
+        })
+        .catch(next)
     })
 
     // POST
-    .post('/', (req, res) => {
-        const newFriend = FriendModel.create(req.body)
-        res.status(CREATED_STATUS).send(newFriend)
-    })
-    .post('/:user/:email', (req, res) => {
-        const friend = FriendModel.addFriends(req.params.user, req.params.email)
-        res.send({success: true, error: [], data: friend})
+    .post('/', (req, res, next) => {
+        FriendModel.create(req.body)
+        .then(friend => {
+            res.send({success: true, error: [], data: friend})
+        })
+        .catch(next)
     })
     
     // DELETE
-    .delete('/:id', (req, res) => {
-        const friend = FriendModel.remove(req.params.id)
-        res.send({success: true, error: [], data: friend})
-    })
-    .delete('/email/:user/:email', (req, res) => {
-        const friend = FriendModel.removeFriend(req.params.user, req.params.email)
-        res.send({success: true, error: [], data: friend})
+    .delete('/:id', (req, res, next) => {
+        FriendModel.remove(req.params.id)
+        .then(friend => {
+            res.send({success: true, error: [], data: friend})
+        })
+        .catch(next)
     })
 
 module.exports = app;
