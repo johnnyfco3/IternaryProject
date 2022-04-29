@@ -49,7 +49,7 @@ async function getByAdventure(adventureID){
     if(!flights[0]){
         throw { status: 404, message: `Flight with adventureID ${adventureID} not Found` }
     }
-    return { ...flights[0] }
+    return flights.map(flight => ({ ...flight }))
 }
 
 async function remove(id){

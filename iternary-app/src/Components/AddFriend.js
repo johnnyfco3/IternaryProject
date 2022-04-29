@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { createFriend } from "../service/friends";
 import session from "../service/session";
 import { getByEmail } from "../service/users";
-import { addFriends } from "../service/friends";
 
-export function AddFriend({setEmails}){
+export function AddFriend({setIds}){
 
     const [formData, setFormData] = useState("")
     const [error, setError] = useState("")
@@ -13,12 +13,15 @@ export function AddFriend({setEmails}){
 
         const existUser = await getByEmail(formData)
         if(!existUser.errors){
-            setEmails(prevState => {
-                return [...prevState, formData]
+            setIds(prevState => {
+                return [...prevState, existUser.data.userID]
             })
             
             try{
-                await addFriends(session.user.email, formData)
+                await createFriend({
+                    newFriend: existUser.data.userID, 
+                    userID: session.user.userID}
+                )
                 setFormData("")
             }
             catch(err){

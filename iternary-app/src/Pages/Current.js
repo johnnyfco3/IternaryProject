@@ -15,9 +15,9 @@ export function Current({date}){
     useEffect(() =>{
         const fetchData = async () => {
             const list = await getAdventures()
-            setAdventuresList(list)
+            setAdventuresList(list.data)
             const user = await getByEmail(email)
-            setUser(user)
+            setUser(user.data)
         }
         fetchData()
     },[email])
@@ -36,7 +36,7 @@ export function Current({date}){
     let navigate = useNavigate();
 
     const currentList = adventuresList.map((trip, i) => {
-            if(trip.startD <= date && trip.endD >= date && trip.userID === user.id){
+            if(trip.startDate <= date && trip.endD >= date && trip.userID === user.userID){
                 return <AdventureList trip={trip} email={email} index={i} remove={remove} key={i}/>
             }
         })

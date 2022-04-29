@@ -12,7 +12,7 @@ export function EditStops(){
     useEffect(() => {
         const fetchData = async () => {
             const stop = await getById(parseInt(stopID))
-            setEditStop(stop)
+            setEditStop(stop.data)
         }
         fetchData()
     }, [stopID])
@@ -59,7 +59,7 @@ export function EditStops(){
                         <h1 className="heading mt-4">Image of Location</h1>
                         <div className="col-6">
                             <label htmlFor="image" className="form-label">Enter image URL</label>
-                            <input type="url" className="form-control" id="image" name="img" value={editStop.img} onChange={handleChange}/>
+                            <input type="url" className="form-control" id="image" name="img" value={editStop.image} onChange={handleChange}/>
                         </div>
 
                         <div className="col-12 text-center button">

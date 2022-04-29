@@ -8,8 +8,10 @@ export function EditFlightsForm({ id }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const flight = await getById(id)
-            setEditFlight(flight)
+            if(id !== null){
+                const flight = await getById(id)
+                setEditFlight(flight.data)
+            }
         }
         fetchData()
     }, [id])
@@ -42,17 +44,17 @@ export function EditFlightsForm({ id }) {
                     <div className="row g-3">
                         <div className="col-md-6">
                             <h1 className="heading">Flight Number</h1>
-                            <input type="text" className="form-control" id="number" name="number" value={editFlight.number} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="number" name="number" value={editFlight.flightNumber} onChange={handleChange}/>
                         </div>
                         <div className="col-md-6">
                         </div>
                         <div className="col-md-4">
                             <h1 className="heading">From</h1>
-                            <input type="text" className="form-control" id="from" name="from" value={editFlight.from} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="from" name="from" value={editFlight.departFrom} onChange={handleChange}/>
                         </div>
                         <div className="col-md-4">
                             <h1 className="heading">To</h1>
-                            <input type="text" className="form-control" id="to" name="to" value={editFlight.to} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="to" name="to" value={editFlight.arriveAt} onChange={handleChange}/>
                         </div>
                         <div className="col-md-4">
                         </div>
@@ -62,7 +64,7 @@ export function EditFlightsForm({ id }) {
                         </div>
                         <div className="col-md-3">
                             <h1 className="heading">Arrival Time</h1>
-                            <input type="text" className="form-control" id="arrival" name="arrival" value={editFlight.arrival} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="arrival" name="arrival" value={editFlight.arrive} onChange={handleChange}/>
                         </div>
                     </div>
                         <div className="col-12 text-center button">

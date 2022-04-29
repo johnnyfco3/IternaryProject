@@ -9,10 +9,10 @@ export function Flights({flight, email, removeFlight}){
                 ) : (
                     <></>
         )}
-        <h3 className="text-center">{flight.number}</h3>
+        <h3 className="text-center">{flight.flightNumber}</h3>
         <div className="row">
             <div className="col-4 text-center">
-                <a href="">{flight.from}</a>
+                <a href="">{flight.departFrom}</a>
                 <p className="pt-1">{flight.depart}</p>
             </div>
             <div className="col-4 text-center">
@@ -23,8 +23,8 @@ export function Flights({flight, email, removeFlight}){
                 <p className="pt-1">0 minutes remaining</p>
             </div>
             <div className="col-4 text-center">
-                <a href="">{flight.to}</a>
-                <p className="pt-1">{flight.arrival}</p>
+                <a href="">{flight.arriveAt}</a>
+                <p className="pt-1">{flight.arrive}</p>
             </div>
         </div>
         </div>

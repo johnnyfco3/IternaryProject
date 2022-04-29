@@ -20,14 +20,14 @@ export function Locations({stop, email, removeStop, allActive, setAllActive}) {
             <div className="locations-header d-flex justify-content-center">
                 <h3 className="text-center">{stop.location}</h3>
                 {email === session.user.email ? ( 
-                        <Link to={`/edit-stops/${stop.id}`}><i className="fa-solid fa-pencil pt-2 px-3 pencil"></i></Link>
+                        <Link to={`/edit-stops/${stop.stopID}`}><i className="fa-solid fa-pencil pt-2 px-3 pencil"></i></Link>
                         ) : (
                             <></>
                     )}
             </div>
             <div className={active || allActive ? "card mt-3 mx-2 active" : "card mt-3 mx-2"}>
                 <div className="front">
-                    <img src={stop.img} alt="Location" onClick={toggleActive}/>
+                    <img src={stop.image} alt="Location" onClick={toggleActive}/>
                 </div>
                 <div className="back">
                     {email === session.user.email ? ( 

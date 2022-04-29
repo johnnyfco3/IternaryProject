@@ -8,14 +8,16 @@ export function Agenda({stop, email}){
     const [itinerary, setItinerary] = useState([])
     const [agendaForm, setAgendaForm] = useState({
         text: "",
-        stopID: stop.id,
+        stopID: stop.stopID,
     })
     const [formActive, setFormActive] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
-            const itinerary = await getByStopID(stop.id)
-            setItinerary(itinerary)
+            const itinerary = await getByStopID(stop.stopID)
+            if(itinerary.errors === undefined){
+                setItinerary(itinerary.data)
+            }
         }
         fetchData()
     }, [stop])

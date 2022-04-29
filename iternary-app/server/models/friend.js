@@ -41,12 +41,13 @@ async function getByUser(userID){
     return friends.map(friend => ({ ...friend }))
 }
 
-async function remove(id){
-    const result = await con.query(`DELETE FROM friendList WHERE id = ${id}`)
+async function remove(id, userID){
+    const result = await con.query(`DELETE FROM friendList WHERE newFriend = ${id} AND userID = ${userID}`)
     if(!result.affectedRows){
         throw { status: 404, message: `Friend with id ${id} not Found` }
     }
-    return { message: `Friend with id ${id} deleted` }
+
+    return { message: "Friend Deleted" }
 }
 
 async function create(newFriend){

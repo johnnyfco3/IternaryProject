@@ -11,13 +11,13 @@ export function Posts({post, email, removePost}){
                 </div>
                 <div className="back">
                     {email === session.user.email ? ( 
-                        <i className="fa-solid fa-xmark delete" onClick={(e)=> removePost(e, post.id)}></i>
+                        <i className="fa-solid fa-xmark delete" onClick={(e)=> removePost(e, post.postID)}></i>
                         ) : (
                             <></>
                     )}
                     <h3 className="title text-center">Caption</h3>
                     {email === session.user.email ? ( 
-                            <Link to={`/edit-posts/${post.id}`}><i className="fa-solid fa-pencil pt-2 px-3 pencil"></i></Link>
+                            <Link to={`/edit-posts/${post.postID}`}><i className="fa-solid fa-pencil pt-2 px-3 pencil"></i></Link>
                             ) : (
                                 <></>
                         )}

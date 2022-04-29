@@ -13,7 +13,9 @@ export function FlightInfo({adventureID, email}){
     useEffect(() => {
         const  fetchData = async () => {
             const flight = await getByAdventure(parseInt(adventureID))
-            setFlightInfo(flight)
+            if(flight.errors === undefined){
+                setFlightInfo(flight.data)
+            }
         }
         fetchData()
     }, [adventureID])

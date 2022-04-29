@@ -29,13 +29,13 @@ export function Overview(){
     useEffect(() => {
         const fetchData = async () => {
             const adventure = await getById(parseInt(adventureID))
-            setLocation(adventure)
+            setLocation(adventure.data)
             const posts = await getPosts()
-            setPostList(posts)
+            setPostList(posts.data)
             const stops = await getStops()
-            setStopsList(stops)
+            setStopsList(stops.data)
             const comments = await getComments()
-            setCommentsList(comments)
+            setCommentsList(comments.data)
         }
         fetchData()
     }, [adventureID])
@@ -97,7 +97,7 @@ export function Overview(){
       })
 
     const styles = {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${location.background})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${location.backgroundImg})`,
         backgroundSize: "cover"
     }
 

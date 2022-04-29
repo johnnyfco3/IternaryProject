@@ -11,15 +11,15 @@ import { getUsers } from "../service/users";
 
 export function Friends(){
 
-    const [emails, setEmails] = useState([])
+    const [ids, setIds] = useState([])
     const [users, setUsers] = useState([])
     
     useEffect(()=>{
         const fetchData = async () => {
-            const data = await getByUser(session.user.email)
-            setEmails(data.friends)
+            const data = await getByUser(session.user.userID)
+            setIds(data.data.map(friend => friend.newFriend))
             const userData = await getUsers()
-            setUsers(userData)
+            setUsers(userData.data)
         }
         fetchData()
     }, [])
@@ -31,10 +31,10 @@ export function Friends(){
         navigate(`/history/${email}`)
     }
 
-    const list = emails.map((email) => (
+    const list = ids.map((id) => (
         users.map((user, i) =>{
-            if(user.email === email){
-                return <FriendsList user={user} handleClick={handleClick} setEmails={setEmails} key={i}/>
+            if(user.userID === id){
+                return <FriendsList user={user} handleClick={handleClick} setIds={setIds} key={i}/>
             }
         })
     ))
@@ -52,7 +52,7 @@ export function Friends(){
 
             <main>
                 <div className="container">
-                    <AddFriend setEmails={setEmails}/>
+                    <AddFriend setIds={setIds}/>
                     <section className="list mb-5 pb-5 row">
                         {list}
                     </section>

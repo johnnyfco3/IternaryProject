@@ -9,8 +9,8 @@ export function Comments({comment, email, removeComment}) {
 
     useEffect(() =>{
         const fetchData = async () => {
-            const user = await getById(comment.user)
-            setUser(user)
+            const user = await getById(comment.userID)
+            setUser(user.data)
         }
         fetchData()
     }, [comment])
@@ -23,7 +23,7 @@ export function Comments({comment, email, removeComment}) {
                 <></>
         )}
         <p>
-            <img src={user.pic === "" ? UserImage : user.pic} alt="Profile Pic" className="img-fluid rounded-circle pe-2"/> {user.firstName} {user.lastName} - <br />
+            <img src={user.profilePic === "" ? UserImage : user.profilePic} alt="Profile Pic" className="img-fluid rounded-circle pe-2"/> {user.firstName} {user.lastName} - <br />
             {comment.text}
         </p>
         </>

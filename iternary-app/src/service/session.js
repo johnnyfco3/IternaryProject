@@ -11,7 +11,7 @@ const session = {
                 return this.message
             }
             else{
-                session.user = response
+                session.user = response.data
                 return true
             }
         }

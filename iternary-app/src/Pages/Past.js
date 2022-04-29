@@ -15,9 +15,9 @@ export function Past({date}){
     useEffect(() =>{
         const fetchData = async () => {
             const adventures = await getAdventures()
-            setAdventuresList(adventures)
+            setAdventuresList(adventures.data)
             const user = await getByEmail(email)
-            setUser(user)
+            setUser(user.data)
         }
         fetchData()
     },[email])
@@ -36,7 +36,7 @@ export function Past({date}){
     let navigate = useNavigate();
 
     const pastList = adventuresList.map((trip, i) => {
-        if(trip.endD < date && trip.userID === user.id){
+        if(trip.endDate < date && trip.userID === user.userID){
             return <AdventureList trip={trip} email={email} index={i} remove={remove} key={i}/>
         }
     })

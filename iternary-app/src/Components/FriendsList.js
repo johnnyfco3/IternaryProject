@@ -3,13 +3,13 @@ import UserImage from "../Images/blank-profile-picture-gdf604cfb6_1280.png"
 import { removeFriend } from "../service/friends";
 import session from "../service/session";
 
-export function FriendsList({user, handleClick, setEmails}){
+export function FriendsList({user, handleClick, setIds}){
 
-    async function removeFriends(e, email){
+    async function removeFriends(e, id){
         e.preventDefault();
         try{
-            await removeFriend(session.user.email, email);
-            setEmails(prevState => prevState.filter(item => item !== email))
+            await removeFriend(id ,session.user.userID);
+            setIds(prevState => prevState.filter(item => item !== id))
         }
         catch(err){
             console.log(err);
@@ -19,9 +19,9 @@ export function FriendsList({user, handleClick, setEmails}){
     return (
         <div className="col-lg-4">
             <div className="card shadow-lg mb-4">
-                <i className="fa-solid fa-xmark delete" onClick={(e)=> removeFriends(e, user.email)}></i>
+                <i className="fa-solid fa-xmark delete" onClick={(e)=> removeFriends(e, user.userID)}></i>
                 <div className="card-img-top text-center pt-1" onClick={(e) => handleClick(e, user.email)}>
-                    <img src={user.pic === "" ? UserImage : user.pic}
+                    <img src={user.profilePic === "" ? UserImage : user.profilePic}
                     alt="Friend" className="img-fluid rounded-circle"/>
                 </div>
                 <div className="content text-center pt-4" onClick={(e) => handleClick(e, user.email)}>

@@ -15,9 +15,9 @@ export function Upcoming({date}){
     useEffect(() =>{
         const fetchData = async () => {
             const adventures = await getAdventures()
-            setAdventuresList(adventures)
+            setAdventuresList(adventures.data)
             const user = await getByEmail(email)
-            setUser(user)
+            setUser(user.data)
         }
         fetchData()
     },[email])
@@ -34,9 +34,8 @@ export function Upcoming({date}){
     }
 
     let navigate = useNavigate()
-
     const upcomingList = adventuresList.map((trip, i) => {
-        if(trip.startD > date && trip.userID === user.id){
+        if(trip.startDate > date && trip.userID === user.userID){
             return <AdventureList trip={trip} email={email} remove={remove} key={i}/>
         }
     })

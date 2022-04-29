@@ -9,7 +9,7 @@ export function Introduction({email}){
     useEffect(()=>{
         const fetchData = async () => {
             const user = await getByEmail(email)
-            setUser(user)
+            setUser(user.data)
         }
         fetchData()
     }, [email])

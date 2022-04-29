@@ -12,7 +12,7 @@ export function EditPosts(){
     useEffect(() => {
         const fetchData = async () => {
             const post = await getById(parseInt(postID))
-            setEditPost(post)
+            setEditPost(post.data)
         }
         fetchData()
     }, [postID])

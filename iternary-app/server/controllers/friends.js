@@ -36,8 +36,8 @@ app
     })
     
     // DELETE
-    .delete('/:id', (req, res, next) => {
-        FriendModel.remove(req.params.id)
+    .delete('/:id/:userID', (req, res, next) => {
+        FriendModel.remove(req.params.id, req.params.userID)
         .then(friend => {
             res.send({success: true, error: [], data: friend})
         })

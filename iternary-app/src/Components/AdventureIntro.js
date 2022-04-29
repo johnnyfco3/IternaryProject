@@ -12,7 +12,7 @@ export function AdventureIntro({location}){
             <div className="row top">
                 <div className="col-1 me-4 mb-5">
                     <div className="circle rounded-circle text-center">
-                        <p>{location.startD}</p>
+                        <p>{location.startDate}</p>
                     </div>
                 </div>
                 <div className="col-10 info">
