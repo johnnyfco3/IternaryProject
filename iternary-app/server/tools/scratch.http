@@ -227,3 +227,278 @@ Content-Type: application/json
     "img": "https://images.unsplash.com/photo-1628106913234-9cdfddbf6b81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80", 
     "adventureID": 8       
 }
+
+
+###
+GET http://localhost:3001/api/posts/
+
+###
+GET http://localhost:3001/api/posts/1
+
+###
+DELETE  http://localhost:3001/api/posts/3
+
+###
+POST http://localhost:3001/api/posts/
+Content-Type: application/json
+
+{
+    "img": "https://images.unsplash.com/photo-1582436416930-f533b50a7cd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80", 
+    "caption": "One World NYC", 
+    "adventureID": 6
+}
+
+###
+POST http://localhost:3001/api/posts/
+Content-Type: application/json
+
+{
+    "img": "https://images.unsplash.com/photo-1622491088758-364f7e4908fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80", 
+    "caption": "Such a beautiful park!", 
+    "adventureID": 6 
+}
+
+###
+POST http://localhost:3001/api/posts/
+Content-Type: application/json
+
+{
+    "img": "https://images.unsplash.com/photo-1559613527-817fdce54129?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80", 
+    "caption": "Spending a Sunday Afternoon at the vessel.", 
+    "adventureID": 6 
+}
+
+###
+POST http://localhost:3001/api/posts/
+Content-Type: application/json
+
+{
+    "img": "https://images.unsplash.com/photo-1595901688281-9cef114adb0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80", 
+    "caption": "Too many people!", 
+    "adventureID": 6 
+}
+
+###
+POST http://localhost:3001/api/posts/
+Content-Type: application/json
+
+{
+    "img": "https://images.unsplash.com/photo-1558385953-d50e6afd94c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80", 
+    "caption": "Finally a space to breathe", 
+    "adventureID": 6 
+}
+
+###
+POST http://localhost:3001/api/posts/
+Content-Type: application/json
+
+{
+    "img": "https://images.unsplash.com/photo-1562967967-edb2915098dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmlhbHRvJTIwYnJpZGdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60", 
+    "caption": "Venice could not be more beautiful!", 
+    "adventureID": 8
+}
+
+###
+POST http://localhost:3001/api/posts/
+Content-Type: application/json
+
+{
+    "img": "https://images.unsplash.com/photo-1567012198973-b8843811d618?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80", 
+    "caption": "Beautiful Museum", 
+    "adventureID": 8
+}
+
+###
+POST http://localhost:3001/api/posts/
+Content-Type: application/json
+
+{
+    "img": "https://images.unsplash.com/photo-1628106913234-9cdfddbf6b81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80", 
+    "caption": "Great Location for photos!", 
+    "adventureID": 8
+}
+
+
+
+###
+GET http://localhost:3001/api/friends/
+
+###
+GET http://localhost:3001/api/friends/1
+
+###
+DELETE  http://localhost:3001/api/friends/3
+
+###
+POST http://localhost:3001/api/friends/
+Content-Type: application/json
+
+{
+    "newFriend": 2,
+    "userID": 1
+}
+
+###
+POST http://localhost:3001/api/friends/
+Content-Type: application/json
+
+{
+    "newFriend": 1,
+    "userID": 2
+}
+
+
+###
+GET http://localhost:3001/api/flights/
+
+###
+GET http://localhost:3001/api/flights/1
+
+###
+DELETE  http://localhost:3001/api/flights/3
+
+###
+POST http://localhost:3001/api/flights/
+Content-Type: application/json
+
+{
+    "number": "BA2540",
+    "from": "JFK",
+    "to": "LGA",
+    "depart": "07:00am",
+    "arrival": "10:30am",
+    "adventureID": 6
+}
+
+###
+POST http://localhost:3001/api/flights/
+Content-Type: application/json
+
+{
+    "number": "AA2540",
+    "from": "ALB",
+    "to": "GTR",
+    "depart": "03:00pm",
+    "arrival": "6:30pm",
+    "adventureID": 7
+}
+
+
+###
+GET http://localhost:3001/api/comments/
+
+###
+GET http://localhost:3001/api/comments/1
+
+###
+DELETE  http://localhost:3001/api/comments/3
+
+###
+POST http://localhost:3001/api/comments/
+Content-Type: application/json
+
+{
+    "text": "jkrnknr rkfn rfkn rfknrf erkfn rfner fknferfnkf eknf", 
+    "userID": 2, 
+    "adventureID": 6
+}
+
+###
+POST http://localhost:3001/api/comments/
+Content-Type: application/json
+
+{
+    "text": "kjrnfk jnf rfkjnf", 
+    "userID": 2, 
+    "adventureID": 6
+}
+
+###
+POST http://localhost:3001/api/comments/
+Content-Type: application/json
+
+{
+    "text": "lqeljwrl rlwrern lrlrn lrlr fslafj flasjfk saflsfasfkkas flsfakslfjkasfas fl", 
+    "userID": 2, 
+    "adventureID": 7
+}
+
+###
+POST http://localhost:3001/api/comments/
+Content-Type: application/json
+
+{
+    "text": "fkjsfnd fsdlfnsdfnsdf sdfn sflnffn fn f,nfn fk fln ffdfldfn sdsd dsn ksd ", 
+    "userID": 3, 
+    "adventureID": 8
+}
+
+
+###
+GET http://localhost:3001/api/agendas/
+
+###
+GET http://localhost:3001/api/agendas/1
+
+###
+DELETE  http://localhost:3001/api/agendas/3
+
+###
+POST http://localhost:3001/api/agendas/
+Content-Type: application/json
+
+{
+    "text": "Go to the park",
+    "completed": true,
+    "stopID": 4
+}
+
+###
+POST http://localhost:3001/api/agendas/
+Content-Type: application/json
+
+{
+    "text": "Go eat at the restaurant",
+    "completed": false,
+    "stopID": 4
+}
+
+###
+POST http://localhost:3001/api/agendas/
+Content-Type: application/json
+
+{
+    "text": "Check out the museum",
+    "completed": false,
+    "stopID": 4
+}
+
+###
+POST http://localhost:3001/api/agendas/
+Content-Type: application/json
+
+{
+    "text": "Check out the museum",
+    "completed": true,
+    "stopID": 5
+}
+
+###
+POST http://localhost:3001/api/agendas/
+Content-Type: application/json
+
+{
+    "text": "Check out the attraction",
+    "completed": true,
+    "stopID": 5
+}
+
+###
+POST http://localhost:3001/api/agendas/
+Content-Type: application/json
+
+{
+    "text": "Eat at the restaurant",
+    "completed": true,
+    "stopID": 6
+}

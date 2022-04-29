@@ -1,4 +1,3 @@
-const UserModel = require('./user')
 const con = require('./db_connect')
 
 async function createTable(){
@@ -42,14 +41,12 @@ const comments = [
   
 ]
 
-const includeUser = (comment) => ({ ...comment, user: UserModel.get(comment.user)})
-
 async function get(id){
      const comment = await con.query(`SELECT * FROM comments WHERE commentID = ${id}`)
     if(!comment[0]){
         throw { status: 404, message: `Comment with id ${id} not Found` }
     }
-    return includeUser(comment[0])
+    return { ...comment[0] }
 }
 
 async function remove(id){
@@ -85,6 +82,6 @@ module.exports = {
     create,
     async getList(){
         const comments = await con.query(`SELECT * FROM comments`)
-        return comments.map(includeUser)
+        return comments.map(comment => ({ ...comment }))
     }
 }

@@ -1,4 +1,3 @@
-const StopModel = require('./stop')
 const con = require('./db_connect')
 
 async function createTable(){
@@ -52,14 +51,12 @@ const itinerary = [
     }
 ]
 
-const includeStop = (plan) => ({ ...plan, stop: StopModel.get(plan.stopID) })
-
 async function get(id){
     const plan = await con.query(`SELECT * FROM agendas WHERE agendaID = ${id}`)
     if(!plan[0]){
         throw { status: 404, message: `Plan with id ${id} not Found` }
     }
-    return includeStop(plan[0])
+    return { ...plan[0] }
 }
 
 async function getByStopID(id){
@@ -67,7 +64,7 @@ async function getByStopID(id){
     if(!plans[0]){
         throw { status: 404, message: `Plan with stopID ${id} not Found` }
     }
-    return plans.map(includeStop)
+    return plans.map(plan => ({ ...plan }))
 }
 
 async function remove(id){
@@ -104,6 +101,6 @@ module.exports = {
     getByStopID,
     async getList(){
         const plans = await con.query(`SELECT * FROM agendas`)
-        return plans.map(includeStop)
+        return plans.map(plan => ({ ...plan }))
     }
 }

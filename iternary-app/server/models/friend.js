@@ -1,13 +1,13 @@
-const UserModel = require('./user')
 const con = require('./db_connect')
 
 async function createTable(){
     const sql = `CREATE TABLE IF NOT EXISTS friendList (
         id INT NOT NULL AUTO_INCREMENT,
-        newFriend VARCHAR(255) NOT NULL,
+        newFriend INT NOT NULL,
         userID INT NOT NULL,
         CONSTRAINT friendList_pk PRIMARY KEY (id),
-        CONSTRAINT friendList_user_fk FOREIGN KEY (userID) REFERENCES users(userID));`
+        CONSTRAINT friendList_user_fk FOREIGN KEY (userID) REFERENCES users(userID),
+        CONSTRAINT friendList_friend_fk FOREIGN KEY (newFriend) REFERENCES users(userID));`
     await con.query(sql)
 }
 createTable()
@@ -25,14 +25,12 @@ const friends = [
     }
 ]
 
-const includeUser = (friend) => ({ ...friend, user: UserModel.get(friend.userID)})
-
 async function get(id){
     const friend = await con.query(`SELECT * FROM friendList WHERE id = ${id}`)
     if(!friend[0]){
         throw { status: 404, message: `Friend with id ${id} not Found` }
     }
-    return includeUser(friend[0])
+    return { ...friend[0] }
 }
 
 async function getByUser(userID){
@@ -40,7 +38,7 @@ async function getByUser(userID){
     if(!friends[0]){
         throw { status: 404, message: `Friend with userID ${userID} not Found` }
     }
-    return friends.map(includeUser)
+    return friends.map(friend => ({ ...friend }))
 }
 
 async function remove(id){
@@ -65,6 +63,6 @@ module.exports = {
     create,
     async getList(){
         const friends = await con.query(`SELECT * FROM friendList`)
-        return friends.map(includeUser)
+        return friends.map(friend => ({ ...friend }))
     }
 }
