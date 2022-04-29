@@ -17,43 +17,43 @@ const stops = [
         id: 1,
         location: "World Trade Center", 
         img: "https://images.unsplash.com/photo-1582436416930-f533b50a7cd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80",  
-        adventureID: 1 
+        adventureID: 6
     },
     { 
         id: 2, 
         location: "Little Island", 
         img: "https://images.unsplash.com/photo-1622491088758-364f7e4908fb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80", 
-        adventureID: 1 
+        adventureID: 6 
     },
     { 
         id: 3, 
         location: "The Vessel", 
         img: "https://images.unsplash.com/photo-1559613527-817fdce54129?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80", 
-        adventureID: 1 
+        adventureID: 6 
     },
     { 
         id: 4, 
         location: "Time Square", 
         img: "https://images.unsplash.com/photo-1595901688281-9cef114adb0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80", 
-        adventureID: 1 
+        adventureID: 6 
     },
     { 
         id: 5, 
         location: "Central Park", 
         img: "https://images.unsplash.com/photo-1558385953-d50e6afd94c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80", 
-        adventureID: 1 
+        adventureID: 6 
     },
     { 
         id: 6, 
         location: "Rialto Bridge", 
         img: "https://images.unsplash.com/photo-1562967967-edb2915098dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmlhbHRvJTIwYnJpZGdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60", 
-        adventureID: 3 
+        adventureID: 8 
     },
     { 
         id: 7, 
         location: "Doge's Palace", 
         img: "https://images.unsplash.com/photo-1567012198973-b8843811d618?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",  
-        adventureID: 3 
+        adventureID: 8 
     },
     { 
         id: 8, 
@@ -93,7 +93,7 @@ async function update(id, updatedStop){
 
 async function create(newStop){
     const result = await con.query(`INSERT INTO stops (location, image, adventureID) 
-    VALUES ('${newStop.location}', '${newStop.image}', ${newStop.adventureID})`)
+    VALUES ('${newStop.location}', '${newStop.img}', ${newStop.adventureID})`)
     
     return { ...newStop, id: result.insertId }
 }

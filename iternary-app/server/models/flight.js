@@ -6,8 +6,8 @@ async function createTable(){
         flightNumber VARCHAR(255) NOT NULL,
         departFrom VARCHAR(255) NOT NULL,
         arriveAt VARCHAR(255) NOT NULL,
-        depart TIMESTAMP NOT NULL,
-        arrive TIMESTAMP NOT NULL,
+        depart VARCHAR(255) NOT NULL,
+        arrive VARCHAR(255) NOT NULL,
         adventureID INT NOT NULL,
         CONSTRAINT flight_pk PRIMARY KEY (flightID),
         CONSTRAINT flight_fk FOREIGN KEY (adventureID) REFERENCES adventures(adventureID))`;

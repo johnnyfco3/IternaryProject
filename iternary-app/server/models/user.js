@@ -7,7 +7,7 @@ async function createTable(){
         lastName VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL UNIQUE,
         password VARCHAR(255) NOT NULL,
-        birthday DATE NOT NULL,
+        birthday VARCHAR(255) NOT NULL,
         quote VARCHAR(255),
         profilePic VARCHAR(255),
         CONSTRAINT user_pk PRIMARY KEY (userID))`

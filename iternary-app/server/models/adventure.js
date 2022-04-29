@@ -5,8 +5,8 @@ async function createTable(){
     const sql = `CREATE TABLE IF NOT EXISTS adventures (
         adventureID INT NOT NULL AUTO_INCREMENT,
         location VARCHAR(255) NOT NULL,
-        startDate DATE NOT NULL,
-        endDate DATE NOT NULL,
+        startDate VARCHAR(255) NOT NULL,
+        endDate VARCHAR(255) NOT NULL,
         backgroundImg VARCHAR(255) NOT NULL,
         description VARCHAR(255) NOT NULL,
         link VARCHAR(255) NOT NULL,
@@ -60,8 +60,6 @@ const adventures = [
     }
 ]
 
-const includeUser = (adventure) => ({ ...adventure, user: UserModel.get(adventure.userID)})
-
 async function get(id){
     const adventure = await con.query(`SELECT * FROM adventures WHERE adventureID = ${id}`)
     
@@ -69,7 +67,7 @@ async function get(id){
         throw { status: 404, message: `Adventure with id ${id} not found` }
     }
 
-    return includeUser(adventure[0])
+    return { ...adventure[0] }
 }
 
 async function remove(id){
@@ -92,14 +90,14 @@ async function update(id, updatedLocation){
     link = '${updatedLocation.link}' 
     WHERE adventureID = ${id}`)
 
-    return includeUser(adventure[0])
+    return { ...adventure[0] }
 }
 
 async function create(newLocation){
     const result = await con.query(`INSERT INTO adventures (location, startDate, endDate, backgroundImg, description, link, userID) 
     VALUES ('${newLocation.location}', '${newLocation.startD}', '${newLocation.endD}', '${newLocation.background}', '${newLocation.description}', '${newLocation.link}', ${newLocation.userID})`)
 
-    return includeUser({ ...newLocation, adventureID: result.insertId })
+    return { ...newLocation, id: result.insertId }
 }
 
 module.exports = {
@@ -109,6 +107,6 @@ module.exports = {
     create,
     async getList(){
         const adventures = await con.query(`SELECT * FROM adventures`)
-        return adventures.map(adventure => includeUser(adventure))
+        return adventures.map(adventure => ({ ...adventure }))
     }
 }
