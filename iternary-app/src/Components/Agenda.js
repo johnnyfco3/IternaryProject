@@ -8,6 +8,7 @@ export function Agenda({stop, email}){
     const [itinerary, setItinerary] = useState([])
     const [agendaForm, setAgendaForm] = useState({
         text: "",
+        completed: false,
         stopID: stop.stopID,
     })
     const [formActive, setFormActive] = useState(false)
@@ -44,7 +45,8 @@ export function Agenda({stop, email}){
                 const res = await createAgenda(agendaForm);
                 setAgendaForm({
                     text: "",
-                    stopID: stop.id,
+                    completed: false,
+                    stopID: stop.stopID,
                 })
                 setItinerary(prevState => [...prevState, res])
                 setFormActive(false)
@@ -62,7 +64,7 @@ export function Agenda({stop, email}){
         e.stopPropagation();
         try{
             await removeAgenda(id)
-            setItinerary(itinerary.filter((agenda) => agenda.id !== id))
+            setItinerary(itinerary.filter((agenda) => agenda.agendaID !== id))
         }
         catch(err){
             console.log(err)

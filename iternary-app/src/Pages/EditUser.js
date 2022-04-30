@@ -10,13 +10,14 @@ export function EditUsers(){
     let navigate = useNavigate()
 
     const [editUser, setEditUser] = useState({
+        userID: session.user.userID,
         firstName: session.user.firstName,
         lastName: session.user.lastName,
         birthday: session.user.birthday,
         email: session.user.email,
         password: session.user.password,
         quote: session.user.quote,
-        pic: session.user.pic
+        pic: session.user.profilePic
     })
     const [newPassword, setNewPassword] = useState({
         newPassword: '',
@@ -54,7 +55,7 @@ export function EditUsers(){
         }
         else{
             try{
-                await updateUser(session.user.id, editUser)
+                await updateUser(session.user.userID, editUser)
                 session.user = editUser
                 navigate("/home")
             } catch(err){
@@ -66,7 +67,7 @@ export function EditUsers(){
     async function deleteAccount(){
         if(window.confirm('Are you sure you want to delete your account?')){
             try{
-                await removeUser(session.user.id)
+                await removeUser(session.user.userID)
                 session.Logout()
                 navigate("/")
             } catch(err){
@@ -86,7 +87,7 @@ export function EditUsers(){
         event.preventDefault()
         if(newPassword.newPassword === newPassword.confirmPassword){
             try{
-                await updateUser(session.user.id, { password: newPassword.newPassword })
+                await updateUser(session.user.userID, { password: newPassword.newPassword })
                 navigate("/home")
             } catch(err){
                 console.log(err)
@@ -129,11 +130,11 @@ export function EditUsers(){
                             </div>
                             <div className="col-md-8">
                                 <h1 className="heading">Profile Pic</h1>
-                                <input type="text" className="form-control" id="pic" name="pic" value={editUser.pic} onChange={handleChange}/>
+                                <input type="text" className="form-control" id="pic" name="profilePic" value={editUser.pic} onChange={handleChange}/>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" className="form-label">Quote</label>
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={editUser.quote} onChange={handleChange}></textarea>
+                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="quote" value={editUser.quote} onChange={handleChange}></textarea>
                             </div>
                         </div>
                         <div className="col-12 text-center button">

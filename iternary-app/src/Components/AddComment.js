@@ -6,7 +6,7 @@ export function AddComment({adventureID, setAddComment, setCommentsList}){
 
     const [commentForm, setCommentForm] = useState({
         text: "",
-        user: session.user.id,
+        userID: session.user.userID,
         adventureID: parseInt(adventureID),
     })
 
@@ -24,11 +24,11 @@ export function AddComment({adventureID, setAddComment, setCommentsList}){
                 const res = await createComment(commentForm);
                 setCommentForm({
                     text: "",
-                    user: session.user.id,
+                    userID: session.user.userID,
                     adventureID: parseInt(adventureID),
                 })
                 setAddComment(false)
-                setCommentsList(prevState => [...prevState, res])
+                setCommentsList(prevState => [...prevState, res.data])
             }
             catch(err){
                 console.log(err)

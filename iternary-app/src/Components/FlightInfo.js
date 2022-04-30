@@ -28,7 +28,7 @@ export function FlightInfo({adventureID, email}){
         e.stopPropagation();
         try{
             await removeFlight(id)
-            setFlightInfo(prevState => prevState.filter(flight => flight.id !== id))
+            setFlightInfo(prevState => prevState.filter(flight => flight.flightID !== id))
         }
         catch(err){
             console.log(err)

@@ -26,7 +26,7 @@ export function Upcoming({date}){
         e.preventDefault();
         try{
             await removeAdventure(id)
-            setAdventuresList(adventuresList.filter(adventure => adventure.id !== id))
+            setAdventuresList(adventuresList.filter(adventure => adventure.adventureID !== id))
         }
         catch(err){
             console.log(err)

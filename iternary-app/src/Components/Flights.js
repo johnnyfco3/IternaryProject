@@ -5,7 +5,7 @@ export function Flights({flight, email, removeFlight}){
     return (
         <div className="flights">
         {email === session.user.email ? ( 
-                <i className="fa-solid fa-xmark delete" onClick={(e)=> removeFlight(e, flight.id)}></i>
+                <i className="fa-solid fa-xmark delete" onClick={(e)=> removeFlight(e, flight.flightID)}></i>
                 ) : (
                     <></>
         )}

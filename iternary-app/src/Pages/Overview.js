@@ -123,7 +123,7 @@ export function Overview(){
         e.stopPropagation();
         try{
             const res = await removePost(id)
-            setPostList(postsList.filter((post) => post.id !== id))
+            setPostList(postsList.filter((post) => post.postID !== id))
             console.log(res)
         }
         catch(err){
@@ -135,7 +135,7 @@ export function Overview(){
         e.stopPropagation();
         try{
             await removeStop(id)
-            setStopsList(stopsList.filter((stop) => stop.id !== id))
+            setStopsList(stopsList.filter((stop) => stop.stopID !== id))
         }
         catch(err){
             console.log(err)
@@ -146,7 +146,7 @@ export function Overview(){
         e.stopPropagation();
         try {
             await removeComment(id)
-            setCommentsList(commentsList.filter((comment) => comment.id !== id))
+            setCommentsList(commentsList.filter((comment) => comment.commentID !== id))
         } catch (error) {
             console.log(error)
         }

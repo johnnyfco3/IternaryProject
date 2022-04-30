@@ -8,7 +8,7 @@ export function AdventureList({trip, email, remove}){
         <div className="position col-lg-6">
                 <Link to={`/overview/${trip.adventureID}/${email}`}><div className="card">
                     {email === session.user.email ? (
-                        <i className="fa-solid fa-xmark delete" onClick={(e)=> remove(e, trip.id)}></i>
+                        <i className="fa-solid fa-xmark delete" onClick={(e)=> remove(e, trip.adventureID)}></i>
                         ) : (
                             <></>
                         )}

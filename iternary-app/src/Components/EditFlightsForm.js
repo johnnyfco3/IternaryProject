@@ -28,7 +28,14 @@ export function EditFlightsForm({ id }) {
     async function handleSubmit(event){
         event.preventDefault()
         try{
-            await updateFlight(editFlight.id, editFlight)
+            await updateFlight(editFlight.flightID, {
+                number: editFlight.flightNumber,
+                from: editFlight.departFrom,
+                to: editFlight.arriveAt,
+                depart: editFlight.depart,
+                arrival: editFlight.arrive,
+                adventureID: editFlight.adventureID
+            })
             navigate(-1)
         }
         catch(err){
@@ -44,17 +51,17 @@ export function EditFlightsForm({ id }) {
                     <div className="row g-3">
                         <div className="col-md-6">
                             <h1 className="heading">Flight Number</h1>
-                            <input type="text" className="form-control" id="number" name="number" value={editFlight.flightNumber} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="number" name="flightNumber" value={editFlight.flightNumber} onChange={handleChange}/>
                         </div>
                         <div className="col-md-6">
                         </div>
                         <div className="col-md-4">
                             <h1 className="heading">From</h1>
-                            <input type="text" className="form-control" id="from" name="from" value={editFlight.departFrom} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="from" name="departFrom" value={editFlight.departFrom} onChange={handleChange}/>
                         </div>
                         <div className="col-md-4">
                             <h1 className="heading">To</h1>
-                            <input type="text" className="form-control" id="to" name="to" value={editFlight.arriveAt} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="to" name="arriveAt" value={editFlight.arriveAt} onChange={handleChange}/>
                         </div>
                         <div className="col-md-4">
                         </div>
@@ -64,7 +71,7 @@ export function EditFlightsForm({ id }) {
                         </div>
                         <div className="col-md-3">
                             <h1 className="heading">Arrival Time</h1>
-                            <input type="text" className="form-control" id="arrival" name="arrival" value={editFlight.arrive} onChange={handleChange}/>
+                            <input type="text" className="form-control" id="arrival" name="arrive" value={editFlight.arrive} onChange={handleChange}/>
                         </div>
                     </div>
                         <div className="col-12 text-center button">

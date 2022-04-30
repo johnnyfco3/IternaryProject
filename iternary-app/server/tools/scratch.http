@@ -50,17 +50,17 @@ Content-Type: application/json
 }
 
 ###
-PATCH  http://localhost:3001/api/users/2
+PATCH  http://localhost:3001/api/users/1
 Content-Type: application/json
 
 {
-    "firstName": "John", 
-    "lastName": "Smith", 
-    "birthday": "1999-05-10", 
-    "email": "example1@gmail.com", 
-    "password": "123456", 
-    "quote": "Hey there, lets travel together!!",
-    "profilePic": "https://randomuser.me/api/portraits/men/1.jpg"
+    "firstName": "Johnny", 
+    "lastName": "Tejada", 
+    "birthday": "2000-07-03", 
+    "email": "example@gmail.com", 
+    "password": "12345", 
+    "quote": "Lets make today a memorable one!",
+    "profilePic": ""
 }
 
 ###

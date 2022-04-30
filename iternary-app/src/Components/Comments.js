@@ -18,7 +18,7 @@ export function Comments({comment, email, removeComment}) {
     return (
         <>
         {email === session.user.email ? ( 
-            <i className="fa-solid fa-xmark delete" onClick={(e)=> removeComment(e, comment.id)}></i>
+            <i className="fa-solid fa-xmark delete" onClick={(e)=> removeComment(e, comment.commentID)}></i>
             ) : (
                 <></>
         )}
