@@ -51,6 +51,10 @@ async function remove(id, userID){
 }
 
 async function create(newFriend){
+    const check = await con.query(`SELECT * FROM friendList WHERE newFriend = ${newFriend.newFriend} AND userID = ${newFriend.userID}`)
+    if(check[0]){
+        throw { status: 400, message: `Already a Friend` }
+    }
     const result = await con.query(`INSERT INTO friendList
     (newFriend, userID) VALUES ('${newFriend.newFriend}', ${newFriend.userID})`)
 

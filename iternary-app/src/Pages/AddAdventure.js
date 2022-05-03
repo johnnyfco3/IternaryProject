@@ -15,7 +15,7 @@ export function AddAdventure(){
             description: "",
             background: "",
             link: "",
-            userID: session.user.id,
+            userID: session.user.userID,
         }
     )
 

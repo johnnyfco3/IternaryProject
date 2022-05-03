@@ -13,15 +13,19 @@ export function AddFriend({setIds}){
 
         const existUser = await getByEmail(formData)
         if(!existUser.errors){
-            setIds(prevState => {
-                return [...prevState, existUser.data.userID]
-            })
-            
             try{
-                await createFriend({
+                const res = await createFriend({
                     newFriend: existUser.data.userID, 
                     userID: session.user.userID}
                 )
+                if(res.errors){
+                    setError(res.errors[0])
+                }
+                else{
+                    setIds(prevState => {
+                        return [...prevState, existUser.data.userID]
+                    })
+                }
                 setFormData("")
             }
             catch(err){
