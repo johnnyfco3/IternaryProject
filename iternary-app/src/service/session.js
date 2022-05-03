@@ -1,7 +1,7 @@
 import { login } from './users'
 
 const session = {
-    user: null,
+    user: JSON.parse(localStorage.getItem('user')),
     message: null,
     async Login(user){
         try{
@@ -11,7 +11,7 @@ const session = {
                 return this.message
             }
             else{
-                session.user = response.data
+                localStorage.setItem('user', JSON.stringify(response.data))
                 return true
             }
         }
@@ -20,7 +20,7 @@ const session = {
         }
     },
     Logout(){
-        this.user = null
+        localStorage.removeItem('user')
     }
 }
 

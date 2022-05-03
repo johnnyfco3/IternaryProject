@@ -43,7 +43,7 @@ export function EditUsers(){
             if(Object.keys(checkUser).length === 0){
                 try{
                     await updateUser(session.user.id, editUser)
-                    session.user = editUser
+                    localStorage.setItem('user', JSON.stringify(editUser))
                     navigate("/home")
                 } catch(err){
                     console.log(err)
@@ -56,7 +56,7 @@ export function EditUsers(){
         else{
             try{
                 await updateUser(session.user.userID, editUser)
-                session.user = editUser
+                localStorage.setItem('user', JSON.stringify(editUser))
                 navigate("/home")
             } catch(err){
                 console.log(err)

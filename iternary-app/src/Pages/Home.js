@@ -6,7 +6,6 @@ import Introduction from "../Components/Introduction";
 import Navbar from "../Components/Navbar";
 
 export function Home(){
-
     return (
         <div id="home">
             <header>
