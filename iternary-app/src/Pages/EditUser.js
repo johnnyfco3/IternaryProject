@@ -133,7 +133,7 @@ export function EditUsers(){
                                 <input type="text" className="form-control" id="pic" name="profilePic" value={editUser.pic} onChange={handleChange}/>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" className="form-label">Quote</label>
+                                <label htmlFor="exampleFormControlTextarea1" className="form-label">Quote</label>
                                 <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="quote" value={editUser.quote} onChange={handleChange}></textarea>
                             </div>
                         </div>

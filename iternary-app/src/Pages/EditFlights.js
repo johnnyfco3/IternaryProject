@@ -27,7 +27,7 @@ export function EditFlights(){
     const form = flights.map((flight, i) => {
         return (
             <>
-                <p onClick={(e) => toggleForm(e, flight.flightID)}>{`Flight Information ${i+1}`}</p>
+                <p onClick={(e) => toggleForm(e, flight.flightID)} key={i}>{`Flight Information ${i+1}`}</p>
             </>
         )
     })
