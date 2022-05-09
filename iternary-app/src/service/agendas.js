@@ -13,5 +13,6 @@ export function removeAgenda(id){
 }
 
 export function updateAgenda(id, agenda){
+    console.log(id)
     return api(`agendas/${id}`, agenda, 'PATCH');
 }

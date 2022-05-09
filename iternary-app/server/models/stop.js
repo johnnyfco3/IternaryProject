@@ -95,7 +95,7 @@ async function create(newStop){
     const result = await con.query(`INSERT INTO stops (location, image, adventureID) 
     VALUES ('${newStop.location}', '${newStop.img}', ${newStop.adventureID})`)
     
-    return { ...newStop, id: result.insertId }
+    return { ...newStop, stopID: result.insertId }
 }
 
 module.exports = {

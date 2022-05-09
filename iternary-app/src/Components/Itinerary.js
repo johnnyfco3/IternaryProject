@@ -6,7 +6,7 @@ export function Itinerary({item, email, removeAgenda}){
 
     const [completed, setCompleted] = useState(item.completed)
 
-    async function toggleCompleted(e, id){
+    async function toggleCompleted(e){
         e.preventDefault();
         const data = {
             text: item.text,
@@ -14,7 +14,7 @@ export function Itinerary({item, email, removeAgenda}){
             stopID: item.stopID
         }
         try{
-            await updateAgenda(id, data);
+            await updateAgenda(item.agendaID, data);
             setCompleted(prevState => !prevState)
         }
         catch(err){
@@ -32,7 +32,7 @@ export function Itinerary({item, email, removeAgenda}){
             <div className="item">
                 <i className={completed ? "fa-solid fa-circle-check px-2 pt-2 completed" : "fa-regular fa-circle-check px-2 pt-2"}></i>
                 {email === session.user.email ? (
-                    <p className={completed ? 'completed' : ''} onClick={(e) => toggleCompleted(e, item.agendaID)}>{item.text}</p>
+                    <p className={completed ? 'completed' : ''} onClick={(e) => toggleCompleted(e)}>{item.text}</p>
                 ) : (
                     <p className={completed ? 'completed' : ''}>{item.text}</p>
                 )}

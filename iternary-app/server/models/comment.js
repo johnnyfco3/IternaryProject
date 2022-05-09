@@ -72,7 +72,7 @@ async function create(newComment){
     (text, userID, adventureID) 
     VALUES ('${newComment.text}', ${newComment.userID}, ${newComment.adventureID})`)
 
-    return { ...newComment, id: result.insertId }
+    return { ...newComment, commentID: result.insertId }
 }
 
 module.exports = {

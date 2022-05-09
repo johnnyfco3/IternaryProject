@@ -96,7 +96,7 @@ async function create(newPost){
     (img, caption, adventureID) 
     VALUES ('${newPost.img}', '${newPost.caption}', ${newPost.adventureID})`)
     
-    return { ...newPost, id: result.insertId }
+    return { ...newPost, postID: result.insertId }
 }
 
 module.exports = {

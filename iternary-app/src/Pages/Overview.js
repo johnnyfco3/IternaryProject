@@ -124,7 +124,6 @@ export function Overview(){
         try{
             const res = await removePost(id)
             setPostList(postsList.filter((post) => post.postID !== id))
-            console.log(res)
         }
         catch(err){
             console.log(err)
@@ -145,6 +144,7 @@ export function Overview(){
     async function removeComments(e, id){
         e.stopPropagation();
         try {
+            console.log(id)
             await removeComment(id)
             setCommentsList(commentsList.filter((comment) => comment.commentID !== id))
         } catch (error) {

@@ -90,7 +90,7 @@ async function create(newPlan){
         (text, completed, stopID) 
         VALUES ('${newPlan.text}', ${newPlan.completed}, ${newPlan.stopID})`)
 
-    return { ...newPlan, id: plan.insertId }
+    return { ...newPlan, agendaID: plan.insertId }
 }
 
 module.exports = {

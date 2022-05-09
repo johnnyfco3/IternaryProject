@@ -91,7 +91,7 @@ async function create(newUser){
     (firstName, lastName, birthday, email, password, quote, profilePic) 
     VALUES ('${newUser.firstName}', '${newUser.lastName}', '${newUser.birthday}', '${newUser.email}', '${newUser.password}', '${newUser.quote}', '${newUser.profilePic}')`)
 
-    return { ...newUser, id: user.insertId, password: undefined }
+    return { ...newUser, userID: user.insertId, password: undefined }
     
 }
 

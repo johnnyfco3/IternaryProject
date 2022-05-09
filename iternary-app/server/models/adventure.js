@@ -1,4 +1,3 @@
-const UserModel = require('./user')
 const con = require('./db_connect')
 
 async function createTable(){
@@ -97,7 +96,7 @@ async function create(newLocation){
     const result = await con.query(`INSERT INTO adventures (location, startDate, endDate, backgroundImg, description, link, userID) 
     VALUES ('${newLocation.location}', '${newLocation.startD}', '${newLocation.endD}', '${newLocation.background}', '${newLocation.description}', '${newLocation.link}', ${newLocation.userID})`)
 
-    return { ...newLocation, id: result.insertId }
+    return { ...newLocation, adventureID: result.insertId }
 }
 
 module.exports = {

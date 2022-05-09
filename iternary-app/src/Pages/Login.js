@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import session from "../service/session";
 
@@ -17,19 +17,17 @@ export function Login(){
         }))
     }
 
-    let navigate = useNavigate()
-
     async function handleSubmit(e){
         e.preventDefault();
         try{
             const res = await session.Login(loginForm)
+            if(res){
+                window.location.href = "/home"
+            }
             setLoginForm({
                 email: "",
                 password: "",
             })
-            if(res){
-                navigate("/home")
-            }
         }
         catch(err){
             console.log(err)

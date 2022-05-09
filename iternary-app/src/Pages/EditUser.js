@@ -21,7 +21,15 @@ export function EditUsers(){
     })
     const [newPassword, setNewPassword] = useState({
         newPassword: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        userID: session.user.userID,
+        firstName: session.user.firstName,
+        lastName: session.user.lastName,
+        birthday: session.user.birthday,
+        email: session.user.email,
+        password: session.user.password,
+        quote: session.user.quote,
+        pic: session.user.profilePic
     })
     const [passwordForm, setPasswordForm] = useState(false)
 
@@ -44,6 +52,7 @@ export function EditUsers(){
                 try{
                     await updateUser(session.user.id, editUser)
                     localStorage.setItem('user', JSON.stringify(editUser))
+                    session.user = JSON.parse(localStorage.getItem('user'))
                     navigate("/home")
                 } catch(err){
                     console.log(err)
@@ -57,6 +66,7 @@ export function EditUsers(){
             try{
                 await updateUser(session.user.userID, editUser)
                 localStorage.setItem('user', JSON.stringify(editUser))
+                session.user = JSON.parse(localStorage.getItem('user'))
                 navigate("/home")
             } catch(err){
                 console.log(err)
@@ -87,7 +97,16 @@ export function EditUsers(){
         event.preventDefault()
         if(newPassword.newPassword === newPassword.confirmPassword){
             try{
-                await updateUser(session.user.userID, { password: newPassword.newPassword })
+                await updateUser(session.user.userID, { 
+                    userID: newPassword.userID,
+                    firstName: newPassword.firstName,
+                    lastName: newPassword.lastName,
+                    birthday: newPassword.birthday,
+                    email: newPassword.email,
+                    quote: newPassword.quote,
+                    pic: newPassword.profilePic,
+                    password: newPassword.newPassword
+                 })
                 navigate("/home")
             } catch(err){
                 console.log(err)

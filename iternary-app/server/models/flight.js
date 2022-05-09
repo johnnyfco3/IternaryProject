@@ -78,7 +78,7 @@ async function create(newFlight){
         (flightNumber, departFrom, arriveAt, depart, arrive, adventureID) 
         VALUES ('${newFlight.number}', '${newFlight.from}', '${newFlight.to}', '${newFlight.depart}', '${newFlight.arrival}', ${newFlight.adventureID})`)
 
-    return { ...newFlight, id: flight.insertId }
+    return { ...newFlight, flightID: flight.insertId }
 }
 
 module.exports = {

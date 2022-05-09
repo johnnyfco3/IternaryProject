@@ -48,7 +48,7 @@ export function Agenda({stop, email}){
                     completed: false,
                     stopID: stop.stopID,
                 })
-                setItinerary(prevState => [...prevState, res])
+                setItinerary(prevState => [...prevState, res.data])
                 setFormActive(false)
             }catch(err){
                 console.log(err)
