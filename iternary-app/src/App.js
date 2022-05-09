@@ -24,7 +24,6 @@ import EditFlights from './Pages/EditFlights';
 import EditPosts from './Pages/EditPosts';
 import EditUsers from './Pages/EditUser';
 
-
 function App() {
 
   const today = new Date()
